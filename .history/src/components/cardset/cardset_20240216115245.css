@@ -1,0 +1,16 @@
+.cardset-container{
+    display: grid;
+  
+    
+    grid-template-columns: repeat(4, 1fr);
+    gap:
+margin: 0 auto;    
+    transition: ease 0.3s;
+  
+}
+
+.cardset-wrapper{
+
+
+}
+

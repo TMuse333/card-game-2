@@ -1,0 +1,14 @@
+.card {
+   
+  
+    /* Responsive sizing */
+  width:100%;
+    height: auto;
+    max-height: 220px;
+  
+    /* Maintain aspect ratio and cover the container */
+    object-fit: cover;
+    width: 100%;
+    background-color: black;
+    box-sizing: border-box;
+  }

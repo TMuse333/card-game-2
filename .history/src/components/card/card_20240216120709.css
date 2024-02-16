@@ -1,0 +1,14 @@
+.card {
+   
+  
+    /* Responsive sizing */
+  width:%;
+    height: auto;
+
+  
+    /* Maintain aspect ratio and cover the container */
+    object-fit: cover;
+    width: 100%;
+    background-color: black;
+
+  }

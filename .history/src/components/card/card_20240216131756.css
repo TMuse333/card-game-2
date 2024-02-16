@@ -1,0 +1,32 @@
+.card {
+   
+  
+    /* Responsive sizing */
+  width:20vw;
+
+    /* height: 30vw; */
+
+
+padding: 0;
+
+max-width: 220px;
+max-height: 200px;
+
+  
+    /* Maintain aspect ratio and cover the container */
+    object-fit: cover;
+
+    background-color: black;
+
+  }
+
+  .random{
+    position: absolute;
+    left:50%;
+    top:5%;
+    transform: translateX(-50%);
+  }
+
+  #abu5{
+    object-position: 30% 0%;
+  }

@@ -1,0 +1,66 @@
+import React from "react";
+import q3 from '../../media/q3-visuals-logo.png'
+import Card from "../card/card";
+import './cardset.css'
+
+
+const CardSet = () => {
+
+    const cards = [
+        {
+        img:q3,
+        alt:q3
+    },
+    {
+        img:q3,
+        alt:q3
+    },
+    {
+        img:q3,
+        alt:q3
+    },
+    {
+        img:q3,
+        alt:q3
+    },
+    {
+        img:q3,
+        alt:q3
+    },
+    {
+        img:q3,
+        alt:q3
+    },
+    {
+        img:q3,
+        alt:q3
+    },
+    {
+        img:q3,
+        alt:q3
+    },
+]
+
+return (
+
+
+   <div className="card-wrapper">
+    
+   </div>
+    <div className="cardset-container">
+        {cards.map((card,index) => (
+            <Card
+            image={card.img}
+            altImage={card.alt}
+            isClicked={false}
+            />
+         
+        ))}
+    </div>
+
+)
+
+
+}
+
+export default CardSet

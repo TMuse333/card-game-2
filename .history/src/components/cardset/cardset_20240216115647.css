@@ -1,0 +1,15 @@
+.cardset-container{
+    display: grid;
+    /* grid-template-columns: repeat(auto-fill, minmax(20vw, 220px));
+    grid-auto-rows: minmax(20vw, 220px);  */
+
+margin: 0 auto;    
+    transition: ease 0.3s;
+  
+}
+
+.cardset-wrapper{
+
+
+}
+

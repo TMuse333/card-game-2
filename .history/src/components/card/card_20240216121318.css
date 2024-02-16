@@ -1,0 +1,17 @@
+.card {
+   
+  
+    /* Responsive sizing */
+  width:20vw;
+    height: 30vw;
+
+    box-sizing: border-box;
+padding: 0;
+
+  
+    /* Maintain aspect ratio and cover the container */
+    object-fit: cover;
+
+    background-color: black;
+
+  }

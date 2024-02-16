@@ -1,0 +1,14 @@
+.cardset-container{
+    display: grid;
+    grid-template-columns: repeat(4, 230px);
+    grid-gap: -1em;
+
+margin: 0 auto;    
+    transition: ease 0.3s;
+  
+}
+
+.cardset-wrapper{
+    width:100vw;
+}
+
