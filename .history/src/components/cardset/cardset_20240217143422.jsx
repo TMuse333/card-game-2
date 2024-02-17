@@ -32,30 +32,20 @@ const CardSet = () => {
 
     const { shuffleCards } = useGameContext();
 
-    const [shuffledCards, setShuffledCards] = useState([0,1,2,3,4,5,6,7]);
+    const [shuffledCards, setShuffledCards] = useState(shuffleCards);
 
     useEffect(() => {
-        // Delay the first shuffle by 11 seconds
-        const initialShuffleTimeout = setTimeout(() => {
+        if (hasShuffled) {
             setIsShuffling(true);
-            setShuffledCards(shuffleCards());
-            setSelectedCard(null);
-
-            // Subsequent shuffles with 800 milliseconds delay
-            const shuffleIntervalId = setInterval(() => {
-               
+            setTimeout(() => {
+                setShuffledCards(shuffleCards());
                 setSelectedCard(null);
-                setIsShuffling(false)
+                setIsShuffling(false);
             }, 800);
-
-            // Clear the interval when the component unmounts
-            return () => clearInterval(shuffleIntervalId);
-        }, 11000);
-
-        return () => {
-            clearTimeout(initialShuffleTimeout);
-        };
-    }, [shuffleCards]);
+        } else {
+            setHasShuffled(true);
+        }
+    }, [shuffleCards, hasShuffled]);
 
     const handleCardClick = (index) => {
         console.log('card clicked!');

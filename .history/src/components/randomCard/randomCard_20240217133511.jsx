@@ -11,20 +11,11 @@ import blazekin from '../../media/blazekin.gif'
 
 const RandomCard = ({ id }) => {
   const { getRandomNumber } = useGameContext();
-  const [cardIndex, setCardIndex] = useState(getRandomNumber);
-  const [isFading, setIsFading] = useState(false);
+  const [cardIndex, setCardIndex] = useState(getRandomNumber());
 
   useEffect(() => {
-    setIsFading(true);
-    
-    // Change the cardIndex after the fading effect duration
-    const timeoutId = setTimeout(() => {
-      setCardIndex(getRandomNumber);
-      setIsFading(false);
-    }, 800); // Adjust the delay as needed
-
-    // Clear the timeout to prevent memory leaks
-    return () => clearTimeout(timeoutId);
+    // Change the cardIndex whenever getRandomNumber changes
+    setCardIndex(getRandomNumber());
   }, [getRandomNumber]);
 
   const cards = [
@@ -43,10 +34,6 @@ const RandomCard = ({ id }) => {
       src={cards[cardIndex]}
       alt={`Random Card ${id}`}
       id={id}
-      style={{
-        opacity: isFading ? 0 : 1,
-        transition: 'opacity 0.5s ease-in-out',
-      }}
     />
   );
 };

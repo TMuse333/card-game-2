@@ -2,7 +2,7 @@ import React from "react";
 import './card.css'
 
 const Card = ({image, altImage, isClicked,id,mouseEnter,
-mouseLeave,style,handleClick,altShown}) => {
+mouseLeave,style,handleClick,}) => {
 
     return (
 
@@ -14,7 +14,6 @@ mouseLeave,style,handleClick,altShown}) => {
             onMouseLeave={mouseLeave}
             style={style}
             onClick={handleClick}
-            
             />
       
     )

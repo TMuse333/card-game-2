@@ -43,9 +43,8 @@ const CardSet = () => {
 
             // Subsequent shuffles with 800 milliseconds delay
             const shuffleIntervalId = setInterval(() => {
-               
+                setShuffledCards(shuffleCards());
                 setSelectedCard(null);
-                setIsShuffling(false)
             }, 800);
 
             // Clear the interval when the component unmounts

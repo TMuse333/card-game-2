@@ -13,7 +13,7 @@ const Clock = () => {
           // If the countdown reaches 0, reset it to 10 and wait for the delay
           setTimeout(() => {
             setCount(10); // Reset to 10 after the delay
-          }, 900);
+          }, 800);
           return prevCount; // Keep the count unchanged during the delay
         }
       });

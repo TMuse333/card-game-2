@@ -14,47 +14,24 @@ import vegeta from '../../media/vegeta-battle.png';
 import obito from '../../media/war-obito.jpg';
 import q3 from '../../media/q3-visuals-logo.png';
 
-import charizard from '../../media/charizard.gif'
-import deoxys from '../../media/deoxys.gif'
-import gengar from '../../media/gengar.gif'
-import mewtwo from '../../media/mewtwo.gif'
-import pikachu from '../../media/pikachu.gif'
-import rayquaza from '../../media/rayquaza.gif'
-import sudowudo from '../../media/sudowudo.gif'
-import blazekin from '../../media/blazekin.gif'
 
 const CardSet = () => {
     const [isHovered, setIsHovered] = useState(null);
-   
+    const [shuffledCards, setShuffledCards] = useState(null);
     const [selectedCard, setSelectedCard] = useState(null);
-    const [isShuffling, setIsShuffling] = useState(false);
-    const [hasShuffled, setHasShuffled] = useState(false);
 
     const { shuffleCards } = useGameContext();
 
-    const [shuffledCards, setShuffledCards] = useState([0,1,2,3,4,5,6,7]);
-
     useEffect(() => {
-        // Delay the first shuffle by 11 seconds
-        const initialShuffleTimeout = setTimeout(() => {
-            setIsShuffling(true);
-            setShuffledCards(shuffleCards());
+        // Set up an interval to call shuffleCards every 10 seconds
+        const intervalId = setInterval(() => {
+            const shuffledIndexes = shuffleCards(); // Get shuffled indexes from the context
+            setShuffledCards(shuffledIndexes);
             setSelectedCard(null);
-
-            // Subsequent shuffles with 800 milliseconds delay
-            const shuffleIntervalId = setInterval(() => {
-               
-                setSelectedCard(null);
-                setIsShuffling(false)
-            }, 800);
-
-            // Clear the interval when the component unmounts
-            return () => clearInterval(shuffleIntervalId);
         }, 11000);
 
-        return () => {
-            clearTimeout(initialShuffleTimeout);
-        };
+        // Clean up the interval when the component unmounts
+        return () => clearInterval(intervalId);
     }, [shuffleCards]);
 
     const handleCardClick = (index) => {
@@ -66,6 +43,12 @@ const CardSet = () => {
         }
     };
 
+    const handleShuffle = () => {
+        const shuffledIndexes = shuffleCards();
+        setShuffledCards(shuffledIndexes);
+        setSelectedCard(null);
+    };
+
     const handleMouseEnter = (index) => {
         setIsHovered(index);
         console.log('hover');
@@ -75,22 +58,15 @@ const CardSet = () => {
         setIsHovered(null);
     };
 
-// CardSet.js
-const style = (index) => {
-    const isSelected = isHovered === index;
-    const isClicked = index === selectedCard;
-    const isFlipping = isClicked && !isShuffling; // Only flip during a click and not during shuffling
-  
-    return {
-      opacity: isShuffling ? 0 : 1,
-      boxShadow: isSelected ? '0 0 10px gold' : null,
-    //   transform: isFlipping ? 'scale(1.1) rotateY(180deg)' :isClicked ? ' rotateY(-180deg)' : 'scale(1)',
-      transition: isFlipping ? 'transform 0.3s ease-in-out' : 'opacity 0.5s ease-in-out',
+    const style = (index) => {
+        const isSelected = isHovered === index;
+
+        return {
+            boxShadow: isSelected ? '0 0 10px gold' : null,
+            transform: isSelected ? 'scale(1.1)' : 'scale(1)',
+            transition: 'transform 0.3s ease-in'
+        };
     };
-  };
-  
-  
-  
 
     const cards = [
         { img: q3, alt: mewtwo, id: 'q3' },
@@ -103,7 +79,8 @@ const style = (index) => {
         { img: abu5, alt: blazekin, id: 'abu5' },
     ];
 
-    const shuffledCardItems = shuffledCards.map(index => cards[index]);
+
+    const cardList = shuffledCards || cards;
 
     return (
         <div className="card-wrapper">
@@ -113,6 +90,7 @@ const style = (index) => {
                     left: '20%',
                     top: '20%'
                 }}
+                onClick={handleShuffle}
             >
                 Switch
             </button>
@@ -122,13 +100,13 @@ const style = (index) => {
             />
 
             <div className="cardset-container">
-                {shuffledCardItems.map((card, index) => (
+                {cards.map((index) => (
                     <Card
                         key={index}
-                        image={card.img}
-                        altImage={card.alt}
+                        image={cards[index].img}
+                        altImage={cards[index].alt}
                         isClicked={index === selectedCard}
-                        id={card.id}
+                        id={cards[index].id}
                         style={style(index)}
                         mouseEnter={() => handleMouseEnter(index)}
                         mouseLeave={handleMouseLeave}

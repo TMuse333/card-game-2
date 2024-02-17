@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 import Card from "../card/card";
-import RandomCard from "../randomCard/randomCard";
 import './cardset.css';
-import { useGameContext } from '../context';
-
 import abu6 from '../../media/aboubacar-6.jpg';
 import abu5 from '../../media/aboubacar-5-fire.png';
 import kakashi from '../../media/kakashi_susanoo.jpg';
@@ -23,74 +20,49 @@ import rayquaza from '../../media/rayquaza.gif'
 import sudowudo from '../../media/sudowudo.gif'
 import blazekin from '../../media/blazekin.gif'
 
+import RandomCard from "../randomCard/randomCard";
+
+
+import { useGameContext } from '../context';
+
 const CardSet = () => {
     const [isHovered, setIsHovered] = useState(null);
-   
-    const [selectedCard, setSelectedCard] = useState(null);
-    const [isShuffling, setIsShuffling] = useState(false);
-    const [hasShuffled, setHasShuffled] = useState(false);
+    const [shuffledCards, setShuffledCards] = useState(null);
+    const [selectedCard, setSelectedCard] = useState(null)
 
-    const { shuffleCards } = useGameContext();
-
-    const [shuffledCards, setShuffledCards] = useState([0,1,2,3,4,5,6,7]);
-
-    useEffect(() => {
-        // Delay the first shuffle by 11 seconds
-        const initialShuffleTimeout = setTimeout(() => {
-            setIsShuffling(true);
-            setShuffledCards(shuffleCards());
-            setSelectedCard(null);
-
-            // Subsequent shuffles with 800 milliseconds delay
-            const shuffleIntervalId = setInterval(() => {
-               
-                setSelectedCard(null);
-                setIsShuffling(false)
-            }, 800);
-
-            // Clear the interval when the component unmounts
-            return () => clearInterval(shuffleIntervalId);
-        }, 11000);
-
-        return () => {
-            clearTimeout(initialShuffleTimeout);
-        };
-    }, [shuffleCards]);
 
     const handleCardClick = (index) => {
-        console.log('card clicked!');
-        if (index === selectedCard) {
-            setSelectedCard(null);
-        } else {
-            setSelectedCard(index);
+        console.log('card clicked!')
+
+        if(index === selectedCard){
+            setSelectedCard(null)
         }
-    };
+        else{
+            setSelectedCard(index)
+        }
+       
+    }
+
+    const { shuffleCards } = useGameContext();
 
     const handleMouseEnter = (index) => {
         setIsHovered(index);
         console.log('hover');
-    };
+    }
 
     const handleMouseLeave = () => {
         setIsHovered(null);
-    };
+    }
 
-// CardSet.js
-const style = (index) => {
-    const isSelected = isHovered === index;
-    const isClicked = index === selectedCard;
-    const isFlipping = isClicked && !isShuffling; // Only flip during a click and not during shuffling
-  
-    return {
-      opacity: isShuffling ? 0 : 1,
-      boxShadow: isSelected ? '0 0 10px gold' : null,
-    //   transform: isFlipping ? 'scale(1.1) rotateY(180deg)' :isClicked ? ' rotateY(-180deg)' : 'scale(1)',
-      transition: isFlipping ? 'transform 0.3s ease-in-out' : 'opacity 0.5s ease-in-out',
+    const style = (index) => {
+        const isSelected = isHovered === index;
+
+        return {
+            boxShadow: isSelected ? '0 0 10px gold' : null,
+            transform: isSelected ? 'scale(1.1)' : 'scale(1)',
+            transition: 'transform 0.3s ease-in'
+        };
     };
-  };
-  
-  
-  
 
     const cards = [
         { img: q3, alt: mewtwo, id: 'q3' },
@@ -103,7 +75,13 @@ const style = (index) => {
         { img: abu5, alt: blazekin, id: 'abu5' },
     ];
 
-    const shuffledCardItems = shuffledCards.map(index => cards[index]);
+
+
+
+
+
+
+    const cardList = shuffledCards || cards;
 
     return (
         <div className="card-wrapper">
@@ -113,16 +91,16 @@ const style = (index) => {
                     left: '20%',
                     top: '20%'
                 }}
+                onClick={handleShuffle}
             >
                 Switch
             </button>
 
             <RandomCard
-                id='abu6'
-            />
+            id='abu6'/>
 
             <div className="cardset-container">
-                {shuffledCardItems.map((card, index) => (
+                {cardList.map((card, index) => (
                     <Card
                         key={index}
                         image={card.img}
@@ -132,7 +110,7 @@ const style = (index) => {
                         style={style(index)}
                         mouseEnter={() => handleMouseEnter(index)}
                         mouseLeave={handleMouseLeave}
-                        handleClick={() => handleCardClick(index)}
+                        handleClick={()=>handleCardClick(index)}
                     />
                 ))}
             </div>

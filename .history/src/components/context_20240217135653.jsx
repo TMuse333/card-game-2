@@ -13,30 +13,30 @@ export const GameProvider = ({ children }) => {
   };
 
   const [randomNumber, setRandomNumber] = useState(getRandomNumber);
-  const [shuffledIndexes, setShuffledIndexes] = useState(shuffleCards());
-  const [initialShuffleComplete, setInitialShuffleComplete] = useState(false);
+
+  const [shuffledIndexes,setShuffledIndexes] = use
 
   useEffect(() => {
     const intervalId = setInterval(() => {
       setRandomNumber(getRandomNumber());
-      setShuffledIndexes(shuffleCards());
     }, 11000);
 
-    // Clear the interval when the component unmounts
     return () => clearInterval(intervalId);
-  }, [initialShuffleComplete]); // Dependency array includes initialShuffleComplete
+  }, []); // Empty dependency array ensures the effect runs once on mount
 
   useEffect(() => {
-    // Delay the initial shuffle by 11 seconds
-    const initialShuffleTimeout = setTimeout(() => {
-      setInitialShuffleComplete(true);
+    const intervalId = setInterval(() => {
+      // Assuming you want to store shuffledIndexes in the context
+      const shuffledIndexes = shuffleCards();
+      // Assume setShuffledIndexes is available in the context
+      setShuffledIndexes(shuffledIndexes);
     }, 11000);
 
-    return () => clearTimeout(initialShuffleTimeout);
+    return () => clearInterval(intervalId);
   }, []); // Empty dependency array ensures the effect runs once on mount
 
   return (
-    <GameContext.Provider value={{ shuffleCards, getRandomNumber, randomNumber, shuffledIndexes }}>
+    <GameContext.Provider value={{ shuffleCards, getRandomNumber, randomNumber }}>
       {children}
     </GameContext.Provider>
   );

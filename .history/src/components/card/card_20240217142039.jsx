@@ -14,7 +14,7 @@ mouseLeave,style,handleClick,altShown}) => {
             onMouseLeave={mouseLeave}
             style={style}
             onClick={handleClick}
-            
+            altShown={src === altImage}
             />
       
     )

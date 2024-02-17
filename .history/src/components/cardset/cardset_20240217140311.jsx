@@ -23,39 +23,20 @@ import rayquaza from '../../media/rayquaza.gif'
 import sudowudo from '../../media/sudowudo.gif'
 import blazekin from '../../media/blazekin.gif'
 
+
 const CardSet = () => {
     const [isHovered, setIsHovered] = useState(null);
-   
+    const [shuffledCards, setShuffledCards] = useState([0,1,2,3,4,5,6,7]);
     const [selectedCard, setSelectedCard] = useState(null);
-    const [isShuffling, setIsShuffling] = useState(false);
-    const [hasShuffled, setHasShuffled] = useState(false);
 
     const { shuffleCards } = useGameContext();
 
-    const [shuffledCards, setShuffledCards] = useState([0,1,2,3,4,5,6,7]);
-
     useEffect(() => {
-        // Delay the first shuffle by 11 seconds
-        const initialShuffleTimeout = setTimeout(() => {
-            setIsShuffling(true);
-            setShuffledCards(shuffleCards());
-            setSelectedCard(null);
-
-            // Subsequent shuffles with 800 milliseconds delay
-            const shuffleIntervalId = setInterval(() => {
-               
-                setSelectedCard(null);
-                setIsShuffling(false)
-            }, 800);
-
-            // Clear the interval when the component unmounts
-            return () => clearInterval(shuffleIntervalId);
-        }, 11000);
-
-        return () => {
-            clearTimeout(initialShuffleTimeout);
-        };
+        setShuffledCards(shuffleCards());
     }, [shuffleCards]);
+    
+
+   
 
     const handleCardClick = (index) => {
         console.log('card clicked!');
@@ -66,6 +47,8 @@ const CardSet = () => {
         }
     };
 
+
+
     const handleMouseEnter = (index) => {
         setIsHovered(index);
         console.log('hover');
@@ -75,22 +58,15 @@ const CardSet = () => {
         setIsHovered(null);
     };
 
-// CardSet.js
-const style = (index) => {
-    const isSelected = isHovered === index;
-    const isClicked = index === selectedCard;
-    const isFlipping = isClicked && !isShuffling; // Only flip during a click and not during shuffling
-  
-    return {
-      opacity: isShuffling ? 0 : 1,
-      boxShadow: isSelected ? '0 0 10px gold' : null,
-    //   transform: isFlipping ? 'scale(1.1) rotateY(180deg)' :isClicked ? ' rotateY(-180deg)' : 'scale(1)',
-      transition: isFlipping ? 'transform 0.3s ease-in-out' : 'opacity 0.5s ease-in-out',
+    const style = (index) => {
+        const isSelected = isHovered === index;
+
+        return {
+            boxShadow: isSelected ? '0 0 10px gold' : null,
+            transform: isSelected ? 'scale(1.1)' : 'scale(1)',
+            transition: 'transform 0.3s ease-in'
+        };
     };
-  };
-  
-  
-  
 
     const cards = [
         { img: q3, alt: mewtwo, id: 'q3' },
@@ -105,6 +81,8 @@ const style = (index) => {
 
     const shuffledCardItems = shuffledCards.map(index => cards[index]);
 
+
+
     return (
         <div className="card-wrapper">
             <button
@@ -113,6 +91,7 @@ const style = (index) => {
                     left: '20%',
                     top: '20%'
                 }}
+             
             >
                 Switch
             </button>
@@ -122,7 +101,7 @@ const style = (index) => {
             />
 
             <div className="cardset-container">
-                {shuffledCardItems.map((card, index) => (
+                {shuffledCardItems.map((card,index) => (
                     <Card
                         key={index}
                         image={card.img}

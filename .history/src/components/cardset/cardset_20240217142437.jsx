@@ -25,36 +25,18 @@ import blazekin from '../../media/blazekin.gif'
 
 const CardSet = () => {
     const [isHovered, setIsHovered] = useState(null);
-   
+    const [shuffledCards, setShuffledCards] = useState([0, 1, 2, 3, 4, 5, 6, 7]);
     const [selectedCard, setSelectedCard] = useState(null);
     const [isShuffling, setIsShuffling] = useState(false);
-    const [hasShuffled, setHasShuffled] = useState(false);
 
     const { shuffleCards } = useGameContext();
 
-    const [shuffledCards, setShuffledCards] = useState([0,1,2,3,4,5,6,7]);
-
     useEffect(() => {
-        // Delay the first shuffle by 11 seconds
-        const initialShuffleTimeout = setTimeout(() => {
-            setIsShuffling(true);
+        setIsShuffling(true);
+        setTimeout(() => {
             setShuffledCards(shuffleCards());
-            setSelectedCard(null);
-
-            // Subsequent shuffles with 800 milliseconds delay
-            const shuffleIntervalId = setInterval(() => {
-               
-                setSelectedCard(null);
-                setIsShuffling(false)
-            }, 800);
-
-            // Clear the interval when the component unmounts
-            return () => clearInterval(shuffleIntervalId);
-        }, 11000);
-
-        return () => {
-            clearTimeout(initialShuffleTimeout);
-        };
+            setIsShuffling(false);
+        }, 800);
     }, [shuffleCards]);
 
     const handleCardClick = (index) => {
@@ -84,7 +66,7 @@ const style = (index) => {
     return {
       opacity: isShuffling ? 0 : 1,
       boxShadow: isSelected ? '0 0 10px gold' : null,
-    //   transform: isFlipping ? 'scale(1.1) rotateY(180deg)' :isClicked ? ' rotateY(-180deg)' : 'scale(1)',
+      transform: isFlipping ? 'scale(1.1) rotateY(180deg)' : 'scale(1) rotateY(0deg)',
       transition: isFlipping ? 'transform 0.3s ease-in-out' : 'opacity 0.5s ease-in-out',
     };
   };

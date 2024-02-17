@@ -21,7 +21,7 @@ const RandomCard = ({ id }) => {
     const timeoutId = setTimeout(() => {
       setCardIndex(getRandomNumber);
       setIsFading(false);
-    }, 800); // Adjust the delay as needed
+    }, 500); // Adjust the delay as needed
 
     // Clear the timeout to prevent memory leaks
     return () => clearTimeout(timeoutId);
