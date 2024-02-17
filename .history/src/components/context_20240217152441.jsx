@@ -14,7 +14,9 @@ export const GameProvider = ({ children }) => {
 
   const [randomNumber, setRandomNumber] = useState(getRandomNumber);
   const [shuffledIndexes, setShuffledIndexes] = useState(shuffleCards());
-  const [gameStarted, setGameStarted] = useState(false);
+  const [initialShuffleComplete, setInitialShuffleComplete] = useState(false);
+
+  const [startGame, setStartGame] = useState(false)
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -24,19 +26,12 @@ export const GameProvider = ({ children }) => {
 
     // Clear the interval when the component unmounts
     return () => clearInterval(intervalId);
-  }, [gameStarted]);
+  }, [initialShuffleComplete]); // Dependency array includes initialShuffleComplete
 
-  const contextValue = {
-    shuffleCards,
-    getRandomNumber,
-    randomNumber,
-    shuffledIndexes,
-    gameStarted,
-    setGameStarted,
-  };
+// Empty dependency array ensures the effect runs once on mount
 
   return (
-    <GameContext.Provider value={contextValue}>
+    <GameContext.Provider value={{ shuffleCards, getRandomNumber, randomNumber, shuffledIndexes }}>
       {children}
     </GameContext.Provider>
   );

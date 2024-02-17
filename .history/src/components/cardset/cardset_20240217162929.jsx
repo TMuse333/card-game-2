@@ -43,7 +43,7 @@ const CardSet = () => {
     const [shuffledCards, setShuffledCards] = useState(shuffleCards);
 
 
-console.log('game started rage',gameStarted)
+console.log(gameStarted)
 
     
       useEffect(() => {

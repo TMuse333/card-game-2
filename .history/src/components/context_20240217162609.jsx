@@ -14,25 +14,31 @@ export const GameProvider = ({ children }) => {
 
   const [randomNumber, setRandomNumber] = useState(getRandomNumber);
   const [shuffledIndexes, setShuffledIndexes] = useState(shuffleCards());
-  const [gameStarted, setGameStarted] = useState(false);
+
+
+  console.log('start game context', startGame);
+
+
 
   useEffect(() => {
     const intervalId = setInterval(() => {
-      setRandomNumber(getRandomNumber());
-      setShuffledIndexes(shuffleCards());
+    
+        setRandomNumber(getRandomNumber());
+        setShuffledIndexes(shuffleCards());
+      }
     }, 11000);
 
     // Clear the interval when the component unmounts
     return () => clearInterval(intervalId);
-  }, [gameStarted]);
+  }, [startGame]);
 
   const contextValue = {
     shuffleCards,
     getRandomNumber,
     randomNumber,
     shuffledIndexes,
-    gameStarted,
-    setGameStarted,
+    startNewGame,
+    setStartGame,
   };
 
   return (

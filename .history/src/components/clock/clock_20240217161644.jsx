@@ -9,7 +9,6 @@ const Clock = () => {
 
   useEffect(() => {
     setCountdownStarted(startGame);
-    console.log(startGame)
   }, [startGame]);
 
   useEffect(() => {

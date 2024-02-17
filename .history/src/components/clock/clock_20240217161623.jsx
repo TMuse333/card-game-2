@@ -8,14 +8,13 @@ const Clock = () => {
   const [countDownStarted, setCountdownStarted] = useState(false)
 
   useEffect(() => {
-    setCountdownStarted(startGame);
-    console.log(startGame)
+    setGameStarted(startGame);
   }, [startGame]);
 
   useEffect(() => {
     let intervalId;
 
-    if (countDownStarted) {
+    if (startGame !== undefined && startGame) {
         console.log('lets get it started!')
       intervalId = setInterval(() => {
         setCountdown((prevCount) => (prevCount > 0 ? prevCount - 1 : 10));

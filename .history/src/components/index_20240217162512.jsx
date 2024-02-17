@@ -20,5 +20,5 @@ const Index = () => {
       </div>
     );
   };
-
+  export {startGame1}
   export default Index;

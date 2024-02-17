@@ -11,7 +11,7 @@ import { useState } from "react"
 const Index = () => {
     const { startNewGame } = useGameContext();
   
- const [startGame1, setStartGame1 ] = useState(false)
+ const [startGame1, setStartGame1 ] = useState
   
     return (
       <div className="homepage">
@@ -20,5 +20,5 @@ const Index = () => {
       </div>
     );
   };
-
+  
   export default Index;

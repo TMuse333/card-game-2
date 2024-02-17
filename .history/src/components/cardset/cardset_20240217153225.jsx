@@ -31,35 +31,34 @@ const CardSet = () => {
     const [isShuffling, setIsShuffling] = useState(false);
     const [hasShuffled, setHasShuffled] = useState(false);
 
-   
+    const [gameStarted, setGameStarted ] = useState(startGame)
 
+    const { shuffleCards } = useGameContext();
 
+    const [shuffledCards, setShuffledCards] = useState([0,1,2,3,4,5,6,7]);
 
-
-
-    const { shuffleCards, gameStarted } = useGameContext();
-
-
-    const [shuffledCards, setShuffledCards] = useState(shuffleCards);
-
-
-console.log('game started rage',gameStarted)
+    const { startGame } = useGameContext();
 
     
-      useEffect(() => {
 
-   
-         
-          setTimeout(() => {
+
+    useEffect(() => {
+        setIsShuffling(true);
+        setTimeout(() => {
             setShuffledCards(shuffleCards());
-         
-          }, 800);
-        
-      }, [gameStarted, shuffleCards]);
-    
-      const handleStartClick = () => {
-        startNewGame();
-      };
+            setIsShuffling(false);
+        }, 800);
+    }, [shuffleCards]);
+
+
+    const handleCardClick = (index) => {
+        console.log('card clicked!');
+        if (index === selectedCard) {
+            setSelectedCard(null);
+        } else {
+            setSelectedCard(index);
+        }
+    };
 
     const handleMouseEnter = (index) => {
         setIsHovered(index);
@@ -103,14 +102,7 @@ const style = (index) => {
     return (
         <div className="card-wrapper">
       
-<button onClick={handleStartClick}
-style={{
-    position:'fixed',
-    top:'0',
-    right:'0'
-}}>
-    start game
-</button>
+
             <RandomCard
                 id='abu6'
             />

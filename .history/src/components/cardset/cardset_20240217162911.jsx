@@ -37,18 +37,22 @@ const CardSet = () => {
 
 
 
-    const { shuffleCards, gameStarted } = useGameContext();
+    const { shuffleCards, ,  } = useGameContext();
 
-
+    const [gameStarted, setGameStarted ] = useState(false)
     const [shuffledCards, setShuffledCards] = useState(shuffleCards);
 
 
-console.log('game started rage',gameStarted)
 
+    useEffect(() => {
+        setGameStarted(startGame);
+      }, [startGame]);
     
       useEffect(() => {
 
-   
+        if(gameStarted){
+            console.log('game started slat');
+        }
          
           setTimeout(() => {
             setShuffledCards(shuffleCards());

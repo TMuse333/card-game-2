@@ -14,25 +14,58 @@ export const GameProvider = ({ children }) => {
 
   const [randomNumber, setRandomNumber] = useState(getRandomNumber);
   const [shuffledIndexes, setShuffledIndexes] = useState(shuffleCards());
-  const [gameStarted, setGameStarted] = useState(false);
+  const [initialShuffleComplete, setInitialShuffleComplete] = useState(false);
+  const [startGame, setStartGame] = useState(false);
+  const [countdown, setCountdown] = useState(10);
+
+  console.log('start game context', startGame);
+
+  const startNewGame = () => {
+    console.log('new game being started');
+    setStartGame(true);
+    setCountdown(10); // Reset the countdown when starting a new game
+  };
 
   useEffect(() => {
     const intervalId = setInterval(() => {
-      setRandomNumber(getRandomNumber());
-      setShuffledIndexes(shuffleCards());
+      if (startGame) {
+        setRandomNumber(getRandomNumber());
+        setShuffledIndexes(shuffleCards());
+        // Countdown logic
+        
+      }
     }, 11000);
 
     // Clear the interval when the component unmounts
     return () => clearInterval(intervalId);
-  }, [gameStarted]);
+  }, [startGame]);
+
+
+  useEffect(()=> {
+    
+  })
+
+  // useEffect(() => {
+  //   let intervalId;
+
+  //   if (startGame) {
+  //     intervalId = setInterval(() => {
+       
+  //       setCountdown((prevCount) => (prevCount > 0 ? prevCount - 1 : 10));
+  //     }, 1000);
+  //   }
+
+  //   return () => clearInterval(intervalId);
+  // }, [startGame,]);
 
   const contextValue = {
     shuffleCards,
     getRandomNumber,
     randomNumber,
     shuffledIndexes,
-    gameStarted,
-    setGameStarted,
+    startNewGame,
+    setStartGame,
+    countdown,
   };
 
   return (

@@ -20,5 +20,5 @@ const Index = () => {
       </div>
     );
   };
-
+  export {s}
   export default Index;
