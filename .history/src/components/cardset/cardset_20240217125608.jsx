@@ -20,8 +20,6 @@ import rayquaza from '../../media/rayquaza.gif'
 import sudowudo from '../../media/sudowudo.gif'
 import blazekin from '../../media/blazekin.gif'
 
-import RandomCard from "../randomCard/randomCard";
-
 
 import { useGameContext } from '../context';
 
@@ -109,8 +107,7 @@ const CardSet = () => {
                 Switch
             </button>
 
-            <RandomCard
-            id='abu6'/>
+            
 
             <div className="cardset-container">
                 {cardList.map((card, index) => (

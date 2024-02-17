@@ -3,9 +3,9 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 const GameContext = createContext();
 
 export const GameProvider = ({ children }) => {
-  const shuffleCards = () => {
-    return Array.from({ length: 8 }, (_, index) => index)
-      .sort(() => Math.random() - 0.5);
+  const shuffleCards = (cards, setShuffledCards) => {
+    const shuffled = [...cards].sort(() => Math.random() - 0.5);
+    setShuffledCards(shuffled);
   };
 
   const getRandomNumber = () => {
@@ -17,17 +17,6 @@ export const GameProvider = ({ children }) => {
   useEffect(() => {
     const intervalId = setInterval(() => {
       setRandomNumber(getRandomNumber());
-    }, 11000);
-
-    return () => clearInterval(intervalId);
-  }, []); // Empty dependency array ensures the effect runs once on mount
-
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      // Assuming you want to store shuffledIndexes in the context
-      const shuffledIndexes = shuffleCards();
-      // Assume setShuffledIndexes is available in the context
-      setShuffledIndexes(shuffledIndexes);
     }, 11000);
 
     return () => clearInterval(intervalId);

@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useGameContext } from '../context';
+import { useState, useEffect } from "react";
 import charizard from '../../media/charizard.gif'
 import deoxys from '../../media/deoxys.gif'
 import gengar from '../../media/gengar.gif'
@@ -13,20 +14,16 @@ const RandomCard = ({ id }) => {
   const { getRandomNumber } = useGameContext();
   const [cardIndex, setCardIndex] = useState(getRandomNumber());
 
-  useEffect(() => {
-    // Change the cardIndex whenever getRandomNumber changes
-    setCardIndex(getRandomNumber());
-  }, [getRandomNumber]);
 
   const cards = [
-    mewtwo,
-    deoxys, charizard,
+mewtwo,
+ deoxys, charizard, 
     sudowudo,
-    gengar,
-    pikachu,
-    rayquaza,
-    blazekin,
-  ];
+gengar, 
+pikachu, 
+   rayquaza,
+  blazekin,
+];
 
   return (
     <img

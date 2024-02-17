@@ -13,7 +13,7 @@ mouseLeave,style,handleClick}) => {
             onMouseEnter={mouseEnter}
             onMouseLeave={mouseLeave}
             style={style}
-            onClick={handleClick}
+            onClick={}
             />
       
     )

@@ -20,8 +20,6 @@ import rayquaza from '../../media/rayquaza.gif'
 import sudowudo from '../../media/sudowudo.gif'
 import blazekin from '../../media/blazekin.gif'
 
-import RandomCard from "../randomCard/randomCard";
-
 
 import { useGameContext } from '../context';
 
@@ -32,15 +30,12 @@ const CardSet = () => {
 
 
     const handleCardClick = (index) => {
-        console.log('card clicked!')
-
-        if(index === selectedCard){
-            setSelectedCard(null)
-        }
-        else{
+        if(selectedCard === null) {
             setSelectedCard(index)
         }
-       
+        else if(index === selectedCard){
+            setSelectedCard(null)
+        }
     }
 
     const { shuffleCards } = useGameContext();
@@ -83,7 +78,6 @@ const CardSet = () => {
         // Set up an interval to call shuffleCards every 10 seconds
         const intervalId = setInterval(() => {
           shuffleCards(cards, setShuffledCards);
-          setSelectedCard(null)
         }, 11000);
     
         // Clean up the interval when the component unmounts
@@ -109,9 +103,6 @@ const CardSet = () => {
                 Switch
             </button>
 
-            <RandomCard
-            id='abu6'/>
-
             <div className="cardset-container">
                 {cardList.map((card, index) => (
                     <Card
@@ -123,7 +114,7 @@ const CardSet = () => {
                         style={style(index)}
                         mouseEnter={() => handleMouseEnter(index)}
                         mouseLeave={handleMouseLeave}
-                        handleClick={()=>handleCardClick(index)}
+                        onClick={()=>handleCardClick(index)}
                     />
                 ))}
             </div>

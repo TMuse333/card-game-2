@@ -12,7 +12,8 @@ const Index = () => {
     return (
         <div className="homepage">
             <Clock/>
-          
+            <RandomCard
+            id='abu6'/>
             <CardSet/>
          
           

@@ -20,8 +20,6 @@ import rayquaza from '../../media/rayquaza.gif'
 import sudowudo from '../../media/sudowudo.gif'
 import blazekin from '../../media/blazekin.gif'
 
-import RandomCard from "../randomCard/randomCard";
-
 
 import { useGameContext } from '../context';
 

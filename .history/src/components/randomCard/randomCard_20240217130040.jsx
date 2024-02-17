@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useGameContext } from '../context';
 import charizard from '../../media/charizard.gif'
 import deoxys from '../../media/deoxys.gif'

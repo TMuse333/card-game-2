@@ -10,38 +10,11 @@ import sasuke from '../../media/sasuke.jpg';
 import vegeta from '../../media/vegeta-battle.png';
 import obito from '../../media/war-obito.jpg';
 import q3 from '../../media/q3-visuals-logo.png';
-
-import charizard from '../../media/charizard.gif'
-import deoxys from '../../media/deoxys.gif'
-import gengar from '../../media/gengar.gif'
-import mewtwo from '../../media/mewtwo.gif'
-import pikachu from '../../media/pikachu.gif'
-import rayquaza from '../../media/rayquaza.gif'
-import sudowudo from '../../media/sudowudo.gif'
-import blazekin from '../../media/blazekin.gif'
-
-import RandomCard from "../randomCard/randomCard";
-
-
 import { useGameContext } from '../context';
 
 const CardSet = () => {
     const [isHovered, setIsHovered] = useState(null);
     const [shuffledCards, setShuffledCards] = useState(null);
-    const [selectedCard, setSelectedCard] = useState(null)
-
-
-    const handleCardClick = (index) => {
-        console.log('card clicked!')
-
-        if(index === selectedCard){
-            setSelectedCard(null)
-        }
-        else{
-            setSelectedCard(index)
-        }
-       
-    }
 
     const { shuffleCards } = useGameContext();
 
@@ -65,14 +38,14 @@ const CardSet = () => {
     };
 
     const cards = [
-        { img: q3, alt: mewtwo, id: 'q3' },
-        { img: abu6, alt: deoxys, id: 'abu6' },
-        { img: majin, alt: charizard, id: 'majin' },
-        { img: kakashi, alt: sudowudo, id: 'kakashi' },
-        { img: sasuke, alt: gengar, id: 'sasuke' },
-        { img: vegeta, alt: pikachu, id: 'vegeta' },
-        { img: obito, alt: rayquaza, id: 'obito' },
-        { img: abu5, alt: blazekin, id: 'abu5' },
+        { img: q3, alt: q3, id: 'q3' },
+        { img: abu6, alt: q3, id: 'abu6' },
+        { img: majin, alt: q3, id: 'majin' },
+        { img: kakashi, alt: q3, id: 'kakashi' },
+        { img: sasuke, alt: q3, id: 'sasuke' },
+        { img: vegeta, alt: q3, id: 'vegeta' },
+        { img: obito, alt: q3, id: 'obito' },
+        { img: abu5, alt: q3, id: 'abu5' },
     ];
 
     const handleShuffle = () => {
@@ -83,14 +56,11 @@ const CardSet = () => {
         // Set up an interval to call shuffleCards every 10 seconds
         const intervalId = setInterval(() => {
           shuffleCards(cards, setShuffledCards);
-          setSelectedCard(null)
-        }, 11000);
+        }, 1);
     
         // Clean up the interval when the component unmounts
         return () => clearInterval(intervalId);
       }, [cards, shuffleCards]);
-
-
 
 
 
@@ -109,21 +79,17 @@ const CardSet = () => {
                 Switch
             </button>
 
-            <RandomCard
-            id='abu6'/>
-
             <div className="cardset-container">
                 {cardList.map((card, index) => (
                     <Card
                         key={index}
                         image={card.img}
                         altImage={card.alt}
-                        isClicked={index === selectedCard}
+                        isClicked={false}
                         id={card.id}
                         style={style(index)}
                         mouseEnter={() => handleMouseEnter(index)}
                         mouseLeave={handleMouseLeave}
-                        handleClick={()=>handleCardClick(index)}
                     />
                 ))}
             </div>
