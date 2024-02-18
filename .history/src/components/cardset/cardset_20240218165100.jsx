@@ -38,7 +38,7 @@ const CardSet = () => {
 
 
 
-    const {  gameStarted,setGameStarted,cardsMatch,setCardsMatch,shuffledIndexes,setShuffledIndexes,shuffleCards } = useGameContext();
+    const {  gameStarted,setGameStarted,cardsMatch,setCardsMatch,shuffledIndexes,shuffledCards } = useGameContext();
 
     useEffect(()=>{
         console.log('indexes',shuffledIndexes)
@@ -88,7 +88,6 @@ const CardSet = () => {
         
             if (index === selectedCard) {
                 setSelectedCard(null);
-
               } else {
                 setSelectedCard(index);
               }
@@ -109,7 +108,6 @@ const CardSet = () => {
 
               setTimeout(()=>{
                 setSelectedCard(null)
-                setShuffledIndexes(shuffleCards())
               },3000)
         
      

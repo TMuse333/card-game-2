@@ -109,7 +109,7 @@ const CardSet = () => {
 
               setTimeout(()=>{
                 setSelectedCard(null)
-                setShuffledIndexes(shuffleCards())
+                setShuf
               },3000)
         
      

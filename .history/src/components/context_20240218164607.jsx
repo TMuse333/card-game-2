@@ -11,13 +11,9 @@ import blazekin from '../media/blazekin.gif';
 const GameContext = createContext();
 
 export const GameProvider = ({ children }) => {
-
-
-  const shuffleCards = () => {
-    const indexes = Array.from({ length: 8 }, (_, index) => index);
+  const shuffleCards = (indexes) => {
     return [...indexes].sort(() => Math.random() - 0.5);
   };
-  
 
   const getRandomNumber = () => {
     return Math.floor(Math.random() * 8);
@@ -26,7 +22,7 @@ export const GameProvider = ({ children }) => {
   const cards = [mewtwo, deoxys, charizard, sudowudo, gengar, pikachu, rayquaza, blazekin];
 
   const [randomNumber, setRandomNumber] = useState(getRandomNumber);
-  const [shuffledIndexes, setShuffledIndexes] = useState([0,1,2,3,4,5,6,7]);
+  const [shuffledIndexes, setShuffledIndexes] = useState([0, 1, 2, 3, 4, 5, 6, 7]);
   const [gameStarted, setGameStarted] = useState(false);
   const [cardsMatch, setCardsMatch] = useState(null);
   const [randomCard, setRandomCard] = useState(cards[0]);
@@ -64,7 +60,7 @@ export const GameProvider = ({ children }) => {
         // Introduce a 3-second delay before resetting cards, random number, and random card
         setTimeout(() => {
           setCardsMatch(null);
-          // setShuffledIndexes(shuffleCards());
+          // setShuffledIndexes(shuffleCards(shuffledIndexes));
 
 console.log('time for a new number...')
           setRandomNumber(getRandomNumber());

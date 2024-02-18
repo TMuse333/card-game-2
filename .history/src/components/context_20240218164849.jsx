@@ -26,7 +26,7 @@ export const GameProvider = ({ children }) => {
   const cards = [mewtwo, deoxys, charizard, sudowudo, gengar, pikachu, rayquaza, blazekin];
 
   const [randomNumber, setRandomNumber] = useState(getRandomNumber);
-  const [shuffledIndexes, setShuffledIndexes] = useState([0,1,2,3,4,5,6,7]);
+  const [shuffledIndexes, setShuffledIndexes] = useState(shuffleCards());
   const [gameStarted, setGameStarted] = useState(false);
   const [cardsMatch, setCardsMatch] = useState(null);
   const [randomCard, setRandomCard] = useState(cards[0]);
@@ -64,7 +64,7 @@ export const GameProvider = ({ children }) => {
         // Introduce a 3-second delay before resetting cards, random number, and random card
         setTimeout(() => {
           setCardsMatch(null);
-          // setShuffledIndexes(shuffleCards());
+          setShuffledIndexes(shuffleCards(shuffledIndexes));
 
 console.log('time for a new number...')
           setRandomNumber(getRandomNumber());
