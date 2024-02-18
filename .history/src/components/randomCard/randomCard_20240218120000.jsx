@@ -20,8 +20,7 @@ const RandomCard = ({ id }) => {
   useEffect(()=>{
     setRandomNumber(randomNumber)
     setRandomCard(randomCard)
-    console.log('the new random card is',randomCard)
-  },[randomCard,randomNumber])
+  },[randomCard,randomNumber})
 
   const cards = [
     mewtwo,

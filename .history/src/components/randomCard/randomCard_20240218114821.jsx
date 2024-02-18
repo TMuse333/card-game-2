@@ -13,15 +13,8 @@ const RandomCard = ({ id }) => {
   const { getRandomNumber, } = useGameContext();
   const [cardIndex, setCardIndex] = useState(getRandomNumber);
   const [isFading, setIsFading] = useState(false);
-  const { randomCard,setRandomCard,randomNumber, setRandomNumber } = useGameContext();
+  const { randomCard,setRandomCard } = useGameContext();
 
-
-
-  useEffect(()=>{
-    setRandomNumber(randomNumber)
-    setRandomCard(randomCard)
-    console.log('the new random card is',randomCard)
-  },[randomCard,randomNumber])
 
   const cards = [
     mewtwo,
@@ -34,7 +27,6 @@ const RandomCard = ({ id }) => {
     blazekin,
   ];
 
-  // console.log('random card file',randomCard)
 
 
 

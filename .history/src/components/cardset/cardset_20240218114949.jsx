@@ -37,12 +37,12 @@ const CardSet = () => {
 
 
 
-    const { shuffleCards, gameStarted,setGameStarted,cardsMatch,setCardsMatch,shuffledIndexes,setShuffledIndexes } = useGameContext();
+    const { shuffleCards, gameStarted,setGameStarted,cardsMatch,setCardsMatch,shuffledIndexes } = useGameContext();
 
 
     useEffect(()=>{
-        console.log('shuffled indexes',shuffledIndexes)
-    },[shuffledIndexes])
+        console.log('shuffled indexes')
+    })
 
 
 
@@ -66,7 +66,7 @@ const CardSet = () => {
 
 
     const handleCardClick = (index) => {
-        const clickedCard = shuffledCards[index];
+        const clickedCard = shuffledCardItems[index];
         
         if (clickedCard.alt === randomCard) {
           console.log('Clicked card matches random card!');
@@ -117,11 +117,8 @@ const style = (index) => {
         { img: abu5, alt: blazekin, id: 'abu5' },
     ];
 
-    useEffect(()=>{
-        setShuffledIndexes(shuffledIndexes)
-    },[shuffledIndexes])
  
-    const shuffledCards = shuffledIndexes.map(index => cards[index]);
+
    
 
     return (
@@ -144,7 +141,7 @@ style={{
           
 
             <div className="cardset-container">
-                {shuffledCards.map((card, index) => (
+                {cards.map((card, index) => (
                     <Card
                         key={index}
                         image={card.img}

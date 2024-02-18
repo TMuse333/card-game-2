@@ -19,8 +19,7 @@ const RandomCard = ({ id }) => {
 
   useEffect(()=>{
     setRandomNumber(randomNumber)
-    setRandomCard(randomCard)
-    console.log('the new random card is',randomCard)
+    setRandomCard(cards[randomCard])
   },[randomCard,randomNumber])
 
   const cards = [

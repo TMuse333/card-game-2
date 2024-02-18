@@ -55,7 +55,7 @@ export const GameProvider = ({ children }) => {
       setCardsMatch(null)
       setShuffledIndexes(shuffleCards());
       setRandomNumber(getRandomNumber)
-      setRandomCard(cards[randomNumber])
+      setRan
     }
   },[gameStarted,cardsMatch])
 
@@ -88,8 +88,7 @@ export const GameProvider = ({ children }) => {
     cardsMatch,
     setCardsMatch,
     setRandomCard,
-    setShuffledIndexes,
-    setRandomNumber
+    setShuffledIndexes
 
   };
   return (

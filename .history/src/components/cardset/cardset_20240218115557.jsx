@@ -119,7 +119,7 @@ const style = (index) => {
 
     useEffect(()=>{
         setShuffledIndexes(shuffledIndexes)
-    },[shuffledIndexes])
+    },[shuff])
  
     const shuffledCards = shuffledIndexes.map(index => cards[index]);
    

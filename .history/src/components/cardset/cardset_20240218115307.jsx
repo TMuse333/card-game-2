@@ -37,7 +37,7 @@ const CardSet = () => {
 
 
 
-    const { shuffleCards, gameStarted,setGameStarted,cardsMatch,setCardsMatch,shuffledIndexes,setShuffledIndexes } = useGameContext();
+    const { shuffleCards, gameStarted,setGameStarted,cardsMatch,setCardsMatch,shuffledIndexes } = useGameContext();
 
 
     useEffect(()=>{
@@ -117,9 +117,6 @@ const style = (index) => {
         { img: abu5, alt: blazekin, id: 'abu5' },
     ];
 
-    useEffect(()=>{
-        setShuffledIndexes(shuffledIndexes)
-    },[shuffledIndexes])
  
     const shuffledCards = shuffledIndexes.map(index => cards[index]);
    

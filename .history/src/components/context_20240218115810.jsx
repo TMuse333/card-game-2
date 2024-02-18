@@ -88,8 +88,7 @@ export const GameProvider = ({ children }) => {
     cardsMatch,
     setCardsMatch,
     setRandomCard,
-    setShuffledIndexes,
-    setRandomNumber
+    setShuffledIndexes
 
   };
   return (

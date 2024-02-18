@@ -49,13 +49,7 @@ export const GameProvider = ({ children }) => {
        
 
       }
-      else if (cardsMatch === false){
-        console.log('cards dont match')
-      }
-      setCardsMatch(null)
-      setShuffledIndexes(shuffleCards());
-      setRandomNumber(getRandomNumber)
-      setRandomCard(cards[randomNumber])
+      else if (cards)
     }
   },[gameStarted,cardsMatch])
 
@@ -88,8 +82,7 @@ export const GameProvider = ({ children }) => {
     cardsMatch,
     setCardsMatch,
     setRandomCard,
-    setShuffledIndexes,
-    setRandomNumber
+    setShuffledIndexes
 
   };
   return (

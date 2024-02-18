@@ -40,24 +40,40 @@ export const GameProvider = ({ children }) => {
 
 
 
-  useEffect(()=> {
-
-
-    if(gameStarted){
-      if(cardsMatch === true){
-        console.log('cards match!')
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      if (gameStarted) {
+        setShuffledIndexes(shuffleCards());
+        setRandomNumber(getRandomNumber);
+  
+        if (cardsMatch === true) {
+          // Execute the code for a correct match
+          console.log('Correct match! Restarting the turn...');
+  
+          // Reshuffle cards and get a new random number
+      
        
-
+  
+          // Reset cardsMatch to null after handling the action
+        
+        } else if (cardsMatch === false) {
+          // Execute the code for an incorrect match
+          console.log('Incorrect match! Restarting the turn...');
+  
+        }
+        setCardsMatch(null);
+        setShuffledIndexes(shuffleCards());
+  
+    
+  
+  
       }
-      else if (cardsMatch === false){
-        console.log('cards dont match')
-      }
-      setCardsMatch(null)
-      setShuffledIndexes(shuffleCards());
-      setRandomNumber(getRandomNumber)
-      setRandomCard(cards[randomNumber])
-    }
-  },[gameStarted,cardsMatch])
+    }, 11000);
+  
+    // Clear the interval when the component unmounts
+    return () => clearInterval(intervalId);
+  }, [gameStarted, getRandomNumber, randomNumber, cardsMatch,randomCard]);
+  
 
   useEffect(()=>{
     console.log('cards match:',cardsMatch)
@@ -87,9 +103,7 @@ export const GameProvider = ({ children }) => {
     randomCard,
     cardsMatch,
     setCardsMatch,
-    setRandomCard,
-    setShuffledIndexes,
-    setRandomNumber
+    setRandomCard
 
   };
   return (

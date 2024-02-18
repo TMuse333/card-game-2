@@ -117,9 +117,7 @@ const style = (index) => {
         { img: abu5, alt: blazekin, id: 'abu5' },
     ];
 
-    useEffect(()=>{
-        setShuffledIndexes(shuffledIndexes)
-    },[shuffledIndexes])
+    useEffect(())
  
     const shuffledCards = shuffledIndexes.map(index => cards[index]);
    
