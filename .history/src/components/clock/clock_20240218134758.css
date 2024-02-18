@@ -1,0 +1,16 @@
+.clock-container{
+ width:100vw;
+ position: relative;
+ height:30vw;
+ margin-bottom: -10rem;
+}
+
+ .time-container{
+    width:20vw;
+    background-color: antiquewhite;
+    position: absolute;
+    top:50%;
+    left:10%;
+    color:red;
+
+}

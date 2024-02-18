@@ -1,0 +1,10 @@
+.clock-container{
+ width:100vw;
+ position: relative;
+}
+
+.time-container{
+    position: absolute;
+    left:20%;
+
+}

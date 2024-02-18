@@ -1,0 +1,7 @@
+.clock-container{
+ width:100vw;
+}
+
+.time-container{
+    position: absolute;
+}
