@@ -13,10 +13,10 @@ useEffect(()=>{
     if(cardsMatch && gameStarted === true){
         // setTotalScore((prevTotalScore) => (prevTotalScore + points));
         setTotalScore(totalScore + points)
-   
+        console.log()
     }
      
-},[cardsMatch,gameStarted])
+},[cardsMatch,gameStarted,points,totalScore])
     return (
         <div className="scoreboard-container">
             <h2>Score: {totalScore}</h2>

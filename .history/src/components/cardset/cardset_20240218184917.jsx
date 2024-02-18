@@ -113,7 +113,6 @@ const CardSet = () => {
   
                 setSelectedCard(null)
                 setShuffledIndexes(shuffleCards())
-                }
               },3000)
         
      

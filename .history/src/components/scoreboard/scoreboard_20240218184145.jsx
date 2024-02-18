@@ -12,11 +12,11 @@ const {totalScore,cardsMatch,points,setTotalScore,gameStarted} = useGameContext(
 useEffect(()=>{
     if(cardsMatch && gameStarted === true){
         // setTotalScore((prevTotalScore) => (prevTotalScore + points));
-        setTotalScore(totalScore + points)
-   
+        setTotalScore(100)
+        console.log('totoal score',totalScore)
     }
      
-},[cardsMatch,gameStarted])
+},[cardsMatch,gameStarted,points])
     return (
         <div className="scoreboard-container">
             <h2>Score: {totalScore}</h2>

@@ -53,53 +53,44 @@ export const GameProvider = ({ children }) => {
 
   useEffect(() => {
     let gameTimer;
-  
+
     if (gameStarted === true) {
-      console.log('Game started!');
-  
       if (cardsMatch !== null) {
         if (cardsMatch === true) {
           console.log('Cards match!');
           // setTotalScore((prevTotalScore) => prevTotalScore + points);
           // setTotalScore(totalScore+ points)
+         
         } else if (cardsMatch === false) {
           console.log("Cards don't match");
         }
-  
+
         // Introduce a 3-second delay before resetting cards, random number, and random card
         setTimeout(() => {
-
-      
           setCardsMatch(null);
           // setShuffledIndexes(shuffleCards());
-  if(gameStarted){
-    setRandomNumber(getRandomNumber());
-    setRandomCard(cards[randomNumber]);
-    setPoints(100);
-  }
-       
+
+          setRandomNumber(getRandomNumber());
+          setRandomCard(cards[randomNumber]);
+          setPoints(100)
         }, 3000);
-  
+
         // Reset the timer state
+       
       }
-  
+
       // Start a 60-second timer when the game starts
       gameTimer = setTimeout(() => {
         console.error('Time up!');
-        setGameStarted(false);
+        setGameStarted(false)
         // Add any additional logic for when the time limit is reached
         // This could include ending the game or resetting the state
       }, 6000);
     }
-  
+
     // Cleanup the timer when the component unmounts or when the game ends
-    return () => {
-      clearTimeout(gameTimer);
-      console.log('Timer cleared!');
-    };
-  }, [gameStarted, cardsMatch, getRandomNumber, randomNumber, randomCard, setShuffledIndexes, points]);
-  
-  
+    return () => clearTimeout(gameTimer);
+  }, [gameStarted, cardsMatch, getRandomNumber, randomNumber, randomCard,setShuffledIndexes,points]);
 
 
 

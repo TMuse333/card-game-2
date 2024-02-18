@@ -60,24 +60,19 @@ export const GameProvider = ({ children }) => {
       if (cardsMatch !== null) {
         if (cardsMatch === true) {
           console.log('Cards match!');
-          // setTotalScore((prevTotalScore) => prevTotalScore + points);
-          // setTotalScore(totalScore+ points)
+          setTotalScore((prevTotalScore) => prevTotalScore + points);
         } else if (cardsMatch === false) {
           console.log("Cards don't match");
         }
   
         // Introduce a 3-second delay before resetting cards, random number, and random card
         setTimeout(() => {
-
-      
           setCardsMatch(null);
           // setShuffledIndexes(shuffleCards());
-  if(gameStarted){
-    setRandomNumber(getRandomNumber());
-    setRandomCard(cards[randomNumber]);
-    setPoints(100);
-  }
-       
+  
+          setRandomNumber(getRandomNumber());
+          setRandomCard(cards[randomNumber]);
+          setPoints(100);
         }, 3000);
   
         // Reset the timer state
@@ -97,8 +92,7 @@ export const GameProvider = ({ children }) => {
       clearTimeout(gameTimer);
       console.log('Timer cleared!');
     };
-  }, [gameStarted, cardsMatch, getRandomNumber, randomNumber, randomCard, setShuffledIndexes, points]);
-  
+  }, [gameStarted, cardsMatch, getRandomNumber, randomNumber, randomCard, setShuffledIndexes, points, totalScore, setTotalScore]);
   
 
 

@@ -68,16 +68,12 @@ export const GameProvider = ({ children }) => {
   
         // Introduce a 3-second delay before resetting cards, random number, and random card
         setTimeout(() => {
-
-      
           setCardsMatch(null);
           // setShuffledIndexes(shuffleCards());
-  if(gameStarted){
-    setRandomNumber(getRandomNumber());
-    setRandomCard(cards[randomNumber]);
-    setPoints(100);
-  }
-       
+  
+          setRandomNumber(getRandomNumber());
+          setRandomCard(cards[randomNumber]);
+          setPoints(100);
         }, 3000);
   
         // Reset the timer state
@@ -98,7 +94,6 @@ export const GameProvider = ({ children }) => {
       console.log('Timer cleared!');
     };
   }, [gameStarted, cardsMatch, getRandomNumber, randomNumber, randomCard, setShuffledIndexes, points]);
-  
   
 
 

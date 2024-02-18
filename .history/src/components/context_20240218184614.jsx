@@ -73,11 +73,11 @@ export const GameProvider = ({ children }) => {
           setCardsMatch(null);
           // setShuffledIndexes(shuffleCards());
   if(gameStarted){
-    setRandomNumber(getRandomNumber());
-    setRandomCard(cards[randomNumber]);
-    setPoints(100);
+    
   }
-       
+          setRandomNumber(getRandomNumber());
+          setRandomCard(cards[randomNumber]);
+          setPoints(100);
         }, 3000);
   
         // Reset the timer state
