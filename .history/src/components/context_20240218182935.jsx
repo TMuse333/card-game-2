@@ -70,13 +70,14 @@ export const GameProvider = ({ children }) => {
           setCardsMatch(null);
           // setShuffledIndexes(shuffleCards());
 
+console.log('time for a new number...')
           setRandomNumber(getRandomNumber());
           setRandomCard(cards[randomNumber]);
           setPoints(100)
         }, 3000);
 
         // Reset the timer state
-       
+        setTimer(false);
       }
 
       // Start a 60-second timer when the game starts
@@ -85,7 +86,7 @@ export const GameProvider = ({ children }) => {
         setGameStarted(false)
         // Add any additional logic for when the time limit is reached
         // This could include ending the game or resetting the state
-      }, 6000);
+      }, 15000);
     }
 
     // Cleanup the timer when the component unmounts or when the game ends

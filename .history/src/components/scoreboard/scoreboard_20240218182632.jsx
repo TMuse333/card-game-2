@@ -7,15 +7,14 @@ import './scoreboard.css'
 
 const Scoreboard = () => {
 
-const {totalScore,cardsMatch,points,setTotalScore,gameStarted} = useGameContext()
+const {totalScore,cardsMatch,points,setTotalScore} = useGameContext()
 
 useEffect(()=>{
-    if(cardsMatch && gameStarted === true){
+    if(cardsMatch){
         // setTotalScore((prevTotalScore) => (prevTotalScore + points));
-        setTotalScore(totalScore+ points)
     }
      
-},[cardsMatch,gameStarted])
+},[cardsMatch])
     return (
         <div className="scoreboard-container">
             <h2>Score: {totalScore}</h2>

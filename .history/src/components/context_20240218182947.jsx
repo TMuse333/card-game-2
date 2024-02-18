@@ -70,13 +70,14 @@ export const GameProvider = ({ children }) => {
           setCardsMatch(null);
           // setShuffledIndexes(shuffleCards());
 
+console.log('time for a new number...')
           setRandomNumber(getRandomNumber());
           setRandomCard(cards[randomNumber]);
           setPoints(100)
         }, 3000);
 
         // Reset the timer state
-       
+        setTimer(false);
       }
 
       // Start a 60-second timer when the game starts

@@ -15,7 +15,7 @@ useEffect(()=>{
         setTotalScore(totalScore+ points)
     }
      
-},[cardsMatch,gameStarted])
+},[cardsMatch])
     return (
         <div className="scoreboard-container">
             <h2>Score: {totalScore}</h2>

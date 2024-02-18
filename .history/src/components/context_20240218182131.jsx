@@ -59,8 +59,8 @@ export const GameProvider = ({ children }) => {
         if (cardsMatch === true) {
           console.log('Cards match!');
           // setTotalScore((prevTotalScore) => prevTotalScore + points);
-          // setTotalScore(totalScore+ points)
-         
+        
+          console.log('total score:',totalScore)
         } else if (cardsMatch === false) {
           console.log("Cards don't match");
         }
@@ -70,22 +70,23 @@ export const GameProvider = ({ children }) => {
           setCardsMatch(null);
           // setShuffledIndexes(shuffleCards());
 
+console.log('time for a new number...')
           setRandomNumber(getRandomNumber());
           setRandomCard(cards[randomNumber]);
           setPoints(100)
         }, 3000);
 
         // Reset the timer state
-       
+        setTimer(false);
       }
 
       // Start a 60-second timer when the game starts
       gameTimer = setTimeout(() => {
-        console.error('Time up!');
+        console.log('Time up!');
         setGameStarted(false)
         // Add any additional logic for when the time limit is reached
         // This could include ending the game or resetting the state
-      }, 6000);
+      }, 15000);
     }
 
     // Cleanup the timer when the component unmounts or when the game ends
@@ -107,9 +108,7 @@ export const GameProvider = ({ children }) => {
     setRandomCard,
     setShuffledIndexes,
     setRandomNumber,
-    points,
-    setTotalScore,
-    totalScore
+    
   };
 
   return <GameContext.Provider value={contextValue}>{children}</GameContext.Provider>;

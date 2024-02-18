@@ -70,6 +70,7 @@ export const GameProvider = ({ children }) => {
           setCardsMatch(null);
           // setShuffledIndexes(shuffleCards());
 
+console.log('time for a new number...')
           setRandomNumber(getRandomNumber());
           setRandomCard(cards[randomNumber]);
           setPoints(100)
