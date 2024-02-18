@@ -1,0 +1,11 @@
+.scoreboard-container{
+    width:15vw;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+.matches{
+    display: flex;
+    justify-content: space-between;
+}
