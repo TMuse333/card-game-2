@@ -46,16 +46,9 @@ export const GameProvider = ({ children }) => {
     if(gameStarted){
       if(cardsMatch === true){
         console.log('cards match!')
-        setShuffledIndexes(shuffleCards());
-
       }
     }
-  },[gameStarted,cardsMatch])
-
-  useEffect(()=>{
-    console.log('cards match:',cardsMatch)
-
-  },[cardsMatch])
+  })
 
 
  

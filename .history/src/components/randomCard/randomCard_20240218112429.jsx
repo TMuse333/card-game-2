@@ -27,9 +27,11 @@ const RandomCard = ({ id }) => {
     blazekin,
   ];
 
-  // console.log('random card file',randomCard)
+  console.log('random card file',randomCard)
 
-
+  useEffect(()=>{
+    setRandomCard(randomCard)
+  },[randomCard])
 
   return (
     <img

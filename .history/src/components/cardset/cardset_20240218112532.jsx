@@ -40,7 +40,7 @@ const CardSet = () => {
     const { shuffleCards, gameStarted,setGameStarted,cardsMatch,setCardsMatch } = useGameContext();
 
 
-    const [shuffledCards, setShuffledCards] = useState([0,1,2,3,4,5,6,7]);
+    const [shuffledCards, setShuffledCards] = useState(shuffleCards);
 
 
 
@@ -63,7 +63,6 @@ const CardSet = () => {
     
       const handleStartClick = () => {
         setGameStarted(true)
-        
       };
 
     const handleMouseEnter = (index) => {
@@ -77,7 +76,7 @@ const CardSet = () => {
         const clickedCard = shuffledCardItems[index];
         
         if (clickedCard.alt === randomCard) {
-          console.log('Clicked card matches random card!');
+        //   console.log('Clicked card matches random card!');
           setCardsMatch(true)
           // Do something when the clicked card matches the random card
         } else {

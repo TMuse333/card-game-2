@@ -40,26 +40,25 @@ export const GameProvider = ({ children }) => {
 
 
 
-  useEffect(()=> {
 
 
-    if(gameStarted){
-      if(cardsMatch === true){
-        console.log('cards match!')
-        setShuffledIndexes(shuffleCards());
 
-      }
-    }
-  },[gameStarted,cardsMatch])
-
-  useEffect(()=>{
-    console.log('cards match:',cardsMatch)
-
-  },[cardsMatch])
-
+//   console.log('initial random card is',cards[randomNumber])
+// },[])
 
  
 
+// useEffect(() => {
+//   if (gameStarted) {
+//     // Reshuffle cards and get a new random number
+//     const newShuffledIndexes = shuffleCards();
+//     const newRandomNumber = getRandomNumber();
+
+//     setShuffledIndexes(newShuffledIndexes);
+//     setRandomNumber(newRandomNumber);
+
+//     if (cardsMatch === true || cardsMatch === false) {
+//       // Include cardsMatch as a dependency here
 
 
 

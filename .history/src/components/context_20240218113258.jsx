@@ -40,55 +40,14 @@ export const GameProvider = ({ children }) => {
 
 
 
-  useEffect(()=> {
+// useEffect(()=>{
 
-
-    if(gameStarted){
-      if(cardsMatch === true){
-        console.log('cards match!')
-        setShuffledIndexes(shuffleCards());
-
-      }
-    }
-  },[gameStarted,cardsMatch])
-
-  useEffect(()=>{
-    console.log('cards match:',cardsMatch)
-
-  },[cardsMatch])
-
+//   setRandomNumber(getRandomNumber)
+//   console.log('initial random card is',cards[randomNumber])
+// },[])
 
  
 
-
-
-
-
-
-
-
-
-
-
-  const contextValue = {
-    shuffleCards,
-    getRandomNumber,
-    randomNumber,
-    shuffledIndexes,
-    gameStarted,
-    setGameStarted,
-    randomCard,
-    cardsMatch,
-    setCardsMatch,
-    setRandomCard
-
-  };
-  return (
-    <GameContext.Provider value={contextValue}>
-      {children}
-    </GameContext.Provider>
-  );
-};
 
 export const useGameContext = () => {
   const context = useContext(GameContext);

@@ -63,7 +63,7 @@ const CardSet = () => {
     
       const handleStartClick = () => {
         setGameStarted(true)
-        
+        c
       };
 
     const handleMouseEnter = (index) => {

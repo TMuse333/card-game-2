@@ -63,7 +63,6 @@ const CardSet = () => {
     
       const handleStartClick = () => {
         setGameStarted(true)
-        
       };
 
     const handleMouseEnter = (index) => {
@@ -77,7 +76,7 @@ const CardSet = () => {
         const clickedCard = shuffledCardItems[index];
         
         if (clickedCard.alt === randomCard) {
-          console.log('Clicked card matches random card!');
+        //   console.log('Clicked card matches random card!');
           setCardsMatch(true)
           // Do something when the clicked card matches the random card
         } else {

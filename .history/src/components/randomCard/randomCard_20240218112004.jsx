@@ -10,10 +10,10 @@ import sudowudo from '../../media/sudowudo.gif'
 import blazekin from '../../media/blazekin.gif'
 
 const RandomCard = ({ id }) => {
-  const { getRandomNumber, } = useGameContext();
+  const { getRandomNumber } = useGameContext();
   const [cardIndex, setCardIndex] = useState(getRandomNumber);
   const [isFading, setIsFading] = useState(false);
-  const { randomCard,setRandomCard } = useGameContext();
+  const { randomCard } = useGameContext();
 
 
   const cards = [
@@ -27,9 +27,7 @@ const RandomCard = ({ id }) => {
     blazekin,
   ];
 
-  // console.log('random card file',randomCard)
-
-
+  console.log('random card file',rand)
 
   return (
     <img

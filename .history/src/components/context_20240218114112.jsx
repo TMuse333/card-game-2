@@ -50,7 +50,7 @@ export const GameProvider = ({ children }) => {
 
       }
     }
-  },[gameStarted,cardsMatch])
+  },[gameStarted,setShuffledIndexes,cardsMatch])
 
   useEffect(()=>{
     console.log('cards match:',cardsMatch)

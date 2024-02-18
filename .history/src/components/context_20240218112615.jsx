@@ -40,32 +40,53 @@ export const GameProvider = ({ children }) => {
 
 
 
-  useEffect(()=> {
+// useEffect(()=>{
 
-
-    if(gameStarted){
-      if(cardsMatch === true){
-        console.log('cards match!')
-        setShuffledIndexes(shuffleCards());
-
-      }
-    }
-  },[gameStarted,cardsMatch])
-
-  useEffect(()=>{
-    console.log('cards match:',cardsMatch)
-
-  },[cardsMatch])
-
+//   setRandomNumber(getRandomNumber)
+//   console.log('initial random card is',cards[randomNumber])
+// },[])
 
  
 
+useEffect(() => {
+  if (gameStarted) {
+    // Reshuffle cards and get a new random number
+    setShuffledIndexes(shuffleCards());
+    setRandomNumber(getRandomNumber());
+
+    if (cardsMatch === true) {
+      // Execute the code for a correct match
+      console.log('Correct match! Restarting the turn...');
+
+      // Reshuffle cards and get a new random number
+      setShuffledIndexes(shuffleCards());
+      setRandomNumber(getRandomNumber());
+
+      // Reset cardsMatch to null after handling the action
+      setCardsMatch(null);
+    } else if (cardsMatch === false) {
+      // Execute the code for an incorrect match
+      console.log('Incorrect match! Restarting the turn...');
+
+      // Reshuffle cards and get a new random number
+      setShuffledIndexes(shuffleCards());
+      setRandomNumber(getRandomNumber());
+
+      // Reset cardsMatch to null after handling the action
+      setCardsMatch(null);
+    }
+
+    // Set the random card based on the current random number
+    setRandomCard(cards[randomNumber]);
+  }
+}, [gameStarted, getRandomNumber, cardsMatch]);
 
 
-
-
-
-
+useEffect(() => {
+  console.log('changing the the random card!!')
+  setRandomNumber(getRandomNumber);
+  setRandomCard(cards[randomNumber]);
+}, [randomNumber,cardsMatch,randomCard]);
 
 
 

@@ -27,7 +27,7 @@ const RandomCard = ({ id }) => {
     blazekin,
   ];
 
-  // console.log('random card file',randomCard)
+  console.log('random card file',randomCard)
 
 
 
