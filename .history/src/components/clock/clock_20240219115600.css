@@ -1,0 +1,15 @@
+.clock-container{
+
+
+}
+
+ .time-container{
+    width:20vw;
+    background-color: antiquewhite;
+    position: fixed;
+    top:50%;
+    left:0%;
+    color:red;
+    padding: 2rem;
+
+}
