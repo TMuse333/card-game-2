@@ -1,0 +1,32 @@
+#root {
+
+  margin: 0 auto;
+
+  text-align: center;
+}
+
+.homepage{
+  position: absolute;
+  top:0;
+  left:0;
+  width: 100vw;
+  /* background-image: url(./media/mountain-bg1.jpg); */
+  background: radial-gradient(circle, rgba(0, 0, 0, 1) 0%, rgba(54, 0, 107, 1) 100%);
+
+
+}
+
+.game-title{
+ transform: translateY(3rem);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+

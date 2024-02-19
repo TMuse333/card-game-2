@@ -1,0 +1,32 @@
+.scoreboard-container{
+
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+ 
+    width:20vw;
+    height:35vw;
+  
+  
+  
+  
+  padding: 0;
+  
+  max-width: 220px;
+  max-height: 200px;
+  color:white;
+}
+
+.scoreboard-container h2{
+    font-size: 1rem;
+    padding: 0;
+}
+
+.matches{
+    display: flex;
+    justify-content: space-between;
+    width:10vw;
+}
+
