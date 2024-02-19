@@ -1,0 +1,25 @@
+#root {
+
+  margin: 0 auto;
+
+  text-align: center;
+}
+
+.homepage{
+  position: absolute;
+  top:0;
+  left:0;
+  width: 100vw;
+  
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
