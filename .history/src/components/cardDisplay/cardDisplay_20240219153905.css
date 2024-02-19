@@ -1,0 +1,10 @@
+.carousel-image{
+    height: 80vh;
+    object-fit: cover;
+}
+
+.carousel-container{
+    height:100vh;
+    display:flex;
+    align-items: center;
+}
