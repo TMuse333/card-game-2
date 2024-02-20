@@ -126,14 +126,14 @@ export const GameProvider = ({ children }) => {
   }, [gameStarted, cardsMatch, getRandomNumber, randomNumber, randomCard, setShuffledIndexes, points]);
   
   
-  const [countdown, setCountdown] = useState(60);
+  const [countdown, setCountdown] = useState(10);
   const [gameCompleted, setGameCompleted ] = useState(false)
 
   useEffect(() => {
     let intervalId;
   
     if (gameStarted) {
-      setCountdown(60);
+      setCountdown(10);
   
       intervalId = setInterval(() => {
         setCountdown((prevCount) => {
