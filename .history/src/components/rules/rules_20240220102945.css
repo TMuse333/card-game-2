@@ -1,0 +1,9 @@
+.rules-container{
+    position: fixed;
+    top:30%;
+    left:50%;
+    transform: translateX(-50%);
+    background-color: white;
+    z-index: 5;
+    width:80vw;
+}

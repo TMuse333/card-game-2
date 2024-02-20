@@ -1,0 +1,14 @@
+.countdown-text{
+    position: absolute;
+    top:38%;
+    left:50%;
+    transform: translateX(-50%);
+    font-size: 5rem;
+    color:white;
+    z-index: 5;
+
+}
+
+.result-text{
+    width:
+}

@@ -1,0 +1,36 @@
+.countdown-text{
+    position: absolute;
+    top:38%;
+    left:50%;
+    transform: translateX(-50%);
+    font-size: 5rem;
+    color:white;
+    z-index: 5;
+
+}
+
+@keyframes oscillate {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.2);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  .result-text {
+    width: 30vw;
+    padding: 2rem;
+    font-size: 2rem;
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    /* transform: translateX(-50%); */
+    z-index: 5;
+    border-radius: 1rem;
+    animation: oscillate 2s infinite; /* Adjust the duration as needed */
+  }
+  
