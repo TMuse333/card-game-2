@@ -11,7 +11,7 @@ const resultText = cardsMatch === true ? `Correct! + ${points}` :
 'Incorrect!'
 
 const style = {
-    backgroundColor: cardsMatch === true ? 'green' : 'red'
+    backgroundColor: cardsMatch === true ? 'green' : 'linear-gradient(90deg, #FF5733, #FF5733)'
   }
   
 
