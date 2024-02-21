@@ -166,13 +166,16 @@ setCountDownInit,countDownInit } = useGameContext();
 const style = (index) => {
     const isSelected = isHovered === index;
     const isClicked = index === selectedCard;
-    const isFlipping = isClicked && !isShuffling; // Only flip during a click and not during shuffling
+    const isFlipping = isClicked && !isShuffling;
+    const correctCard =  isSelected && cardsMatch === true
+    const incorrectCard = isSelected && cardsMatch === false
   
     return {
       opacity: isShuffling ? 0 : 1,
-      boxShadow: isSelected ? '0 0 10px gold' : null,
+      boxShadow: correctCard  && isSelected? '0 0 20px green' : incorrectCard && isSelected ? ' 0 0 12px red' : isSelected ? '0 0 10px gold' : null,
     //   transform: isFlipping ? 'scale(1.1) rotateY(180deg)' :isClicked ? ' rotateY(-180deg)' : 'scale(1)',
       transition: isFlipping ? 'transform 0.3s ease-in-out' : 'opacity 0.5s ease-in-out',
+      border: correctCard ? '2px solid green' : incorrectCard ? '2px solid red': null
     };
   };
   
