@@ -43,34 +43,23 @@ export const GameProvider = ({ children }) => {
   const cards = [mewtwo, deoxys, charizard, sudowudo, gengar, pikachu, rayquaza, blazekin];
 
 
+  /*
+    Here are some of the key pieces of data for the game,
+    including 
+  */
 
-//the current random number for the random card
   const [randomNumber, setRandomNumber] = useState(getRandomNumber);
+  const [shuffledIndexes, setShuffledIndexes] = useState([0,1,2,3,4,5,6,7]);
+  const [gameStarted, setGameStarted] = useState(false);
+  const [cardsMatch, setCardsMatch] = useState(null);
   const [randomCard, setRandomCard] = useState(cards[randomNumber]);
 
-  //the order of which the cards are to be ordrerd in
-  const [shuffledIndexes, setShuffledIndexes] = useState([0,1,2,3,4,5,6,7]);
-
-  //represents whether the game has started or not
-  const [gameStarted, setGameStarted] = useState(false);
-
-  //represents if the card matches or not
-  const [cardsMatch, setCardsMatch] = useState(null);
-
-//represents the score of the current turn and total score of the game
   const [points, setPoints] = useState(100);
   const [totalScore, setTotalScore] = useState(0)
 
-  //when the start button is pressed, there is an initial countdown until the game commences,
-  //these states are used to start that countdown
   const [countDownInit, setCountDownInit] = useState(false)
   const [countDown, setCountDown] = useState(3)
 
-
-  //these 2 useEffects are started when the 
-  //start button is pressed, then 
-  //there is a 3 second countdown for the game to start,
-  //once the countdown is zero, the game starts
 
   useEffect(() => {
     let decrementInterval;
@@ -93,14 +82,6 @@ export const GameProvider = ({ children }) => {
       setCountDownInit(false)
     }
   },[countDown])
-
-  /**
-   * This useEffect is to determine how many points the user receives
-   * on each turn.
-   * Initially the user can get 100 points per
-   * turn but it decrements by 10 points every second
-   * rewarding more points for faster reaction time.
-   */
 
 
   useEffect(() => {
@@ -125,11 +106,12 @@ export const GameProvider = ({ children }) => {
   
     if (gameStarted === true) {
 
+
+     
   
       if (cardsMatch !== null && gameStarted) {
         if (cardsMatch === true) {
           console.log('Cards match!');
-          
          
         } else if (cardsMatch === false) {
           console.log("Cards don't match");

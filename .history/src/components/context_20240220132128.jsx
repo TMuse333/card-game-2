@@ -67,7 +67,7 @@ export const GameProvider = ({ children }) => {
   const [countDown, setCountDown] = useState(3)
 
 
-  //these 2 useEffects are started when the 
+  //this useEffect is started when the 
   //start button is pressed, then 
   //there is a 3 second countdown for the game to start,
   //once the countdown is zero, the game starts
@@ -94,14 +94,6 @@ export const GameProvider = ({ children }) => {
     }
   },[countDown])
 
-  /**
-   * This useEffect is to determine how many points the user receives
-   * on each turn.
-   * Initially the user can get 100 points per
-   * turn but it decrements by 10 points every second
-   * rewarding more points for faster reaction time.
-   */
-
 
   useEffect(() => {
     let decrementInterval;
@@ -125,11 +117,12 @@ export const GameProvider = ({ children }) => {
   
     if (gameStarted === true) {
 
+
+     
   
       if (cardsMatch !== null && gameStarted) {
         if (cardsMatch === true) {
           console.log('Cards match!');
-          
          
         } else if (cardsMatch === false) {
           console.log("Cards don't match");

@@ -99,7 +99,7 @@ export const GameProvider = ({ children }) => {
    * on each turn.
    * Initially the user can get 100 points per
    * turn but it decrements by 10 points every second
-   * rewarding more points for faster reaction time.
+   * 
    */
 
 
@@ -125,11 +125,12 @@ export const GameProvider = ({ children }) => {
   
     if (gameStarted === true) {
 
+
+     
   
       if (cardsMatch !== null && gameStarted) {
         if (cardsMatch === true) {
           console.log('Cards match!');
-          
          
         } else if (cardsMatch === false) {
           console.log("Cards don't match");

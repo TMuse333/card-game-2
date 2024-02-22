@@ -129,7 +129,6 @@ export const GameProvider = ({ children }) => {
       if (cardsMatch !== null && gameStarted) {
         if (cardsMatch === true) {
           console.log('Cards match!');
-          
          
         } else if (cardsMatch === false) {
           console.log("Cards don't match");
