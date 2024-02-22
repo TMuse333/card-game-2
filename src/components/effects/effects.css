@@ -12,9 +12,10 @@
 
   
   .result-text {
+    margin: 0 auto;
     width: 30vw;
     padding: 2rem;
-    font-size: 2rem;
+    font-size: 1rem;
     position: absolute;
     top: 25%;
     left: 50%;
@@ -22,6 +23,12 @@
     z-index: 5;
     border-radius: 1rem;
     animation: oscillate 2s infinite; /* Adjust the duration as needed */
+  }
+
+  @media screen and (min-width:655px){
+    .result-text{
+      font-size: 2rem;
+    }
   }
 
   /* @keyframes oscillate {

@@ -185,6 +185,8 @@ export const GameProvider = ({ children }) => {
             setGameCompleted(true)
             setCountDownInit(false)
             setCountDown(3)
+            setPoints(100)
+            // setTotalScore(100)
             console.error('The game is over',setGameCompleted);
             // Additional logic for when the time limit is reached
             // This could include ending the game or resetting the state

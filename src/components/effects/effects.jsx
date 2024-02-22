@@ -7,7 +7,7 @@ const Effects = () => {
 
 const {cardsMatch,points,countDown,countDownInit,gameStarted} = useGameContext()
 
-const resultText = cardsMatch === true ? `Correct! + ${points}` :
+const resultText = cardsMatch === true ? `Correct!` :
 'Incorrect!'
 
 const style = {
@@ -26,7 +26,8 @@ return (
     {cardsMatch !== null && gameStarted? (
         <p className="result-text"
         style={style}>
-            {resultText}
+            {resultText}<br/>
+            {cardsMatch === true ? `+ ${points}` : null}
         </p>
     ): null}
     </>
