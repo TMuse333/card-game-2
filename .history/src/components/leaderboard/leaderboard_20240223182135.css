@@ -1,0 +1,13 @@
+.leaderboard-container {
+background-color: black;
+    color:white;
+    transform: translateY(3rem);
+    width:80vw;
+    margin: 0 auto;
+}
+
+.user-score{
+    color:white;
+    width:70vw;
+    display: flex;
+}
