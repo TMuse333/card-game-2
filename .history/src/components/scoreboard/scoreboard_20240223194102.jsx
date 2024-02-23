@@ -25,7 +25,7 @@ useEffect(() => {
         score: totalScore,
       };
 
-      axios.post("https://cloud.mongodb.com/v2/65d7918c6f772c6e0289c314#/clusters/detail/Cluster0/", data)
+      axios.post("https://cloud.mongodb.com/v2/65d7918c6f772c6e0289c314#/clusters/detail/Cluster0", data)
         .then(response => {
           console.log("Score submitted successfully", response.data);
           // You can perform additional actions after successful submission
