@@ -17,7 +17,7 @@ const corsOptions = {
     credentials: true,
     optionsSuccessStatus: 204,
   };
-app.use(cors(corsOptions));
+app.use(cors(cors));
 dotenv.config();
 
 mongoose.connect(process.env.MONGODB_URI)
