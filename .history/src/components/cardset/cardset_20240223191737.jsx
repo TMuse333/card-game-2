@@ -90,19 +90,17 @@ username } = useGameContext();
         setViewRules(true)
     }
     
-      const handleStartClick = () => {
-        console.log('start game username',username)
-        if(username !== null){
-            setCountDownInit(true)
-            console.log(countDownInit)
-            setTotalScore(0)
-            setGameCompleted(false)
-        }
-        else{
-            window.alert('Submit a username to play')
-        }
-    
-        
+    const handleStartClick = () => {
+        setUsername((prevUsername) => {
+          if (prevUsername !== null) {
+            setCountDownInit(true);
+            setTotalScore(0);
+            setGameCompleted(false);
+          } else {
+           console.error('Error: Submit a username to play');
+          }
+          return prevUsername; // Ensure to return the updated value for the state
+        });
       };
 
     const handleMouseEnter = (index) => {

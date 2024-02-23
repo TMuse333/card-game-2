@@ -91,7 +91,7 @@ username } = useGameContext();
     }
     
       const handleStartClick = () => {
-        console.log('start game username',username)
+        \
         if(username !== null){
             setCountDownInit(true)
             console.log(countDownInit)

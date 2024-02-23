@@ -53,7 +53,7 @@ const CardSet = () => {
         setViewCardsClicked,
     setViewRules,viewRules,
 setCountDownInit,countDownInit,
-username } = useGameContext();
+user } = useGameContext();
 
     useEffect(()=>{
         console.log('indexes',shuffledIndexes)
@@ -91,17 +91,10 @@ username } = useGameContext();
     }
     
       const handleStartClick = () => {
-        console.log('start game username',username)
-        if(username !== null){
-            setCountDownInit(true)
-            console.log(countDownInit)
-            setTotalScore(0)
-            setGameCompleted(false)
-        }
-        else{
-            window.alert('Submit a username to play')
-        }
-    
+        setCountDownInit(true)
+        console.log(countDownInit)
+        setTotalScore(0)
+        setGameCompleted(false)
         
       };
 

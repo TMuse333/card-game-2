@@ -92,7 +92,7 @@ username } = useGameContext();
     
       const handleStartClick = () => {
         console.log('start game username',username)
-        if(username !== null){
+        if(username !== ){
             setCountDownInit(true)
             console.log(countDownInit)
             setTotalScore(0)

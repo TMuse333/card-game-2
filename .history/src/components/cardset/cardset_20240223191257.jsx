@@ -91,15 +91,14 @@ username } = useGameContext();
     }
     
       const handleStartClick = () => {
-        console.log('start game username',username)
-        if(username !== null){
+        if(username != null){
             setCountDownInit(true)
             console.log(countDownInit)
             setTotalScore(0)
             setGameCompleted(false)
         }
         else{
-            window.alert('Submit a username to play')
+            window
         }
     
         
