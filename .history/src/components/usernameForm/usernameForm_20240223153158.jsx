@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import axios from "axios"; // Import Axios library
 import { useGameContext } from "../context";
 
 const UsernameForm = () => {
+  const { setUsername } = useGameContext();
   const [inputUsername, setInputUsername] = useState("");
 
   const handleInputChange = (event) => {
@@ -13,16 +13,22 @@ const UsernameForm = () => {
     event.preventDefault();
 
     try {
-      // Make a POST request to your server to submit the username
-      const response = await axios.post("http://localhost:9000/", {
-        username: inputUsername,
+      const response = await fetch("/submit-username", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ username: inputUsername }),
       });
 
-      // Handle the response if needed
-      console.log(response.data);
+      if (response.ok) {
+        console.log("Username submitted successfully");
+        // Optionally, you can do something with the response, like redirecting
+      } else {
+        console.error("Failed to submit username");
+      }
     } catch (error) {
-      // Handle errors
-      console.error("Error submitting username:", error.message);
+      console.error("Error submitting username:", error);
     }
   };
 

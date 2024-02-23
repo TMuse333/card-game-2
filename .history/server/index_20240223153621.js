@@ -3,14 +3,10 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
-import routes from './routes.js'
-
-import cors from 'cors'
-
-
+import Leaderboard from './models/leaderboard.model.js';
+import routes from './routes.js';
 
 const app = express();
-app.use(cors());
 dotenv.config();
 
 mongoose.connect(process.env.MONGODB_URI)
@@ -21,10 +17,8 @@ mongoose.connect(process.env.MONGODB_URI)
         console.error('Error connecting to MongoDB:', error);
     });
 
-    app.use(express.json());
+    app.use('/', routes);
 
-    app.use('/', routes); 
-    
 
 
   
