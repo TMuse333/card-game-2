@@ -5,7 +5,7 @@ import { useGameContext } from "../context";
 const UsernameForm = () => {
   const [inputUsername, setInputUsername] = useState("");
 
-  const {username, setUsername} = useGameContext()
+  const {username, setUsername} = useGame
 
   const handleInputChange = (event) => {
     setInputUsername(event.target.value);

@@ -47,8 +47,6 @@ export const GameProvider = ({ children }) => {
 
 
 
-
-
   /*A funtion that returns an array of indexes
   0-7 in a random order to shuffle the card set around every turn 
   and a random number generator to pick the random card*/
@@ -235,12 +233,6 @@ export const GameProvider = ({ children }) => {
   useState(false)
 
   const [viewRules, setViewRules] = useState(false)
-
-  useEffect(() => {
-    if (gameCompleted) {
-      handleGameOver();
-    }
-  }, [gameCompleted]); 
 
   const contextValue = {
     shuffleCards,

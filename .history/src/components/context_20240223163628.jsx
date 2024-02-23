@@ -26,25 +26,6 @@ export const GameProvider = ({ children }) => {
 
   
 
-  const handleGameOver = () => {
-    // Assuming you have the username and score state in your component
-    const data = {
-      username: username,
-      score: totalScore, // Assuming totalScore is the variable containing the final score
-    };
-
-    // Make a POST request to your backend endpoint
-    axios.post("http://localhost:9000/", data)
-      .then(response => {
-        console.log("Username and score submitted successfully", response.data);
-        // You can perform additional actions after successful submission
-      })
-      .catch(error => {
-        console.error("Error submitting username and score", error);
-        // Handle error scenarios if needed
-      });
-  };
-
 
 
 
@@ -235,12 +216,6 @@ export const GameProvider = ({ children }) => {
   useState(false)
 
   const [viewRules, setViewRules] = useState(false)
-
-  useEffect(() => {
-    if (gameCompleted) {
-      handleGameOver();
-    }
-  }, [gameCompleted]); 
 
   const contextValue = {
     shuffleCards,

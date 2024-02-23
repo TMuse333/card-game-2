@@ -45,7 +45,11 @@ export const GameProvider = ({ children }) => {
       });
   };
 
-
+  useEffect(() => {
+    if (gameCompleted) {
+      handleGameOver();
+    }
+  }, [gameCompleted]); 
 
 
 
@@ -235,12 +239,6 @@ export const GameProvider = ({ children }) => {
   useState(false)
 
   const [viewRules, setViewRules] = useState(false)
-
-  useEffect(() => {
-    if (gameCompleted) {
-      handleGameOver();
-    }
-  }, [gameCompleted]); 
 
   const contextValue = {
     shuffleCards,

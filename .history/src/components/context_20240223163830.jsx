@@ -34,7 +34,7 @@ export const GameProvider = ({ children }) => {
     };
 
     // Make a POST request to your backend endpoint
-    axios.post("http://localhost:9000/", data)
+    axios.post("http://your-backend-url/", data)
       .then(response => {
         console.log("Username and score submitted successfully", response.data);
         // You can perform additional actions after successful submission
@@ -44,8 +44,6 @@ export const GameProvider = ({ children }) => {
         // Handle error scenarios if needed
       });
   };
-
-
 
 
 
@@ -235,12 +233,6 @@ export const GameProvider = ({ children }) => {
   useState(false)
 
   const [viewRules, setViewRules] = useState(false)
-
-  useEffect(() => {
-    if (gameCompleted) {
-      handleGameOver();
-    }
-  }, [gameCompleted]); 
 
   const contextValue = {
     shuffleCards,

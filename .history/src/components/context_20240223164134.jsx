@@ -236,12 +236,6 @@ export const GameProvider = ({ children }) => {
 
   const [viewRules, setViewRules] = useState(false)
 
-  useEffect(() => {
-    if (gameCompleted) {
-      handleGameOver();
-    }
-  }, [gameCompleted]); 
-
   const contextValue = {
     shuffleCards,
     getRandomNumber,

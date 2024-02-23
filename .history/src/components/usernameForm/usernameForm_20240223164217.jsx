@@ -1,11 +1,11 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import axios from "axios"; // Import Axios library
 import { useGameContext } from "../context";
 
 const UsernameForm = () => {
   const [inputUsername, setInputUsername] = useState("");
 
-  const {username, setUsername} = useGameContext()
+  const userName
 
   const handleInputChange = (event) => {
     setInputUsername(event.target.value);
