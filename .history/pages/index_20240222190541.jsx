@@ -40,7 +40,7 @@ const Index = () => {
                     <CardSet />
                 </>
             )}
-          <UsernameForm/>
+            <UsernameForm/>
         </div>
     );
 };

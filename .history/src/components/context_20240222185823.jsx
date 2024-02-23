@@ -22,29 +22,9 @@ const GameContext = createContext();
 
 export const GameProvider = ({ children }) => {
 
-  const [username,setUsername]= useState('')
+
 
   
-
-
-  const submitFinalScore = async (username, finalScore) => {
-    try {
-      // Assuming you have a backend endpoint to handle score submission
-      const response = await fetch('/submitFinalScore', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ username, finalScore }),
-      });
-  
-      const data = await response.json();
-      console.log(data); // Log the response from the server
-    } catch (error) {
-      console.error('Error submitting final score:', error);
-    }
-  };
-
 
   /*A funtion that returns an array of indexes
   0-7 in a random order to shuffle the card set around every turn 
@@ -258,9 +238,7 @@ export const GameProvider = ({ children }) => {
     setViewRules,
     countDownInit,
     setCountDownInit,
-    countDown,
-    username,
-    setUsername
+    countDown
   };
 
   return <GameContext.Provider value={contextValue}>{children}</GameContext.Provider>;

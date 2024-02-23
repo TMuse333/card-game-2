@@ -275,9 +275,9 @@ const viewCards = () => {
 
             </div>
 
-{/* {!gameStarted && (
+{!gameStarted && (
     <UsernameForm/>
-)} */}
+)}
 
         </div>
     );

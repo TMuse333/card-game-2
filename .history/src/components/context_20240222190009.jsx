@@ -24,7 +24,7 @@ export const GameProvider = ({ children }) => {
 
   const [username,setUsername]= useState('')
 
-  
+  const 
 
 
   const submitFinalScore = async (username, finalScore) => {
@@ -258,9 +258,7 @@ export const GameProvider = ({ children }) => {
     setViewRules,
     countDownInit,
     setCountDownInit,
-    countDown,
-    username,
-    setUsername
+    countDown
   };
 
   return <GameContext.Provider value={contextValue}>{children}</GameContext.Provider>;

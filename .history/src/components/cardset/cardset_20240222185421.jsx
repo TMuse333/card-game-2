@@ -26,7 +26,6 @@ import { useContext } from "react";
 import Scoreboard from "../scoreboard/scoreboard";
 import Clock from "../clock/clock";
 import ResultScreen from "../resultScreen/resultScreen";
-import UsernameForm from "../usernameForm/usernameForm";
 
 const CardSet = () => {
     const [isHovered, setIsHovered] = useState(null);
@@ -274,11 +273,6 @@ const viewCards = () => {
 )}
 
             </div>
-
-{/* {!gameStarted && (
-    <UsernameForm/>
-)} */}
-
         </div>
     );
 }

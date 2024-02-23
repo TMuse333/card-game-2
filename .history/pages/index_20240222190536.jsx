@@ -7,7 +7,6 @@ import { useState } from "react";
 import CardDisplay from "../src/components/cardDisplay/cardDisplay";
 import Rules from "../src/components/rules/rules";
 import Effects from '../src/components/effects/effects';
-import UsernameForm from '../src/components/usernameForm/usernameForm';
 
 const Index = () => {
     const { viewCardsClicked, viewRules, gameStarted } = useGameContext();
@@ -40,7 +39,7 @@ const Index = () => {
                     <CardSet />
                 </>
             )}
-          <UsernameForm/>
+            
         </div>
     );
 };
