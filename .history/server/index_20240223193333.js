@@ -21,8 +21,6 @@ const corsOptions = {
 // app.use(cors(corsOptions));
 dotenv.config();
 
-app.use(cors())
-
 mongoose.connect(process.env.MONGODB_URI)
     .then(() => {
         console.log('MongoDB connected');
