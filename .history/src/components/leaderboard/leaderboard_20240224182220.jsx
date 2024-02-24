@@ -14,7 +14,7 @@ const Leaderboard = () => {
     const fetchLeaderboardData = async () => {
       try {
         // Replace 'YOUR_API_ENDPOINT' with the actual API endpoint for your leaderboard data
-        const response = await axios.get(apiUrl);
+        const response = await axios.get('/leaderboard');
         setLeaderboardData(response.data.data);
       } catch (error) {
         console.error('Error fetching leaderboard data', error);
