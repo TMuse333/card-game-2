@@ -16,7 +16,7 @@ const Leaderboard = () => {
 
   useEffect(() => {
     // Fetch leaderboard data from the backend
-    axios.get(process.env.MONGODB_URI)
+    axios.get()
       .then(response => {
         setLeaderboardData(response.data.data);
         setUsername(null);
