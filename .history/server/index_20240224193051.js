@@ -16,7 +16,7 @@ const app = express();
 // app.use(cors(corsOptions));
 dotenv.config();
 
-const allowedOrigins = ['https://quantumcardgame2.netlify.app'];
+const allowedOrigins = ['https://your-netlify-app-url'];
 
 app.use(cors({
   origin: function (origin, callback) {

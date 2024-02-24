@@ -11,12 +11,12 @@ const Leaderboard = () => {
 
   const [isClicked, setIsClicked] = useState(false)
 
-  const {setLeaderboardSelected,setUsername,setTotalScore} = useGameContext()
+  const {setLeaderboardSelected} = useGameContext()
 
 
   useEffect(() => {
     // Fetch leaderboard data from the backend
-    axios.get('http://localhost:9000/leaderboard')
+    axios.get('http://localhost:9000/')
       .then(response => {
         setLeaderboardData(response.data.data);
         setUsername(null);

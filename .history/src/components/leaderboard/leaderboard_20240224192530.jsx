@@ -11,7 +11,7 @@ const Leaderboard = () => {
 
   const [isClicked, setIsClicked] = useState(false)
 
-  const {setLeaderboardSelected,setUsername,setTotalScore} = useGameContext()
+  const {setLeaderboardSelected,setUsername,set} = useGameContext()
 
 
   useEffect(() => {
