@@ -9,7 +9,7 @@ const Leaderboard = () => {
   const [leaderboardData, setLeaderboardData] = useState([]);
   const { setLeaderboardSelected } = useGameContext();
 
-
+  useEffect(() => {
     const fetchLeaderboardData = async () => {
       try {
         // Replace 'YOUR_API_ENDPOINT' with the actual API endpoint for your leaderboard data
@@ -20,11 +20,8 @@ const Leaderboard = () => {
       }
     };
 
-    useEffect(() => {
-      fetchLeaderboardData(); // Fetch data when the component is mounted
-    }, []); 
-   
-  
+    fetchLeaderboardData();
+  }, []);
 
   const closeLeaderboard = () => {
     setLeaderboardSelected(false);

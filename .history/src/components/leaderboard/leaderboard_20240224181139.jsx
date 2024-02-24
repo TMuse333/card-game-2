@@ -20,10 +20,7 @@ const Leaderboard = () => {
       }
     };
 
-    useEffect(() => {
-      fetchLeaderboardData(); // Fetch data when the component is mounted
-    }, []); 
-   
+   use
   
 
   const closeLeaderboard = () => {
