@@ -79,7 +79,7 @@ const Index = () => {
             {/* {!gameStarted && !gameCompleted && (
           <UsernameForm/>
             )} */}
-
+\
         </div>
     );
 };

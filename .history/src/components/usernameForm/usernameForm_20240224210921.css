@@ -1,11 +1,10 @@
 .username-container{
-    display: flex;
+    /* display: flex;
     flex-direction: column;
     color:white;
     align-items: center;
-    margin-top: 1rem;
-    /* position: fixed;
-    bottom:0%;
+    position: fixed;
+    bottom:10%;
     left:50%;
     transform: translateX(-50%); */
     

@@ -76,10 +76,10 @@ const Index = () => {
                     <CardSet />
                 </>
             )}
-            {/* {!gameStarted && !gameCompleted && (
+            {!gameStarted && !gameCompleted && (
           <UsernameForm/>
-            )} */}
-
+            )}
+\
         </div>
     );
 };

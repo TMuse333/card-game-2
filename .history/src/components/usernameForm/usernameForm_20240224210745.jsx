@@ -1,7 +1,6 @@
 import React, { useContext, useState } from "react";
 import axios from "axios";
 import { useGameContext } from "../context";
-import './usernameForm.css'
 
 const UsernameForm = () => {
   const [inputUsername, setInputUsername] = useState("");
@@ -24,7 +23,7 @@ const UsernameForm = () => {
 
   return (
     <form onSubmit={handleSubmit}
-    className='username-container'>
+    className>
       <label>
         Enter your username:
         <input

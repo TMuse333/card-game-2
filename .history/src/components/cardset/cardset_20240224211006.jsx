@@ -291,7 +291,7 @@ const scoreboardStyle = {
 
             </div>
 
-{!gameStarted && !gameCompleted && (
+{!gameStarted && (
     <UsernameForm/>
 )}
 

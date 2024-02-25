@@ -3,10 +3,9 @@
     flex-direction: column;
     color:white;
     align-items: center;
-    margin-top: 1rem;
-    /* position: fixed;
-    bottom:0%;
+    position: absolute;
+    bottom:10%;
     left:50%;
-    transform: translateX(-50%); */
+    
     
 }

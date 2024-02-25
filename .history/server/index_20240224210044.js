@@ -28,8 +28,6 @@ const allowedOrigins = ['https://quantumcardgame2.netlify.app'];
 //   },
 // }));
 
-app.use(cors())
-
 
 
 mongoose.connect(process.env.MONGODB_URI)

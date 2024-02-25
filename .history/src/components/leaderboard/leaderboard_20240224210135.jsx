@@ -16,11 +16,11 @@ const Leaderboard = () => {
 
   useEffect(() => {
     // Fetch leaderboard data from the backend
-    axios.get('http://localhost:9000/leaderboard')
+    axios.get('https:localhost:9000/leaderboard')
       .then(response => {
         setLeaderboardData(response.data.data);
         setUsername(null);
-        // setTotalScore(0);
+        setTotalScore(0);
       })
       .catch(error => {
         console.error('Error fetching leaderboard data', error);

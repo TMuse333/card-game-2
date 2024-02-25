@@ -20,7 +20,7 @@ const Leaderboard = () => {
       .then(response => {
         setLeaderboardData(response.data.data);
         setUsername(null);
-        // setTotalScore(0);
+        setTotalScore(0);
       })
       .catch(error => {
         console.error('Error fetching leaderboard data', error);

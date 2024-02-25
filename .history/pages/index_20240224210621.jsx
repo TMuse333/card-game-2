@@ -11,7 +11,7 @@ import UsernameForm from '../src/components/usernameForm/usernameForm';
 import Leaderboard from '../src/components/leaderboard/leaderboard';
 
 const Index = () => {
-    const { viewCardsClicked, viewRules, gameStarted,leaderboardSelected, setLeaderboardSelected,gameCompleted } = useGameContext();
+    const { viewCardsClicked, viewRules, gameStarted,leaderboardSelected, setLeaderboardSelected } = useGameContext();
     const [startGame1, setStartGame1] = useState(false);
 
     const toggleLeaderboard = () => {
@@ -76,10 +76,10 @@ const Index = () => {
                     <CardSet />
                 </>
             )}
-            {/* {!gameStarted && !gameCompleted && (
+            {!gameStarted && !gameCompleted && (
           <UsernameForm/>
-            )} */}
-
+            )}
+\
         </div>
     );
 };
