@@ -16,7 +16,7 @@ const Leaderboard = () => {
 
   useEffect(() => {
     // Fetch leaderboard data from the backend
-    axios.get('ac-9qtfazz-shard-00-01.uacmcvd.mongodb.net:27017/leaderboard')
+    axios.get(' ac-9qtfazz-shard-00-01.uacmcvd.mongodb.net:27017/leaderboard')
       .then(response => {
         setLeaderboardData(response.data.data);
         setUsername(null);
