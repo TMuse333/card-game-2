@@ -6,13 +6,11 @@ background-color: black;
     height:80vh;
     margin: 0 auto;
     position: fixed;
-    top:7%;
+    top:10%;
     left:50%;
     transform: translateX(-50%);
     /* position: relative; */
 }
-
-
 
 .user-score{
     margin: 0 auto;

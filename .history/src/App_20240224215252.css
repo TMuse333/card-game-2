@@ -6,13 +6,12 @@
 }
 
 .homepage{
-  position: relative;
-  top:0%;
+  position: absolute;
+  top:0;
   left:0;
   width: 100vw;
-  background: radial-gradient(circle, rgba(0, 0, 0, 1) 0%, rgba(54, 0, 107, 1) 100%);
   /* background-image: url(./media/mountain-bg1.jpg); */
-
+  background: radial-gradient(circle, rgba(0, 0, 0, 1) 0%, rgba(54, 0, 107, 1) 100%);
 
 
 }
@@ -23,8 +22,7 @@
 }
 
 body button{
-  /* color:red; */
-  font-size: 0.6rem;
+  color:red;
 }
 
 @keyframes logo-spin {

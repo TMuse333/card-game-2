@@ -6,25 +6,18 @@ background-color: black;
     height:80vh;
     margin: 0 auto;
     position: fixed;
-    top:7%;
+    top:10%;
     left:50%;
     transform: translateX(-50%);
-    /* position: relative; */
 }
 
-
-
 .user-score{
-    margin: 0 auto;
-    /* background-color: blue; */
     color:white;
     width:70vw;
     display: flex;
     justify-content: space-around;
 }
 
-.title{
-    font-size: 1.5rem;
-    margin-bottom: 2rem;
+.leader-button{
+    margin:0 autol
 }
-

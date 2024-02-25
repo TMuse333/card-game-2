@@ -45,13 +45,7 @@ const Index = () => {
                                 The Quantum Card Game
                             </h2>
 
-                            {!leaderboardSelected ? (
-                    <button style={{
-
-                    
-                        transform:'translateY(3rem)'
-                    }
-                    }
+                            
                         onClick={toggleLeaderboard}>
                                         Leaderboard
                                             </button>
@@ -71,21 +65,12 @@ const Index = () => {
                         <Rules/>
                         </>
                     ): null}
-                    <div>
-
-              
-   
                     <Effects/>
 
-                        
                     <CardSet />
-                    </div>
-                 
                 </>
             )}
-            {/* {!gameStarted && !gameCompleted && (
-          <UsernameForm/>
-            )} */}
+      
 
         </div>
     );

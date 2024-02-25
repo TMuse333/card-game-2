@@ -13,8 +13,6 @@ position: relative;
 
 }
 
-
-
 .cards{
     display: flex;
     flex-direction: column;
@@ -28,16 +26,14 @@ position: relative;
 
 .card-wrapper{
 width:100vw;
-background: radial-gradient(circle, rgba(0, 0, 0, 1) 0%, rgba(54, 0, 107, 1) 100%);
+
 justify-content: center;
 align-items: center;
 display: flex;
-position: absolute;
+position: relative;
 height:100vh;
 margin: 0 auto;
-/* max-height: 200px; */
 flex-direction: column;
-/* top:10%; */
 
 
 }
@@ -63,6 +59,8 @@ flex-direction: column;
 
 
 @media screen and (min-width:655px){
-
+    .cardset-container{
+        top:35%;
+    }
 }
 

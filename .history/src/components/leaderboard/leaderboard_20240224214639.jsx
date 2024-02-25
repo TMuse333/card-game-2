@@ -34,7 +34,7 @@ const Leaderboard = () => {
 
   const style= {
     opacity: !leaderboardSelected ? 0 : 1,
-    zIndex: !leaderboardSelected?-5 : 1,
+    zIndex:-5,
     // transform:!leaderboardSelected ? 'scale(0)' : 'scale(1)'
   }
 

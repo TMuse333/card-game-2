@@ -72,14 +72,13 @@ const Index = () => {
                         </>
                     ): null}
                     <div>
-
-              
+                        
+                    </div>
    
                     <Effects/>
 
                         
                     <CardSet />
-                    </div>
                  
                 </>
             )}

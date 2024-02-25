@@ -33,38 +33,35 @@ const Leaderboard = () => {
   }
 
   const style= {
-    opacity: !leaderboardSelected ? 0 : 1,
-    zIndex: !leaderboardSelected?-5 : 1,
-    // transform:!leaderboardSelected ? 'scale(0)' : 'scale(1)'
+
   }
 
   return (
-    <div className='leaderboard-container'
-    style={style}>
+    <div className='leaderboard-container'>
       <h2>Leaderboard</h2>
 
-     
+      <button
+      onClick={closeLeaderboard}>Close</button>
 
         <div className='user-score'>
-            <span className='title'>User</span>
-            <span className='title'>Score</span>
+            <span>User</span>
+            <span>Score</span>
         </div>
 
         {leaderboardData.map(entry => (
 
          <div className='user-score'
           key={entry._id}>
-            <span >
+            <span>
                 {entry.username}
 
             </span>
-            <span >
+            <span>
                 {entry.score}
             </span>
             </div>
         ))}
-    <button className='leader-button'
-      onClick={closeLeaderboard}>Close</button>
+   
     </div>
   );
 };

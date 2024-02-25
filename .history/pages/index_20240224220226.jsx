@@ -27,7 +27,7 @@ const Index = () => {
                 <>
                     {!gameStarted ? (
                         <>
-                        <div
+                        {/* <div
                         style={{
                             position:'relative',
                             zIndex:'100',
@@ -62,7 +62,7 @@ const Index = () => {
                            
                           
                         
-                            </div>
+                            </div> */}
                         </>
                     ) : null}
 
@@ -71,16 +71,9 @@ const Index = () => {
                         <Rules/>
                         </>
                     ): null}
-                    <div>
-
-              
-   
                     <Effects/>
-
                         
                     <CardSet />
-                    </div>
-                 
                 </>
             )}
             {/* {!gameStarted && !gameCompleted && (

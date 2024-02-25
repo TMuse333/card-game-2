@@ -73,7 +73,7 @@ const Index = () => {
                     ): null}
                     <div>
 
-              
+              <h2>quantum card game</h2>
    
                     <Effects/>
 

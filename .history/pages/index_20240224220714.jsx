@@ -79,7 +79,6 @@ const Index = () => {
 
                         
                     <CardSet />
-                    </div>
                  
                 </>
             )}

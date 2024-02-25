@@ -71,21 +71,12 @@ const Index = () => {
                         <Rules/>
                         </>
                     ): null}
-                    <div>
-
-              
-   
                     <Effects/>
 
-                        
                     <CardSet />
-                    </div>
-                 
                 </>
             )}
-            {/* {!gameStarted && !gameCompleted && (
-          <UsernameForm/>
-            )} */}
+      
 
         </div>
     );

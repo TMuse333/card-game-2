@@ -53,7 +53,7 @@ const CardSet = () => {
         setViewCardsClicked,
     setViewRules,viewRules,
 setCountDownInit,countDownInit,
-username,leaderboardSelected } = useGameContext();
+username } = useGameContext();
 
     useEffect(()=>{
         console.log('indexes',shuffledIndexes)
@@ -213,7 +213,7 @@ const scoreboardStyle = {
     return (
         <div className="card-wrapper"
         style={{
-           filter: viewRules || leaderboardSelected ? 'blur(5px)' : null ,
+           filter: viewRules  ? 'blur(5px)' : null ,
            transition: 'filter 0.3s ease-in'
         }}>
       

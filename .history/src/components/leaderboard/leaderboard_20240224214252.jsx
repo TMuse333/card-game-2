@@ -33,9 +33,7 @@ const Leaderboard = () => {
   }
 
   const style= {
-    opacity: !leaderboardSelected ? 0 : 1,
-    zIndex: !leaderboardSelected?-5 : 1,
-    // transform:!leaderboardSelected ? 'scale(0)' : 'scale(1)'
+    opacity: !leaderboardSelected ? 0 : 1
   }
 
   return (
@@ -47,7 +45,7 @@ const Leaderboard = () => {
 
         <div className='user-score'>
             <span className='title'>User</span>
-            <span className='title'>Score</span>
+            <span>Score</span>
         </div>
 
         {leaderboardData.map(entry => (
@@ -58,7 +56,7 @@ const Leaderboard = () => {
                 {entry.username}
 
             </span>
-            <span >
+            <span className='title'>
                 {entry.score}
             </span>
             </div>
