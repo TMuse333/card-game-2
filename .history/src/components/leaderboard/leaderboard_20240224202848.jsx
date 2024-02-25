@@ -16,7 +16,7 @@ const Leaderboard = () => {
 
   useEffect(() => {
     // Fetch leaderboard data from the backend
-    axios.get('http://localhost:9000/leaderboard')
+    axios.get('https://us-east-1.aws.data.mongodb-api.com/app/data-swhks/endpoint/data/v1/action/findOne')
       .then(response => {
         setLeaderboardData(response.data.data);
         setUsername(null);
