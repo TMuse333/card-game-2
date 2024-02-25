@@ -45,7 +45,7 @@ app.post('/fetchData', async (req, res) => {
       headers: {
         'Content-Type': 'application/json',
         'Access-Control-Request-Headers': '*',
-        'api-key': process.env.cardGameKey,
+        'api-key': ,
       },
       data: JSON.stringify(data),
     };

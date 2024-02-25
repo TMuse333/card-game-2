@@ -14,26 +14,18 @@ const Leaderboard = () => {
   const {setLeaderboardSelected,setUsername,setTotalScore} = useGameContext()
 
 
-// Leaderboard.js (React frontend)
-
-// ...
-
-useEffect(() => {
-  const fetchData = async () => {
-    try {
-      const response = await axios.post('http://localhost:9000/fetchData');
-      console.log(response.data);
-      // Handle the data in your React state or component logic
-    } catch (error) {
-      console.error('Error fetching data', error);
-    }
-  };
-
-  fetchData();
-}, []);
-
-// ...
-
+  useEffect(() => {
+    // Fetch leaderboard data from the backend
+    axios.get('localhost9000:/leaderboard')
+      .then(response => {
+        setLeaderboardData(response.data.data);
+        setUsername(null);
+        setTotalScore(0);
+      })
+      .catch(error => {
+        console.error('Error fetching leaderboard data', error);
+      });
+  }, []);
 
   const closeLeaderboard = () => {
     setLeaderboardSelected(false)
