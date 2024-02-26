@@ -1,11 +1,9 @@
 import React from "react";
 import './card.css'
-
+import { useGameContext } from "../context";
 
 const Card = ({image, altImage, isClicked,id,mouseEnter,
 mouseLeave,style,handleClick,altShown}) => {
-
-
 
     return (
 

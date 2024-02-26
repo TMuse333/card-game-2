@@ -83,7 +83,7 @@ return (
 <div className='desktop-menu'>
 <p onClick={handleRulesClick}>How To Play</p>
 
-<p onClick={leaderboardClick}>Leaderboard</p>
+<p >Leaderboard</p>
 
 <p onClick={handleCardClick}>View Cards</p>
 {/* <img src={search}

@@ -114,9 +114,7 @@
     font-size: 1.75rem;
     }
     
-    .desktop-menu p:hover{
-        color:rgb(127, 0, 127);
-    }
+    .desktop-menu p
     
     .navbar-container{
     max-width: 1100px;

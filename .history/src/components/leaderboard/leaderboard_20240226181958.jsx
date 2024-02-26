@@ -36,7 +36,7 @@ const Leaderboard = () => {
       case 2:
         return 'silver';
       case 3:
-        return 'brown';
+        return 'bronze';
       default:
         return 'white'; // or any regular color you want for other ranks
     }
@@ -53,7 +53,7 @@ const Leaderboard = () => {
 
       <div className='leader-list'>
         {leaderboardData.map((entry, index) => (
-          <div className='user-score' key={entry._id} style={{ color: getRankColor(index + 1) }}>
+          <div className='user-score' key={entry._id} style={{ backgroundColor: getRankColor(index + 1) }}>
             <span>{entry.username}</span>
             <span>{entry.score}</span>
           </div>

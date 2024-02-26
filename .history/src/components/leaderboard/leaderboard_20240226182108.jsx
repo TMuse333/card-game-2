@@ -36,7 +36,7 @@ const Leaderboard = () => {
       case 2:
         return 'silver';
       case 3:
-        return 'brown';
+        return 'bronze';
       default:
         return 'white'; // or any regular color you want for other ranks
     }
