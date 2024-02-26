@@ -1,0 +1,14 @@
+.username-container{
+    display: flex;
+    flex-direction: column;
+    color:white;
+    align-items: center;
+    margin-top: 1rem;
+    /* position: fixed;
+    bottom:0%;
+    left:50%;
+    transform: translateX(-50%); */
+    
+}
+
+.user
