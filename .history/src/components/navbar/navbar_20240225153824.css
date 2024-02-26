@@ -1,0 +1,286 @@
+/* navbar3.css */
+
+.nav3-container {
+    position:fixed;
+    z-index: 25;
+    top:0;
+    left:0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+margin: 0 auto 0 auto;
+    background-color: transparent; /* Set your desired background color */
+    color: white;
+    width: 100vw;
+    height: 60px;
+  /* Set your desired text color */
+}
+
+.company-name {
+    margin: 0; /* Remove default margin for <p> element */
+    font-size: 1.2rem; 
+    padding: 1rem;/* Set your desired font size */
+}
+
+.nav3-logo {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer; /* Add cursor style for better UX */
+}
+
+.nav-line {
+    height: 2px; /* Set your desired height for the lines */
+    width: 30px; /* Set your desired width for the lines */
+    background-color: white; /* Set your desired color for the lines */
+    margin: 3px 0; /* Set margin between lines */
+    margin-right: 1rem;
+}
+
+.nav3-contents {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    position: fixed;
+    background-color: rgb(0, 0, 129);
+    top:0%;
+    padding:1.75rem;
+    height: 100vh;
+    width:40vw;
+    
+}
+
+.secondary li{
+    position: fixed;
+    right:20%;
+    margin-bottom: 2rem;
+
+}
+
+.main-nav ul li{
+    width:10px;
+}
+
+.secondary-nav li{
+    /* width:max-content; */
+}
+
+.secondary-nav  li:hover{
+    color:rgb(181, 181, 181);
+}
+
+.secondary-nav{
+    background-color: rgb(0, 0, 129);
+    /* background-color: green; */
+    height: 100vh;
+    width:40vw;
+    position: fixed;
+    transition: all 0.3s ease-in;
+}
+
+
+
+.back-button{
+    /* position: absolute;
+    top:1%;
+    left:0%; */
+    height: min-content;
+    width: min-content;
+    padding: 0.2rem;
+    z-index: 1000000;
+   
+}
+
+.sub-button{
+    background-color: transparent;
+    box-shadow: none;
+    border: none;
+    /* margin-left: -1em;
+    margin-bottom: -0.5rem; */
+margin-left: -1rem;
+width: fit-content;
+padding: 0;
+
+    margin-bottom: 2rem;
+}
+
+.sub-button:hover{
+    box-shadow: none;
+    border: none;
+    color:rgb(181, 181, 181)
+}
+
+.nav3-contents > ul{
+margin-top: 3rem;
+}
+
+.nav3-contents > li {
+   font-size: 0.75rem;
+    margin-bottom: 10px; 
+  
+    
+    
+    /* Adjust the spacing between top-level items */
+}
+
+
+
+
+
+.sub-li{
+    padding: 0;
+    opacity: 1;
+    /* margin-left: -3rem;
+    transform: translateX(-3rem); */
+    
+    
+}
+
+.secondary-nav li{
+    list-style: none;
+    width: fit-content;
+    font-family: 'Montserrat', sans-serif;
+    margin-left: -1rem;
+    margin-bottom: 0.5rem;
+}
+
+.nav3-contents > li > ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    ;
+}
+
+.nav3-contents > li > ul > li {
+    margin-left: 20px; /* Adjust the spacing between nested items */
+}
+
+.x-button{
+    position: absolute;
+    top:-4%;
+    right:5%;
+    font-size: 2rem;
+}
+
+
+
+@media screen and (min-width:1000px){
+
+    .nav3-logo{
+        display: none;
+    }
+
+    /* .desktop-menu-submenu{
+        display: flex;
+        flex-direction: column;
+        margin-top: 11rem;
+        margin-left: auto;
+        margin-right: auto;
+      
+    } */
+
+    .submenu-container{
+       position: absolute;
+        width:100vw;
+        top:100%;
+        left:50%;
+        transform: translateX(-50%);
+        max-width: 1200px;
+          
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 315px));
+        /* grid-template-columns: 250px 250px 250px 250px; */
+grid-auto-flow: column;
+        background-color: black;
+    }
+
+    .submenu-box{
+        display: flex;
+        flex-direction: column;
+        background-color: black;
+
+       min-width: 210px;
+        padding: 1rem;
+        
+    }
+
+    .submenu-box h2{
+        font-size: 1rem;
+    }
+
+    .submenu-box p{
+        font-size: 0.75rem;
+        color:rgb(160, 160, 160);
+    }
+
+    .desktop-wrapper{
+        margin: 0 auto 0 auto;
+        max-width: 1250px;
+       
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .nav3-desktop-menu{
+        margin-right: 6rem;
+margin-top: 1.5rem;
+display: flex;
+width:70vw;
+
+justify-content: space-between;
+
+    }
+
+    .nav3-desktop-menu li{
+        list-style: none;
+        padding-bottom: 8rem;
+    
+        margin-top: 8rem;
+    }
+
+
+
+    .nav3-desktop-menu li:hover{
+    color:rgb(164, 163, 163);
+    }
+
+    .nav3-arrow-down{
+        transform: translateY(1rem);
+    }
+
+    .submenu-line{
+        background-color: blue;
+        width: 70px;
+        height:1px
+    }
+
+    .small-sub-container{
+        
+        position: absolute;
+        left:40%;
+        top:100%;
+        /* transform: translateX(-10%); */
+        background-color: black;
+        color:white;
+        z-index: 9999;
+    }
+
+    .small-sub-container ul{
+        padding: 1rem;
+    }
+
+    .small-sub-container ul li{
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        margin-bottom: 0.5rem;
+        font-size: 0.85rem;
+        
+    }
+
+    .small-sub-container .small-li:hover{
+        color:rgb(129, 129, 129);
+        
+    }
+}

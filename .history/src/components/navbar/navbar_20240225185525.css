@@ -1,0 +1,139 @@
+.navbar-container{
+    position: fixed;
+    width: 100vw;
+    top:0;
+    left:50%;
+    transform: translateX(-50%);
+    height:60px;
+    z-index: 1;
+    background-color: transparent;
+    }
+    
+    
+    .nav-wrapper{
+    background-color: transparent;
+    width: 100vw;
+    height: 60px;
+    position: fixed;
+    top:0;
+    left:0%;
+    z-index: 100;
+    }
+    
+    
+    .navbar-contents{
+    display: flex;
+    justify-content: space-between;
+    color:white;
+    }
+    
+    
+    .nav-list li{
+    color:white;
+    }
+    
+    
+    .name{
+        margin-top: 1rem;
+    margin-left: 1rem;
+    font-size: 1.2rem;
+    color:white;
+    }
+    
+    
+    .list-search-box{
+    display: flex;
+    margin-right: 1rem;
+    }
+    
+    
+    .list-search-box img{
+    height:30px;
+    margin-left: 1rem;
+    margin-top: 1rem;
+    }
+    
+    
+    .menu-icon {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    margin-top: 1rem;
+    margin-right: 0.5rem;
+    }
+    .bar {
+    width: 25px;
+    height: 3px;
+    background-color: rgb(255, 255, 255);
+    margin: 2px 0;
+    transition: 0.4s;
+    }
+    .menu-open .bar:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+    }
+    .menu-open .bar:nth-child(2) {
+    opacity: 0;
+    }
+    .menu-open .bar:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+    }
+    .list-button {
+    /* Your existing styles for the closed state */
+    display: none;
+    }
+    .list-button.open {
+    /* Your styles for the open state */
+    display: block;
+    }
+    
+    
+    .desktop-menu{
+    display: none;
+    }
+
+    .nav-list li{
+        list-style: none;
+    }
+
+    .nav-list li:hover{
+        color:rgb(71, 0, 71);
+    }
+    
+    
+    
+    
+    @media screen and (min-width:855px){
+    .desktop-menu{
+    display: flex;
+    color:white;
+    }
+    .name{
+    margin-top:0.55rem;
+    font-size: 1.75rem;
+    }
+    
+    
+    .navbar-container{
+    max-width: 1100px;
+    }
+    
+    
+    .desktop-menu p{
+        margin-top: 1rem;
+    margin-left: 0.75rem;
+    }
+    
+    
+    .desktop-menu img{
+    margin-top: 1rem;
+    margin-left: 1rem;
+    }
+    
+    
+    .name{
+    position: absolute;
+    left:50%;
+    transform: translateX(-50%);
+    }
+    }
+    
