@@ -1,9 +1,9 @@
 import React from "react";
 
 import { useGameContext } from "../context";
-import goku from '../../media/goku-vs-jiren.jpg'
+import goku from '../../media/goku-vs-jiren.webp'
 import clown from '../../media/Emoji_Icon_-_Clown_emoji_1024x1024.png.webp'
-import itachi from '../../media/Real-itachi-susanoo.jpg'
+import itachi from '../../media/Real-itachi-susanoo.webp'
 import './resultScreen.css'
 
 const ResultScreen = () => {
