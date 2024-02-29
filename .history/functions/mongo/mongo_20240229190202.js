@@ -43,17 +43,17 @@ const handler = async function (event) {
     };
 
     // Check for the trust-this-company.com domain in the email
-    // if (user.email.split('@')[1] === 'trust-this-company.com') {
-    //   responseBody.app_metadata = {
-    //     roles: ['editor'],
-    //     my_user_info: 'this is some user info',
-    //   };
-    // } else {
-    //   responseBody.app_metadata = {
-    //     roles: ['visitor'],
-    //     my_user_info: 'this is some user info',
-    //   };
-    // }
+    if (user.email.split('@')[1] === 'trust-this-company.com') {
+      responseBody.app_metadata = {
+        roles: ['editor'],
+        my_user_info: 'this is some user info',
+      };
+    } else {
+      responseBody.app_metadata = {
+        roles: ['visitor'],
+        my_user_info: 'this is some user info',
+      };
+    }
 
     return {
       statusCode: 200,

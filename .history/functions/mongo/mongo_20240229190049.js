@@ -25,8 +25,8 @@ const handler = async function (event) {
 
     // Query MongoDB to retrieve data based on user information
     const mongoData = await collection.findOne(
-      { username: user.username }, // Your existing query condition
-     {score: user.score}
+      { email: user.email }, // Your existing query condition
+      { projection: { username: 1, score: 1, _id: 0 } } // Projection to include only username and score, exclude _id
     );
 
     // Close the MongoDB connection
@@ -43,17 +43,17 @@ const handler = async function (event) {
     };
 
     // Check for the trust-this-company.com domain in the email
-    // if (user.email.split('@')[1] === 'trust-this-company.com') {
-    //   responseBody.app_metadata = {
-    //     roles: ['editor'],
-    //     my_user_info: 'this is some user info',
-    //   };
-    // } else {
-    //   responseBody.app_metadata = {
-    //     roles: ['visitor'],
-    //     my_user_info: 'this is some user info',
-    //   };
-    // }
+    if (user.email.split('@')[1] === 'trust-this-company.com') {
+      responseBody.app_metadata = {
+        roles: ['editor'],
+        my_user_info: 'this is some user info',
+      };
+    } else {
+      responseBody.app_metadata = {
+        roles: ['visitor'],
+        my_user_info: 'this is some user info',
+      };
+    }
 
     return {
       statusCode: 200,
