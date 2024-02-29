@@ -23,7 +23,7 @@ const Leaderboard = () => {
         setTotalScore(0);
       })
       .catch(error => {
-        setLeaderboardSelected(false)
+        
         window.alert("Download the game at https://github.com/TMuse333/card-game-2 to view the leader board!")
         console.error('Error fetching leaderboard data', error);
       });
