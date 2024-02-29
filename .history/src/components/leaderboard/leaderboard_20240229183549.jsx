@@ -9,7 +9,7 @@ const Leaderboard = () => {
 
   useEffect(() => {
     // Fetch leaderboard data from the backend
-    axios.get('https://quantumcardgame2.netlify.app/.functions/mongo/mongo')
+    axios.get('https://quantumcardgame2.netlify.app/functions/proxy')
       .then(response => {
         setLeaderboardData(response.data.data);
         setUsername(null);
