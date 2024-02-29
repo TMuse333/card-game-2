@@ -25,7 +25,7 @@ useEffect(() => {
         score: totalScore,
       };
 
-      axios.post("http://localhost:9000/", data)
+      axios.post("https:/localhost9000/leaderboard", data)
         .then(response => {
           console.log("Score submitted successfully", response.data);
           // You can perform additional actions after successful submission
