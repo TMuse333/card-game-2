@@ -148,7 +148,7 @@ const incorrectSound = new Audio(incorrectAudio);
               
                 setCardsMatch(true)
                 if(gameStarted === true) {
-                  correctSound.play()
+
                 }
             
                 

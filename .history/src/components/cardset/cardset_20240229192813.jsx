@@ -147,10 +147,8 @@ const incorrectSound = new Audio(incorrectAudio);
               if (clickedCard.alt === randomCard && cardsMatch === null && countDownInit === false) {
               
                 setCardsMatch(true)
-                if(gameStarted === true) {
-                  correctSound.play()
-                }
-            
+                if(gameStarted)
+                correctSound.play()
                 
                 // Do something when the clicked card matches the random card
               }  if(clickedCard.alt !== randomCard  && cardsMatch === null && countDownInit === false){
