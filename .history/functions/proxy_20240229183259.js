@@ -16,7 +16,7 @@ exports.handler = async function (event, context) {
       statusCode: response.status,
       body: JSON.stringify(response.data),
       headers: {
-        'Access-Control-Allow-Origin': 'https://quantumcardgame2.netlify.app', // Update with your Netlify app URL
+        'Access-Control-Allow-Origin': 'https://quantumcardgame2.netlify.app.app', // Update with your Netlify app URL
         'Access-Control-Allow-Headers': 'Content-Type',
       },
     };
