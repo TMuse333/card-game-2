@@ -9,7 +9,7 @@ const Leaderboard = () => {
 
   useEffect(() => {
     // Fetch leaderboard data from the backend
-    axios.get('https://cloud.mongodb.com/v2/65d7918c6f772c6e0289c314#/metrics/replicaSet/65d7921a22b7166f0ec3bf17/explorer/test/leaderboards/find')
+    axios.get('https://us-east-1.aws.data.mongodb-api.com/app/data-swhks/endpoint/data/v1/')
       .then(response => {
         setLeaderboardData(response.data.data);
         setUsername(null);
