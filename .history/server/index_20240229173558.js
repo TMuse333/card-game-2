@@ -28,7 +28,7 @@ app.use(cors({
   },
 }));
 
-app.use(cors(allowedOrigins))
+app.use(cors())
 
 
 
