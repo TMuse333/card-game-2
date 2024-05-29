@@ -199,7 +199,7 @@ export const GameProvider = ({ children }) => {
     let intervalId;
   
     if (gameStarted) {
-      setCountdown(10);
+      setCountdown(60);
   
       intervalId = setInterval(() => {
         setCountdown((prevCount) => {

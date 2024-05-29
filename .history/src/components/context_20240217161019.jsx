@@ -1,1 +1,0 @@
-[Error] SyntaxError: Importing binding name 'default' cannot be resolved by star export entries.
