@@ -16,7 +16,7 @@ const Leaderboard = () => {
 
   useEffect(() => {
     // Fetch leaderboard data from the backend
-    axios.get('https://quantum-card-game-bd4eaa931b03.herokuapp.com')
+    axios.get('https://quantum-card-game-bd4eaa931b03.herokuapp.com/leaderboard')
       .then(response => {
         setLeaderboardData(response.data.data);
         setUsername(null);

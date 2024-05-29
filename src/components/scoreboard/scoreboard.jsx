@@ -25,7 +25,7 @@ useEffect(() => {
         score: totalScore,
       };
 
-      axios.post("https://quantum-card-game-bd4eaa931b03.herokuapp.com", data)
+      axios.post("https://quantum-card-game-bd4eaa931b03.herokuapp.com/leaderboard", data)
         .then(response => {
           console.log("Score submitted successfully", response.data);
           // You can perform additional actions after successful submission
