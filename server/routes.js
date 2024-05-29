@@ -5,7 +5,7 @@ import Leaderboard from './models/leaderboard.model.js';
 
 const router = express.Router();
 
-router.post('/', async (req, res) => {
+router.post('/leaderboard', async (req, res) => {
   const { username,score } = req.body;
 
   try {

@@ -1,1 +1,0 @@
-import Leaderboard from "./models/leaderboard.model.js";
