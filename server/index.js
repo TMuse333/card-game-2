@@ -29,6 +29,6 @@ mongoose.connect(process.env.MONGODB_URI)
 
   
 
-app.listen(9000, () => {
+app.listen(process.env.PORT, () => {
     console.log('Server is running on port 9000');
 });
