@@ -20,8 +20,8 @@ const Leaderboard = () => {
       .then(response => {
         console.log('leaderboard data retrieved successfully!')
         setLeaderboardData(response.data.data);
-        setUsername(null);
-        setTotalScore(0);
+        // setUsername(null);
+        // setTotalScore(0);
       })
       .catch(error => {
         // setLeaderboardSelected(false)
