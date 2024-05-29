@@ -18,6 +18,7 @@ const Leaderboard = () => {
     // Fetch leaderboard data from the backend
     axios.get('https://quantum-card-game-bd4eaa931b03.herokuapp.com/leaderboard')
       .then(response => {
+        console.log('leaderboard data retrieved successfully!')
         setLeaderboardData(response.data.data);
         setUsername(null);
         setTotalScore(0);
@@ -25,7 +26,7 @@ const Leaderboard = () => {
       .catch(error => {
         // setLeaderboardSelected(false)
         // window.alert("Download the game at https://github.com/TMuse333/card-game-2 to view the leader board!")
-        // console.error('Error fetching leaderboard data', error);
+        console.error('Error fetching leaderboard data', error);
       });
   }, []);
 
