@@ -1,11 +1,18 @@
 import React from "react";
+import { useEffect } from "react";
 import { useGameContext } from "../context";
 import './effects.css'
 
 
 const Effects = () => {
 
-const {cardsMatch,points,countDown,countDownInit,gameStarted} = useGameContext()
+const {cardsMatch,points,countDown,countDownInit,gameStarted,
+setCardsMatch} = useGameContext()
+
+
+useEffect(() => {
+    setCardsMatch(null)
+},[gameStarted])
 
 const resultText = cardsMatch === true ? `Correct!` :
 'Incorrect!'

@@ -25,9 +25,8 @@ dist-ssr
 
 .env
 
-.history .env*
+.history 
 
 # Local Netlify folder
 .netlify
-
-*.history
+.history

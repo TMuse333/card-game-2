@@ -11,7 +11,8 @@ const {setViewCardsClicked,
     setViewRules,
     setLeaderboardSelected,
 leaderboardSelected,
-viewRules
+viewRules,
+setUserLoginClicked
 } = useGameContext()
 
 
@@ -69,6 +70,12 @@ const handleRulesClick = () => {
     setViewRules(true)
 }
 
+const handleLoginClick = () => {
+  setUserLoginClicked(true)
+}
+
+
+
 
 return (
 <div className='nav-wrapper'>
@@ -86,6 +93,9 @@ return (
 <p onClick={leaderboardClick}>Leaderboard</p>
 
 <p onClick={handleCardClick}>View Cards</p>
+
+<p className='login-button'
+onClick={handleLoginClick}> Log in</p>
 {/* <img src={search}
 style={{
 height:'25px'
@@ -127,6 +137,8 @@ className='nav-list'>
 <li onClick={handleRulesClick}>How to Play</li>
 <li onClick={handleCardClick}>View Cards</li>
 <li onClick={leaderboardClick}>Leaderboard</li>
+<li className=''
+onClick={handleLoginClick}> Log in</li>
 
 </ul>
 </>

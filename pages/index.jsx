@@ -10,9 +10,11 @@ import Effects from '../src/components/effects/effects';
 import UsernameForm from '../src/components/usernameForm/usernameForm';
 import Leaderboard from '../src/components/leaderboard/leaderboard';
 import Navbar from '../src/components/navbar/navbar';
+import NoScoreWarning from '../src/noScoreWarning/noScoreWarning';
 
 const Index = () => {
-    const { viewCardsClicked, viewRules, gameStarted,leaderboardSelected, setLeaderboardSelected,gameCompleted } = useGameContext();
+    const { viewCardsClicked, viewRules, gameStarted,leaderboardSelected, setLeaderboardSelected,gameCompleted,
+      playWithoutScore } = useGameContext();
     const [startGame1, setStartGame1] = useState(false);
 
     const toggleLeaderboard = () => {
@@ -23,7 +25,10 @@ const Index = () => {
     return (
         <>
       
-      <div className='homepage'>
+      <div className='homepage'
+      style={{
+        filter:playWithoutScore ? 'blur(4px)' : 'none'
+      }}>
 
       {viewCardsClicked ? (
         <CardDisplay/>
@@ -44,11 +49,16 @@ const Index = () => {
         <Effects/>
       
         <CardSet/>
+
+       
         </>
       )}
 
        
         </div>
+       {playWithoutScore && (
+         <NoScoreWarning/>
+       )}
         </>
 
      

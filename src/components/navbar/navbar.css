@@ -100,6 +100,13 @@
     .nav-list li:hover{
         color:rgb(127, 0, 127);
     }
+
+    .login-button{
+        background-color: white;
+        color: black;
+        padding: 0 0.5rem 0 0.5rem;
+        border-radius: 0.75rem;
+    }
     
     
     
@@ -112,6 +119,12 @@
     .name{
     margin-top:0.55rem;
     font-size: 1.75rem;
+    }
+
+    .login-button{
+        position: fixed;
+        top:0px;
+        right: 10%;
     }
     
     .desktop-menu p:hover{

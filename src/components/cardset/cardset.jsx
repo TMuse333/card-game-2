@@ -62,7 +62,8 @@ const CardSet = () => {
             countDownInit,
             username,
             leaderboardSelected,
-            setUsername } 
+            setUsername,
+          setPlayWithoutScore } 
             = useGameContext();
 
 const correctSound = new Audio(correctAudio);
@@ -108,7 +109,8 @@ const incorrectSound = new Audio(incorrectAudio);
             setGameCompleted(false)
         }
         else{
-            window.alert('Submit a username to play')
+          console.log('playing without score')
+           setPlayWithoutScore(true)
         }
     
         
@@ -144,7 +146,7 @@ const incorrectSound = new Audio(incorrectAudio);
                 setSelectedCard(index);
               
 
-              if (clickedCard.alt === randomCard && cardsMatch === null && countDownInit === false) {
+              if (clickedCard.alt === randomCard && cardsMatch === null && countDownInit === false && gameStarted === true) {
               
                 setCardsMatch(true)
                 if(gameStarted === true) {
@@ -153,7 +155,7 @@ const incorrectSound = new Audio(incorrectAudio);
             
                 
                 // Do something when the clicked card matches the random card
-              }  if(clickedCard.alt !== randomCard  && cardsMatch === null && countDownInit === false){
+              }  if(clickedCard.alt !== randomCard  && cardsMatch === null && countDownInit === false && gameStarted === true){
              
                 setCardsMatch(false)
 
@@ -197,7 +199,7 @@ const style = (index) => {
       boxShadow: correctCard === true  && isSelected && gameStarted === true? '0 0 20px green' : incorrectCard === true && isSelected  && gameStarted === true? '0 0 12px red' : isSelected ? '0 0 10px gold' : null,
     //   transform: isFlipping ? 'scale(1.1) rotateY(180deg)' :isClicked ? ' rotateY(-180deg)' : 'scale(1)',
       transition: 'transform 0.2s ease-in',
-      border: correctCard && gameStarted === true && isSelected? '2px solid green' : incorrectCard && isSelected === true? '2px solid red': null,
+      border: correctCard && gameStarted === true && isSelected? '2px solid green' : incorrectCard && isSelected === true && gameStarted? '2px solid red': null,
       transform: isSelected ? 'scale(1.05)' : 'scale(1)'
     };
   };
@@ -297,9 +299,9 @@ onClick={handleStartClick}>
 
             </div>
 
-{!gameStarted && !gameCompleted && (
+{/* {!gameStarted && !gameCompleted && (
     <UsernameForm/>
-)}
+)} */}
 
         </div>
     );

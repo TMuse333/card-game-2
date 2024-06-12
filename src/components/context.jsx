@@ -92,6 +92,8 @@ export const GameProvider = ({ children }) => {
   const [countDownInit, setCountDownInit] = useState(false)
   const [countDown, setCountDown] = useState(3)
 
+  const [playWithoutScore, setPlayWithoutScore] = useState(false)
+
 
   //these 2 useEffects are started when the 
   //start button is pressed, then 
@@ -236,6 +238,8 @@ export const GameProvider = ({ children }) => {
 
   const [viewRules, setViewRules] = useState(false)
 
+  const [userLoginClicked, setUserLoginClicked] = useState(false)
+
   // useEffect(() => {
   //   if (gameCompleted) {
   //     handleGameOver();
@@ -290,7 +294,11 @@ export const GameProvider = ({ children }) => {
     username,
     setUsername,
     leaderboardSelected,
-    setLeaderboardSelected
+    setLeaderboardSelected,
+    setPlayWithoutScore,
+    playWithoutScore,
+    userLoginClicked,
+    setUserLoginClicked
   };
 
   return <GameContext.Provider value={contextValue}>{children}</GameContext.Provider>;
