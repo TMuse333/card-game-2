@@ -11,10 +11,11 @@ import UsernameForm from '../src/components/usernameForm/usernameForm';
 import Leaderboard from '../src/components/leaderboard/leaderboard';
 import Navbar from '../src/components/navbar/navbar';
 import NoScoreWarning from '../src/noScoreWarning/noScoreWarning';
+import LoginBox from '../src/components/loginBox/loginBox';
 
 const Index = () => {
     const { viewCardsClicked, viewRules, gameStarted,leaderboardSelected, setLeaderboardSelected,gameCompleted,
-      playWithoutScore } = useGameContext();
+      playWithoutScore, userLoginClicked } = useGameContext();
     const [startGame1, setStartGame1] = useState(false);
 
     const toggleLeaderboard = () => {
@@ -27,7 +28,7 @@ const Index = () => {
       
       <div className='homepage'
       style={{
-        filter:playWithoutScore ? 'blur(4px)' : 'none'
+        filter:playWithoutScore || userLoginClicked ? 'blur(4px)' : 'none'
       }}>
 
       {viewCardsClicked ? (
@@ -59,6 +60,11 @@ const Index = () => {
        {playWithoutScore && (
          <NoScoreWarning/>
        )}
+
+        {userLoginClicked && (
+          <LoginBox/>
+        )}
+       
         </>
 
      
