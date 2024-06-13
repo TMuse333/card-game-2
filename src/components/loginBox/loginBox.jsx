@@ -1,112 +1,62 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import './loginBox.css'
-import { AnimatePresence, motion } from 'framer-motion';
 import { useGameContext } from '../context';
 const LoginBox = () => {
-  const [isLogin, setIsLogin] = useState(true);
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [message, setMessage] = useState('');
+  const [submitClicked, setSubmitClicked] = useState(false); // Track if submit button is clicked
 
-  const toggleForm = () => {
-    setIsLogin(!isLogin);
-    setMessage('');
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const url = isLogin ? 'http://localhost:9000/login' : 'http://localhost:9000/register';
-    const body = isLogin ? { email, password } : { username, email, password };
-
-    try {
-      const response = await fetch(url, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(body),
-      });
-
-      const data = await response.json();
-      if (data.success) {
-        setMessage(isLogin ? 'Login successful!' : 'Registration successful!');
-        if (isLogin) {
-          localStorage.setItem('token', data.token);
-        }
-      } else {
-        setMessage(data.message);
-      }
-    } catch (error) {
-      setMessage('An error occurred. Please try again.');
-    }
-  };
 
   const {setUserLoginClicked} = useGameContext()
 
-  function handleExitClick(){
+  function handleLoginExit(){
     setUserLoginClicked(false)
   }
 
+  useEffect(() => {
+    if (submitClicked && email && username && password) {
+      const userData = {
+        email: email,
+        username: username,
+        password: password,
+      };
+
+      axios.post('http://localhost:9000/userData', userData)
+        .then(response => {
+          console.log('Data sent successfully', response.data);
+          // Optionally, you can reset the form fields after successful submission
+          setUsername('');
+          setEmail('');
+          setPassword('');
+        })
+        .catch(error => {
+          console.error('Error sending data', error);
+          // Handle error scenarios if needed
+        });
+
+      setSubmitClicked(false); // Reset submitClicked after POST request
+    }
+  }, [submitClicked, email, username, password]);
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    setSubmitClicked(true); // Set submitClicked to true when form is submitted
+  };
+
   return (
-    <AnimatePresence mode='wait'>
-       
-    <motion.div className="login-box"
-    initial={{
-        opacity:0
-    }}
-    animate={{opacity:1}}
-    exit={{opacity:0,
-    transition:{
-        duration:0.5
-    } }}>
-         <p onClick={handleExitClick}
-         className='exit-button'>X</p>
-      <h2>{isLogin ? 'Login' : 'Register'}</h2>
-      <form onSubmit={handleSubmit}>
-        {!isLogin && (
-          <div>
-          
-            <input
-              type="text"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              required
-              placeholder='Enter Username'
-            />
-          </div>
-        )}
-        <div>
-         
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-            placeholder='Enter Email'
-          />
-        </div>
-        <div>
-         
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-            placeholder='Enter Password'
-          />
-        </div>
-        <button type="submit">{isLogin ? 'Login' : 'Register'}</button>
+    <div className='login-box'>
+      <h2>Login Box</h2>
+      <p onClick={handleLoginExit}
+      className='exit-button'>X</p>
+      <form onSubmit={handleFormSubmit}>
+        <input type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} required />
+        <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+        <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+        <button type="submit">Submit</button>
       </form>
-      <button style={{
-        marginTop:'2rem'
-      }}
-       onClick={toggleForm}>
-        {isLogin ? 'Create an account' : 'Already have an account?'}
-      </button>
-      {message && <p>{message}</p>}
-    </motion.div>
-    </AnimatePresence>
+    </div>
   );
 };
 

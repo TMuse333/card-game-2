@@ -6,7 +6,7 @@ import Leaderboard from './models/leaderboard.model.js';
 const router = express.Router();
 
 
-router.post('/register', async (req, res) => {
+router.post('/userData', async (req, res) => {
   const { username, email, password } = req.body;
 
   try {
@@ -24,7 +24,7 @@ router.post('/register', async (req, res) => {
   }
 });
 
-router.post('/login', async (req, res) => {
+router.post('/userData', async (req, res) => {
   const { email, password } = req.body;
 
   try {
