@@ -1,5 +1,3 @@
-// models/user.model.js
-
 import mongoose from 'mongoose';
 import bcrypt from 'bcrypt';
 
@@ -22,7 +20,7 @@ const userSchema = new mongoose.Schema({
     type: Number,
     default: 0,
   },
-});
+}, { collection: 'userData' });  // Specify the collection name
 
 // Hash the password before saving
 userSchema.pre('save', async function (next) {

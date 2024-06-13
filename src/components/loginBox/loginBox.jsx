@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import './loginBox.css'
+import { AnimatePresence, motion } from 'framer-motion';
+import { useGameContext } from '../context';
 const LoginBox = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [username, setUsername] = useState('');
@@ -40,13 +42,31 @@ const LoginBox = () => {
     }
   };
 
+  const {setUserLoginClicked} = useGameContext()
+
+  function handleExitClick(){
+    setUserLoginClicked(false)
+  }
+
   return (
-    <div className="login-box">
+    <AnimatePresence mode='wait'>
+       
+    <motion.div className="login-box"
+    initial={{
+        opacity:0
+    }}
+    animate={{opacity:1}}
+    exit={{opacity:0,
+    transition:{
+        duration:0.5
+    } }}>
+         <p onClick={handleExitClick}
+         className='exit-button'>X</p>
       <h2>{isLogin ? 'Login' : 'Register'}</h2>
       <form onSubmit={handleSubmit}>
         {!isLogin && (
           <div>
-           
+          
             <input
               type="text"
               value={username}
@@ -78,11 +98,15 @@ const LoginBox = () => {
         </div>
         <button type="submit">{isLogin ? 'Login' : 'Register'}</button>
       </form>
-      <button onClick={toggleForm}>
+      <button style={{
+        marginTop:'2rem'
+      }}
+       onClick={toggleForm}>
         {isLogin ? 'Create an account' : 'Already have an account?'}
       </button>
       {message && <p>{message}</p>}
-    </div>
+    </motion.div>
+    </AnimatePresence>
   );
 };
 

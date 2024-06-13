@@ -18,6 +18,13 @@
     justify-content: center;
     align-items: center;
   }
+
+  .exit-button{
+    position: fixed;
+    top:0;
+    right:10%;
+    font-size: 2rem;
+  }
   
   .login-box h2 {
     margin-bottom: 20px;
@@ -56,6 +63,6 @@
   .login-box p {
     margin-top: 15px;
     text-align: center;
-    color: red;
+    
   }
   

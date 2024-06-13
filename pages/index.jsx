@@ -10,7 +10,7 @@ import Effects from '../src/components/effects/effects';
 import UsernameForm from '../src/components/usernameForm/usernameForm';
 import Leaderboard from '../src/components/leaderboard/leaderboard';
 import Navbar from '../src/components/navbar/navbar';
-import NoScoreWarning from '../src/noScoreWarning/noScoreWarning';
+import NoScoreWarning from '../src/components/noScoreWarning/noScoreWarning';
 import LoginBox from '../src/components/loginBox/loginBox';
 
 const Index = () => {

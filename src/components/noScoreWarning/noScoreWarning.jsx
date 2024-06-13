@@ -1,4 +1,4 @@
-import { useGameContext } from "../components/context"
+import { useGameContext } from "../context"
 import './noScoreWarning.css'
 
 
