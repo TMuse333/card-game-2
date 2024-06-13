@@ -10,6 +10,7 @@ const leaderboardSchema = new mongoose.Schema({
   score: {
     type: Number,
     required: true,
+    default:0
   },
 });
 

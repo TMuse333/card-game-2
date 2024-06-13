@@ -123,7 +123,7 @@ const incorrectSound = new Audio(incorrectAudio);
 
     const handleHomeClick = () => {
         setGameCompleted(false)
-        setUsername(null)
+    
     }
 
 

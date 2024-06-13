@@ -16,10 +16,6 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  score: {
-    type: Number,
-    default: 0,
-  },
 }, { collection: 'userData' });  // Specify the collection name
 
 // Hash the password before saving

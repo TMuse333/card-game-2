@@ -24,29 +24,29 @@ useEffect(()=> {
   }
 
   useEffect(() => {
-    if (submitClicked && email && username && password) {
+    if (submitClicked && username && password) {
       const userData = {
-        email: email,
         username: username,
         password: password,
       };
+
+      if (isRegisterMode) {
+        userData.email = email; // Include email only in registration mode
+      }
 
       const url = isRegisterMode ? 'http://localhost:9000/userData/register' : 'http://localhost:9000/userData/login';
 
       axios.post(url, userData)
         .then(response => {
           console.log('Data sent successfully', response.data);
-          // Optionally, you can reset the form fields after successful submission
-          setUsername('');
-          setEmail('');
-          setPassword('');
-          setUserLoggedIn(true)
+          setEmail(''); // Optionally reset email field
+          setPassword(''); // Reset password field
+          setUserLoggedIn(true); // Set userLoggedIn state to true upon successful login
         })
         .catch(error => {
           console.error('Error sending data', error);
           // Handle error scenarios if needed
         });
-        
 
       setSubmitClicked(false); // Reset submitClicked after POST request
     }
@@ -74,7 +74,11 @@ useEffect(()=> {
 <>
 <form onSubmit={handleFormSubmit}>
 <input type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} required={!isRegisterMode} />
-<input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+
+{isRegisterMode && (
+    <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+)}
+
 <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
 <button type="submit">{isRegisterMode ? 'Register' : 'Login'}</button>
 </form>

@@ -17,25 +17,60 @@ useEffect(() => {
     // You can perform additional actions when the username changes
   }, [username]);
 
-useEffect(() => {
-    if (gameCompleted === true) {
-      // Make an Axios POST request to send the score to the MongoDB
-      const data = {
-        username: username, // Replace with your username or get it from your context
-        score: totalScore,
-      };
-
-      axios.post("https://quantum-card-game-bd4eaa931b03.herokuapp.com/leaderboard", data)
+  useEffect(() => {
+    if (gameCompleted) {
+      // Step 1: Make an Axios GET request to fetch the leaderboard
+      axios.get(`http://localhost:9000/leaderboard`)
         .then(response => {
-          console.log("Score submitted successfully", response.data);
-          // You can perform additional actions after successful submission
+          // Step 2: Find the user's current score
+          const leaderboardData = response.data; 
+
+
+          console.log('leaderboard data',leaderboardData)
+          
+          // Assuming leaderboardData is an array of objects
+  
+          // Find the user's entry in the leaderboard
+          const currentUser = leaderboardData.data.find(entry => entry.username === username);
+  
+          if (!currentUser) {
+            console.log(`User ${username} not found in leaderboard.`);
+            return;
+          }
+  
+          const currentUserScore = currentUser.score;
+  
+          // Step 3: Check if the game score is higher than the current user score
+          if (totalScore > currentUserScore) {
+            // Step 4: Update the user's score with the new score
+            const data = {
+              username: username,
+              score: totalScore,
+            };
+  
+            // Step 5: Make an Axios POST request to update the leaderboard with the new score
+            axios.post("http://localhost:9000/leaderboard", data)
+              .then(response => {
+                console.log("Score submitted successfully", response.data);
+                // You can perform additional actions after successful submission
+              })
+              .catch(error => {
+                console.error("Error submitting score", error);
+                // Handle error scenarios if needed
+              });
+          } else {
+            console.log("Game score is not higher than the current score, no update needed.");
+          }
         })
         .catch(error => {
-          console.error("Error submitting score", error);
+          console.error("Error fetching leaderboard data", error);
           // Handle error scenarios if needed
         });
     }
-  }, [gameCompleted, totalScore]);
+  }, [gameCompleted, totalScore, username]);
+  
+  
+  
 
 useEffect(()=>{
 

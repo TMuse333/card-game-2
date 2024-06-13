@@ -3,6 +3,7 @@
 import express from 'express';
 import Leaderboard from './models/leaderboard.model.js';
 import User from './models/user.model.js';
+import bcrypt from 'bcrypt';
 
 const router = express.Router();
 
@@ -29,11 +30,11 @@ router.post('/userData/register', async (req, res) => {
 // Assuming you have already set up your User model and bcrypt for password hashing
 
 router.post('/userData/login', async (req, res) => {
-  const { email, password } = req.body;
+  const { username, password } = req.body;
 
   try {
     // Find user by email
-    const user = await User.findOne({ email });
+    const user = await User.findOne({ username });
     if (!user) {
       return res.status(400).json({ success: false, message: 'User not found' });
     }
@@ -63,6 +64,21 @@ router.post('/leaderboard', async (req, res) => {
     await newEntry.save();
     
     res.json({ success: true, message: 'Username and score submitted successfully ' });
+  } catch (error) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+
+router.get('/leaderboard/:username', async (req, res) => {
+  const { username } = req.params;
+
+  try {
+    const userScore = await Leaderboard.findOne({ username });
+    if (!userScore) {
+      return res.status(404).json({ success: false, message: 'User score not found' });
+    }
+    res.json({ success: true, data: userScore });
   } catch (error) {
     res.status(500).json({ success: false, error: error.message });
   }

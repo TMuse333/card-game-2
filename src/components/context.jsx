@@ -193,7 +193,7 @@ export const GameProvider = ({ children }) => {
     };
   }, [gameStarted, cardsMatch, getRandomNumber, randomNumber, randomCard, setShuffledIndexes, points]);
   
-  const gameTime = 10
+  const gameTime = 30
   
   const [countdown, setCountdown] = useState(gameTime);
   const [gameCompleted, setGameCompleted ] = useState(false)
