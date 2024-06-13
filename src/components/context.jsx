@@ -23,7 +23,7 @@ const GameContext = createContext();
 
 export const GameProvider = ({ children }) => {
 
-  const [username,setUsername]= useState(null)
+  const [username,setUsername]= useState('')
   const [leaderboardSelected, setLeaderboardSelected] = useState(false)
 
   
@@ -193,15 +193,16 @@ export const GameProvider = ({ children }) => {
     };
   }, [gameStarted, cardsMatch, getRandomNumber, randomNumber, randomCard, setShuffledIndexes, points]);
   
+  const gameTime = 10
   
-  const [countdown, setCountdown] = useState(60);
+  const [countdown, setCountdown] = useState(gameTime);
   const [gameCompleted, setGameCompleted ] = useState(false)
 
   useEffect(() => {
     let intervalId;
   
     if (gameStarted) {
-      setCountdown(60);
+      setCountdown(gameTime);
   
       intervalId = setInterval(() => {
         setCountdown((prevCount) => {
@@ -239,6 +240,8 @@ export const GameProvider = ({ children }) => {
   const [viewRules, setViewRules] = useState(false)
 
   const [userLoginClicked, setUserLoginClicked] = useState(false)
+
+  const [userLoggedIn, setUserLoggedIn] = useState(false)
 
   // useEffect(() => {
   //   if (gameCompleted) {
@@ -298,7 +301,9 @@ export const GameProvider = ({ children }) => {
     setPlayWithoutScore,
     playWithoutScore,
     userLoginClicked,
-    setUserLoginClicked
+    setUserLoginClicked,
+    setUserLoggedIn,
+    userLoggedIn
   };
 
   return <GameContext.Provider value={contextValue}>{children}</GameContext.Provider>;

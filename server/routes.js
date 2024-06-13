@@ -2,11 +2,12 @@
 
 import express from 'express';
 import Leaderboard from './models/leaderboard.model.js';
+import User from './models/user.model.js';
 
 const router = express.Router();
 
 
-router.post('/userData', async (req, res) => {
+router.post('/userData/register', async (req, res) => {
   const { username, email, password } = req.body;
 
   try {
@@ -24,26 +25,32 @@ router.post('/userData', async (req, res) => {
   }
 });
 
-router.post('/userData', async (req, res) => {
+// Route to authenticate/login a user
+// Assuming you have already set up your User model and bcrypt for password hashing
+
+router.post('/userData/login', async (req, res) => {
   const { email, password } = req.body;
 
   try {
+    // Find user by email
     const user = await User.findOne({ email });
     if (!user) {
       return res.status(400).json({ success: false, message: 'User not found' });
     }
 
+    // Compare passwords
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
       return res.status(400).json({ success: false, message: 'Invalid credentials' });
     }
 
-    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
-    res.json({ success: true, token });
+    // If credentials are correct, respond with success and user information
+    res.json({ success: true, message: 'Login successful', user });
   } catch (error) {
     res.status(500).json({ success: false, error: error.message });
   }
 });
+
 
 router.post('/leaderboard', async (req, res) => {
   const { username,score } = req.body;
