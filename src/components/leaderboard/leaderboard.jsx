@@ -11,7 +11,7 @@ const Leaderboard = () => {
 
   useEffect(() => {
     // Fetch user data from the backend
-    axios.get('http://localhost:9000/userData/retrieve')
+    axios.get('https://quantum-card-game-bd4eaa931b03.herokuapp.com/userData/retrieve')
       .then(response => {
         console.log('User data retrieved successfully!');
 

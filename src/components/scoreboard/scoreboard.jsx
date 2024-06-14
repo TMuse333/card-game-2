@@ -21,7 +21,7 @@ useEffect(() => {
   useEffect(() => {
     if (gameCompleted) {
       // Step 1: Make an Axios GET request to fetch the user's data
-      axios.get(`http://localhost:9000/userData/retrieve`)
+      axios.get(`https://quantum-card-game-bd4eaa931b03.herokuapp.com/userData/retrieve`)
         .then(response => {
           const userData = response.data.data;
 
@@ -50,7 +50,7 @@ useEffect(() => {
             };
 
             // Step 4: Make an Axios POST request to update the leaderboard with the new score
-            axios.post("http://localhost:9000/userData/updateScore", data)
+            axios.post("https://quantum-card-game-bd4eaa931b03.herokuapp.com/userData/updateScore", data)
               .then(response => {
                 console.log("Score updated successfully", response.data);
                 // You can perform additional actions after successful update
