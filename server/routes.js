@@ -53,6 +53,40 @@ router.post('/userData/login', async (req, res) => {
 });
 
 
+router.get('/userData/retrieve', async (req, res) => {
+  try {
+    const users = await User.find({}, 'username score'); // Fetch username and score
+    res.json({ success: true, data: users });
+   console.log('All the players so far',users)
+  } catch (error) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+router.post('/userData/updateScore', async (req, res) => {
+  const { username, newScore } = req.body;
+
+  try {
+    // Find the user by username
+    const user = await User.findOne({ username: username });
+
+    if (!user) {
+      return res.status(404).json({ success: false, message: 'User not found' });
+    }
+
+    // Check if the new score is higher than the current score
+    if (newScore > user.score) {
+      user.score = newScore; // Update the score
+      await user.save(); // Save the updated user
+      return res.json({ success: true, message: 'Score updated successfully' });
+    } else {
+      return res.json({ success: true, message: 'New score is not higher than the current score, no update made' });
+    }
+  } catch (error) {
+    return res.status(500).json({ success: false, error: error.message });
+  }
+});
+
 router.post('/leaderboard', async (req, res) => {
   const { username,score } = req.body;
 
@@ -87,7 +121,7 @@ router.get('/leaderboard/:username', async (req, res) => {
 router.get('/leaderboard', async (req, res) => {
     try {
       const leaderboardData = await Leaderboard.find().sort({ score: -1 }).limit(20);
-      console.log('Leaderboard Data:', leaderboardData);
+      // console.log('Leaderboard Data:', leaderboardData);
       res.json({ success: true, data: leaderboardData });
     } catch (error) {
       res.status(500).json({ success: false, error: error.message });

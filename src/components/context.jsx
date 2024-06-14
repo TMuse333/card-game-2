@@ -193,7 +193,7 @@ export const GameProvider = ({ children }) => {
     };
   }, [gameStarted, cardsMatch, getRandomNumber, randomNumber, randomCard, setShuffledIndexes, points]);
   
-  const gameTime = 30
+  const gameTime = 10
   
   const [countdown, setCountdown] = useState(gameTime);
   const [gameCompleted, setGameCompleted ] = useState(false)
@@ -229,7 +229,7 @@ export const GameProvider = ({ children }) => {
     // Cleanup the interval when the component unmounts or when the game ends
     return () => {
       clearInterval(intervalId);
-      console.log('Countdown Timer cleared!');
+     
     };
   }, [gameStarted, setGameStarted, setTotalScore]);
   

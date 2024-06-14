@@ -2,65 +2,56 @@
 
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import './leaderboard.css'
+import './leaderboard.css';
 import { useGameContext } from '../context';
-
 
 const Leaderboard = () => {
   const [leaderboardData, setLeaderboardData] = useState([]);
-
-  const [isClicked, setIsClicked] = useState(false)
-
-  const {setLeaderboardSelected} = useGameContext()
-
+  const { setLeaderboardSelected } = useGameContext();
 
   useEffect(() => {
-    // Fetch leaderboard data from the backend
-    axios.get('https://quantum-card-game-bd4eaa931b03.herokuapp.com/leaderboard')
+    // Fetch user data from the backend
+    axios.get('http://localhost:9000/userData/retrieve')
       .then(response => {
-        console.log('leaderboard data retrieved successfully!')
-        setLeaderboardData(response.data.data);
-        // setUsername(null);
-        // setTotalScore(0);
+        console.log('User data retrieved successfully!');
+
+        const userData = response.data.data;
+        console.log('Retrieved user data:', userData);
+
+        // Extract username and score attributes from each userData object
+        const leaderboard = userData.map(user => ({
+          _id: user._id, // Assuming user._id exists, if not adjust accordingly
+          username: user.username,
+          score: user.score
+        }));
+
+        // Set the leaderboard data
+        setLeaderboardData(leaderboard);
       })
       .catch(error => {
-        // setLeaderboardSelected(false)
-        // window.alert("Download the game at https://github.com/TMuse333/card-game-2 to view the leader board!")
-        console.error('Error fetching leaderboard data', error);
+        console.error('Error fetching user data', error);
       });
   }, []);
 
   const closeLeaderboard = () => {
-    setLeaderboardSelected(false)
-    console.log('leaderboard closed')
-  }
+    setLeaderboardSelected(false);
+    console.log('Leaderboard closed');
+  };
 
   return (
     <div className='leaderboard-container'>
       <h2>Leaderboard</h2>
-
-      <button
-      onClick={closeLeaderboard}>Close</button>
-
-        <div className='user-score'>
-            <span>User</span>
-            <span>Score</span>
+      <button onClick={closeLeaderboard}>Close</button>
+      <div className='user-score'>
+        <span>User</span>
+        <span>Score</span>
+      </div>
+      {leaderboardData.map(entry => (
+        <div className='user-score' key={entry._id}>
+          <span>{entry.username}</span>
+          <span>{entry.score}</span>
         </div>
-
-        {leaderboardData.map(entry => (
-
-         <div className='user-score'
-          key={entry._id}>
-            <span>
-                {entry.username}
-
-            </span>
-            <span>
-                {entry.score}
-            </span>
-            </div>
-        ))}
-   
+      ))}
     </div>
   );
 };

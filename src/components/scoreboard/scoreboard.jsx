@@ -17,6 +17,59 @@ useEffect(() => {
     // You can perform additional actions when the username changes
   }, [username]);
 
+
+  useEffect(() => {
+    if (gameCompleted) {
+      // Step 1: Make an Axios GET request to fetch the user's data
+      axios.get(`http://localhost:9000/userData/retrieve`)
+        .then(response => {
+          const userData = response.data.data;
+
+          console.log('the user data',userData)
+
+          const currentUser = userData.find(user => user.username === username);
+
+          if (currentUser) {
+            console.log('Current user data:', currentUser);
+            console.log('Current users highest score so far',currentUser.score)
+          } else {
+            console.log(`User with username ${username} not found.`);
+          }
+
+          // Assuming userData contains the user's information including score
+          const currentUserScore = userData.score;
+
+          
+
+          // Step 2: Check if the game score is higher than the current user score
+          if (totalScore > currentUser.score) {
+            // Step 3: Update the user's score with the new score
+            const data = {
+              username: username,
+              newScore: totalScore,
+            };
+
+            // Step 4: Make an Axios POST request to update the leaderboard with the new score
+            axios.post("http://localhost:9000/userData/updateScore", data)
+              .then(response => {
+                console.log("Score updated successfully", response.data);
+                // You can perform additional actions after successful update
+              })
+              .catch(error => {
+                console.error("Error updating score", error);
+                // Handle error scenarios if needed
+              });
+          } else {
+            console.log("Game score is not higher than the current score, no update needed.");
+          }
+        })
+        .catch(error => {
+          console.error("Error fetching user data", error);
+          // Handle error scenarios if needed
+        });
+    }
+  }, [gameCompleted, totalScore, username]);
+
   useEffect(() => {
     if (gameCompleted) {
       // Step 1: Make an Axios GET request to fetch the leaderboard
