@@ -1,21 +1,31 @@
 // middleware/authenticateToken.js
 
 import jwt from 'jsonwebtoken';
+import dotenv from 'dotenv';
+import cors from 'cors'
+
+dotenv.config();
+
+const JWT_SECRET = process.env.JWT_SECRET;
 
 const authenticateToken = (req, res, next) => {
+  // Get the token from the authorization header
   const authHeader = req.headers['authorization'];
   const token = authHeader && authHeader.split(' ')[1];
 
   if (token == null) {
-    return res.sendStatus(401); // Unauthorized if token is not provided
+    return res.status(401).json({ success: false, message: 'Unauthorized: Missing token' });
   }
 
-  jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
+  // Verify the token
+  jwt.verify(token, JWT_SECRET, (err, user) => {
     if (err) {
-      return res.sendStatus(403); // Forbidden if token is invalid
+      return res.status(403).json({ success: false, message: 'Forbidden: Invalid token' });
     }
-    req.user = user; // Attach user details to request object
-    next(); // Move to next middleware
+
+    // Store user information in request object for further use
+    req.user = user;
+    next(); // Pass control to the next middleware
   });
 };
 

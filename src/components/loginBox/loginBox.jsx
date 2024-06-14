@@ -34,7 +34,7 @@ useEffect(()=> {
         userData.email = email; // Include email only in registration mode
       }
 
-      const url = isRegisterMode ? 'https://quantum-card-game-bd4eaa931b03.herokuapp.com/userData/register' : 'https://quantum-card-game-bd4eaa931b03.herokuapp.com/userData/login';
+      const url = isRegisterMode ? 'https://quantum-card-game-bd4eaa931b03.herokuapp.com/userData/register' : 'http://localhost:9000/userData/login';
 
       axios.post(url, userData)
         .then(response => {
