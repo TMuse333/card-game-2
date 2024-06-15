@@ -2,7 +2,7 @@ import React from 'react';
 import CardSet from "../src/components/cardset/cardset";
 
 import { useGameContext } from "../src/components/context";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import CardDisplay from "../src/components/cardDisplay/cardDisplay";
 import Rules from "../src/components/rules/rules";
@@ -16,12 +16,28 @@ import LoginBox from '../src/components/loginBox/loginBox';
 const Index = () => {
     const { viewCardsClicked, viewRules, gameStarted,leaderboardSelected, setLeaderboardSelected,gameCompleted,
       playWithoutScore, userLoginClicked } = useGameContext();
-    const [startGame1, setStartGame1] = useState(false);
+
 
     const toggleLeaderboard = () => {
         console.log('show leader board')
         setLeaderboardSelected(true)
     }
+
+    const [dbStatus, setDbStatus] = useState(null);
+
+
+    useEffect(() => {
+      // Check the server status on component mount
+      axios.get('https://quantum-card-game-bd4eaa931b03.herokuapp.com/status')
+        .then(response => {
+          setDbStatus(response.data.dbConnected);
+          console.log('Database connected:', response.data.dbConnected);
+        })
+        .catch(error => {
+          console.error('Error fetching status:', error);
+          setDbStatus(false);
+        });
+    }, []);
 
     return (
         <>
@@ -30,6 +46,8 @@ const Index = () => {
       style={{
         filter:playWithoutScore || userLoginClicked ? 'blur(4px)' : 'none'
       }}>
+
+<p>Database connection status: {dbStatus ? 'Connected' : 'Not connected'}</p>
 
       {viewCardsClicked ? (
         <CardDisplay/>
