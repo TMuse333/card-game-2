@@ -13,6 +13,8 @@ import Navbar from '../src/components/navbar/navbar';
 import NoScoreWarning from '../src/components/noScoreWarning/noScoreWarning';
 import LoginBox from '../src/components/loginBox/loginBox';
 
+import axios from 'axios'
+
 const Index = () => {
     const { viewCardsClicked, viewRules, gameStarted,leaderboardSelected, setLeaderboardSelected,gameCompleted,
       playWithoutScore, userLoginClicked } = useGameContext();
@@ -47,7 +49,7 @@ const Index = () => {
         filter:playWithoutScore || userLoginClicked ? 'blur(4px)' : 'none'
       }}>
 
-<p>Database connection status: {dbStatus ? 'Connected' : 'Not connected'}</p>
+
 
       {viewCardsClicked ? (
         <CardDisplay/>
@@ -66,6 +68,10 @@ const Index = () => {
             <Rules/>
         )}
         <Effects/>
+
+        <p style={{
+ 
+}}>Database connection status: {dbStatus ? 'Connected' : 'Not connected'}</p>
       
         <CardSet/>
 
