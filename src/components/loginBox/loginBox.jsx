@@ -14,7 +14,7 @@ const LoginBox = () => {
 
 
   const { setUserLoginClicked, userLoggedIn, setUserLoggedIn,
-setUsername, username } = useGameContext();
+setUsername, username, play } = useGameContext();
 
 
 const handleLogout = () => {
@@ -48,11 +48,11 @@ useEffect(()=> {
         .then(response => {
           console.log('Data sent successfully', response.data);
 
-          console.log('the token',response.data.token)
+          console.log('the token',response.data.user._id)
 
           localStorage.setItem('token', JSON.stringify({
             username: username,
-            token: response.data.token
+            token: isRegisterMode ?response.data.user._id : response.data.token
           }));
 
         //   console.log('the token for storage',token)

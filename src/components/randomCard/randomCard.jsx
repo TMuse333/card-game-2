@@ -1,28 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { useGameContext } from '../context';
-import charizard from '../../media/charizard.gif'
-import deoxys from '../../media/deoxys.gif'
-import gengar from '../../media/gengar.gif'
-import mewtwo from '../../media/mewtwo.gif'
-import pikachu from '../../media/pikachu.gif'
-import rayquaza from '../../media/rayquaza.gif'
-import sudowudo from '../../media/sudowudo.gif'
-import blazekin from '../../media/blazekin.gif'
+import charizard from '../../media/charizard.gif';
+import deoxys from '../../media/deoxys.gif';
+import gengar from '../../media/gengar.gif';
+import mewtwo from '../../media/mewtwo.gif';
+import pikachu from '../../media/pikachu.gif';
+import rayquaza from '../../media/rayquaza.gif';
+import sudowudo from '../../media/sudowudo.gif';
+import blazekin from '../../media/blazekin.gif';
 
 const RandomCard = ({ id }) => {
-  const { getRandomNumber, } = useGameContext();
-  const [cardIndex, setCardIndex] = useState(getRandomNumber);
+  const { getRandomNumber, randomCard, setRandomCard, randomNumber, setRandomNumber, cardsMatch } = useGameContext();
   const [isFading, setIsFading] = useState(false);
-  const { randomCard,setRandomCard,randomNumber, setRandomNumber, cardsMatch } = useGameContext();
-
-
-
-
-  // useEffect(()=>{
-  //   setRandomNumber(randomNumber)
-  //   setRandomCard(randomCard)
-  //   console.log('the new random card is',randomCard)
-  // },[randomCard,randomNumber])
 
   const cards = [
     mewtwo,
@@ -35,32 +24,30 @@ const RandomCard = ({ id }) => {
     blazekin,
   ];
 
-
-
-  useEffect(()=> {
-    if(cardsMatch !== null){
-
-      setTimeout(()=>{
-        console.log('random num before',randomNumber)
-        setRandomNumber(getRandomNumber())
-        setRandomCard(cards[randomNumber])
-        console.log('current random number',randomNumber)
-      },1000)
-      
-     
+  useEffect(() => {
+    if (cardsMatch !== null) {
+      console.log('Switching cards...');
+      setTimeout(() => {
+        const newRandomNumber = getRandomNumber();
+        setRandomNumber(newRandomNumber);
+        setRandomCard(cards[newRandomNumber]);
+      }, 1000); 
     }
-  },[cardsMatch,randomNumber])
+  }, [cardsMatch]); // Only run this effect when cardsMatch changes
 
+  useEffect(() => {
+    // Log for debugging purposes
+    console.log('Random number:', randomNumber);
+    console.log('Random card:', randomCard);
+  }, [randomNumber, randomCard]); // Log whenever randomNumber or randomCard changes
 
   return (
     <img
       className="game-card random"
       src={randomCard}
       alt={`Random Card ${id}`}
-    
       id={id}
       style={{
-        // opacity: isFading ? 0 : 1,
         transition: 'opacity 0.5s ease-in-out',
       }}
     />

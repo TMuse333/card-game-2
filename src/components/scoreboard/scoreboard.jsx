@@ -16,7 +16,7 @@ const [incorrectAnswer, setIncorrectAnswer] = useState(0)
 
 
 useEffect(() => {
-  if (gameCompleted) {
+  if (gameCompleted && playWithoutScore === false) {
     // Retrieve the token from localStorage
     const token = localStorage.getItem('token');
 

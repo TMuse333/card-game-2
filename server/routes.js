@@ -7,6 +7,8 @@ import User from './models/user.model.js';
 import dotenv from 'dotenv';
 import authenticateToken from './middleware/authenticateToken.js';
 import cors from 'cors'
+import { sendEmail } from './emailsender.js';
+
 
 const router = express.Router();
 
@@ -18,24 +20,41 @@ dotenv.config();
 const JWT_SECRET = process.env.JWT_SECRET; // Access JWT_SECRET from environment variables
 
 // Route to register a new user
-router.post('/userData/register', async (req, res) => {
+router.post('/register', async (req, res) => {
   const { username, email, password } = req.body;
 
   try {
-    const existingUser = await User.findOne({ $or: [{ username }, { email }] });
+    // Check if user already exists
+    let existingUser = await User.findOne({ username });
     if (existingUser) {
-      return res.status(400).json({ success: false, message: 'Username or email already exists' });
+      return res.status(400).json({ error: 'Username already exists.' });
     }
 
+    // Create new user
     const newUser = new User({ username, email, password });
     await newUser.save();
 
-    res.json({ success: true, message: 'User registered successfully', user: newUser });
-  } catch (error) {
-    res.status(500).json({ success: false, error: error.message });
-  }
+    
 
+    // Generate JWT token
+    const token = jwt.sign({ id: newUser._id, username: newUser.username }, JWT_SECRET, { expiresIn: '1h' });
+
+    // Send confirmation email
+    const subject = 'Welcome to Quantum Card Game!';
+    const htmlContent = `<p>Dear ${username},</p><p>Thank you for registering with Quantum Card Game.</p>`;
+    const emailSent = await sendEmail(email, subject, htmlContent);
+
+    if (emailSent) {
+      res.status(200).json({ message: 'User registered successfully. Confirmation email sent.', token });
+    } else {
+      res.status(500).json({ error: 'Failed to send confirmation email.' });
+    }
+  } catch (error) {
+    console.error('Registration error:', error);
+    res.status(500).json({ error: 'An error occurred during registration.' });
+  }
 });
+
 
 router.get('/userData/protectedRoute', authenticateToken, (req, res) => {
   // Middleware ensures user is authenticated
