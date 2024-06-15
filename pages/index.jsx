@@ -25,21 +25,21 @@ const Index = () => {
         setLeaderboardSelected(true)
     }
 
-    const [dbStatus, setDbStatus] = useState(null);
+    // const [dbStatus, setDbStatus] = useState(null);
 
 
-    useEffect(() => {
-      // Check the server status on component mount
-      axios.get('https://quantum-card-game-bd4eaa931b03.herokuapp.com/status')
-        .then(response => {
-          setDbStatus(response.data.dbConnected);
-          console.log('Database connected:', response.data.dbConnected);
-        })
-        .catch(error => {
-          console.error('Error fetching status:', error);
-          setDbStatus(false);
-        });
-    }, []);
+    // useEffect(() => {
+    //   // Check the server status on component mount
+    //   axios.get('https://quantum-card-game-bd4eaa931b03.herokuapp.com/status')
+    //     .then(response => {
+    //       setDbStatus(response.data.dbConnected);
+    //       console.log('Database connected:', response.data.dbConnected);
+    //     })
+    //     .catch(error => {
+    //       console.error('Error fetching status:', error);
+    //       setDbStatus(false);
+    //     });
+    // }, []);
 
     return (
         <>
@@ -69,9 +69,9 @@ const Index = () => {
         )}
         <Effects/>
 
-        <p style={{
+        {/* <p style={{
  
-}}>Database connection status: {dbStatus ? 'Connected' : 'Not connected'}</p>
+}}>Database connection status: {dbStatus ? 'Connected' : 'Not connected'}</p> */}
       
         <CardSet/>
 

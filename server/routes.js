@@ -109,4 +109,8 @@ router.post('/userData/updateScore', async (req, res) => {
   }
 });
 
+router.get('/status', (req, res) => {
+  res.status(200).json({ dbConnected });
+});
+
 export default router;

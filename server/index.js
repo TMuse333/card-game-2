@@ -27,9 +27,7 @@ mongoose.connect(process.env.MONGODB_URI)
     app.use('/', routes); 
     
 
-    app.get('/status', (req, res) => {
-        res.json({ dbConnected });
-    });
+   
   
 
 app.listen(process.env.PORT, () => {
