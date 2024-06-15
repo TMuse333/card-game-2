@@ -18,6 +18,8 @@ const LoginBox = () => {
     setUserLoginClicked(false);
   };
 
+  //https://quantum-card-game-bd4eaa931b03.herokuapp.com
+
   useEffect(() => {
     if (submitClicked && username && password) {
       const userData = {
@@ -30,15 +32,18 @@ const LoginBox = () => {
       }
 
       const url = isRegisterMode
-        ? 'https://quantum-card-game-bd4eaa931b03.herokuapp.com/userData/register'
+        ? 'http://localhost:9000/userData/register'
         : 'https://quantum-card-game-bd4eaa931b03.herokuapp.com/userData/login';
 
         axios.post(url, userData)
         .then(response => {
-          const { token, user } = response.data;
-          localStorage.setItem('token', token);
+         
+          localStorage.setItem('token', JSON.stringify({
+            username: username,
+            token: response.data.token
+          }));
           setUserLoggedIn(true);
-          setUsername(user.username);
+     
           setEmail('');
           setPassword('');
           console.log('Login successful:', response.data);
