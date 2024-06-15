@@ -32,7 +32,7 @@ const LoginBox = () => {
       }
 
       const url = isRegisterMode
-        ? 'http://localhost:9000/userData/register'
+        ? 'https://quantum-card-game-bd4eaa931b03.herokuapp.com/userData/register'
         : 'https://quantum-card-game-bd4eaa931b03.herokuapp.com/userData/login';
 
         axios.post(url, userData)
