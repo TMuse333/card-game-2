@@ -5,7 +5,8 @@ import './noScoreWarning.css'
 const NoScoreWarning = () => {
 
     const {setGameStarted, setPlayWithoutScore,
-    setCountDownInit, setTotalScore, setGameCompleted } = useGameContext()
+    setCountDownInit, setTotalScore, setGameCompleted,
+setUserLoginClicked } = useGameContext()
 
     const handleStartGame = () => {
         setCountDownInit(true)
@@ -13,6 +14,12 @@ const NoScoreWarning = () => {
         setTotalScore(0)
         setGameCompleted(false)
         setPlayWithoutScore(false)
+    }
+
+    const handleLoginClick = () => {
+        setUserLoginClicked(true)
+        setPlayWithoutScore(false)
+        console.log('log in moment')
     }
 
     return (
@@ -24,7 +31,7 @@ const NoScoreWarning = () => {
 
             </p>
             <div>
-                <button>
+                <button onClick={handleLoginClick}>
                     Sign in
                 </button>
 

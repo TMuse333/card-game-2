@@ -28,7 +28,20 @@ export const GameProvider = ({ children }) => {
 
   
 
+  useEffect(() => {
+    const storedToken = localStorage.getItem('token');
+    if (storedToken) {
+      const { username, token } = JSON.parse(storedToken);
+      const decodedToken = JSON.parse(atob(token.split('.')[1]));
 
+      if (decodedToken.exp * 1000 > Date.now()) {
+        setUsername(username);
+        setUserLoggedIn(true);
+      } else {
+        localStorage.removeItem('token'); // Token expired, remove from localStorage
+      }
+    }
+  }, []);
 
 
 
@@ -188,12 +201,12 @@ export const GameProvider = ({ children }) => {
   
     // Cleanup the timer when the component unmounts or when the game ends
     return () => {
-      // clearTimeout(gameTimer);
-      console.log('Timer cleared!');
+      clearTimeout(gameTimer);
+      // console.log('Timer cleared!');
     };
   }, [gameStarted, cardsMatch, getRandomNumber, randomNumber, randomCard, setShuffledIndexes, points]);
   
-  const gameTime = 60
+  const gameTime = 30
   
   const [countdown, setCountdown] = useState(gameTime);
   const [gameCompleted, setGameCompleted ] = useState(false)

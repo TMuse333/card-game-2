@@ -57,7 +57,7 @@ const Index = () => {
 
        
         </div>
-       {playWithoutScore && (
+       {playWithoutScore === true && (
          <NoScoreWarning/>
        )}
 

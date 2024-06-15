@@ -81,7 +81,7 @@ router.get('/userData/retrieve', async (req, res) => {
 });
 
 // Route to update user's score if it's higher than the current score
-router.post('/userData/updateScore', async (req, res) => {
+router.post('/userData/updateScore', authenticateToken, async (req, res) => {
   const { username, newScore } = req.body;
 
   try {
