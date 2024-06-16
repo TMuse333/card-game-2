@@ -17,7 +17,30 @@ router.use(cors())
 // Load environment variables from .env file into process.env
 dotenv.config();
 
-const JWT_SECRET = process.env.JWT_SECRET; // Access JWT_SECRET from environment variables
+const JWT_SECRET = process.env.JWT_SECRET;// Access JWT_SECRET from environment variables
+
+
+router.get('/verify/:token', async (req, res) => {
+  const { token } = req.params;
+
+  try {
+    const decoded = jwt.verify(token, JWT_SECRET);
+    const userId = decoded.id;
+
+    // Find the user by userId and update verified attribute to true
+    const user = await User.findByIdAndUpdate(userId, { verified: true }, { new: true });
+
+    if (!user) {
+      return res.status(400).send('User not found');
+    }
+
+    // Optionally, you can redirect the user to a success page or send a response
+    res.status(200).send('Email verified successfully');
+  } catch (error) {
+    return res.status(400).send('Invalid token or expired token');
+  }
+});
+
 
 // Route to register a new user
 router.post('/userData/register', async (req, res) => {

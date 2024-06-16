@@ -20,6 +20,10 @@ const userSchema = new mongoose.Schema({
     type: Number,
     default: 0,
   },
+  verified:{
+    type:Boolean,
+    default:false
+  }
 }, { collection: 'userData' });  // Specify the collection name
 
 // Hash the password before saving

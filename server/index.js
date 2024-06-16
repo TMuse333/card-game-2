@@ -26,7 +26,7 @@ mongoose.connect(process.env.MONGODB_URI)
 
     app.use('/', routes); 
     
-
+    app.use(express.static('server'));
    
   
 
