@@ -39,17 +39,17 @@ router.post('/userData/register', async (req, res) => {
     const token = jwt.sign({ id: newUser._id, username: newUser.username }, JWT_SECRET, { expiresIn: '1h' });
 
     // Prepare verification email
-    // const verificationLink = `http://localhost:9000/verify/${token}`; // Replace with your actual verification link
+    const verificationLink = `http://localhost:9000/verify/${token}`; // Replace with your actual verification link
     // const template = await fs.readFile('./verificationEmail.html', 'utf-8');
     // const html = ejs.render(template, { username: newUser.username, verificationLink });
 
     // Send verification email
-    // await transporter.sendMail({
-    //   from: 'q3visualdesigns@gmail.com', // Sender email address
-    //   to: newUser.email, // Recipient email address
-    //   subject: 'Verify Your Email Address',
-    //   html: "<h1>whats up playa</h1>",
-    // });
+    await transporter.sendMail({
+      from: 'q3visualdesigns@gmail.com', // Sender email address
+      to: newUser.email, // Recipient email address
+      subject: 'Verify Your Email Address',
+      html: "<h1>whats up playa</h1>",
+    });
 
     // Respond with success message including token
     res.json({ success: true, message: 'User registered successfully', user: newUser, token:token });
