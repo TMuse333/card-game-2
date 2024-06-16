@@ -44,12 +44,12 @@ router.post('/userData/register', async (req, res) => {
     // const html = ejs.render(template, { username: newUser.username, verificationLink });
 
     // Send verification email
-    await transporter.sendMail({
-      from: 'q3visualdesigns@gmail.com', // Sender email address
-      to: newUser.email, // Recipient email address
-      subject: 'Verify Your Email Address',
-      html: "<h1>whats up playa</h1>",
-    });
+    // await transporter.sendMail({
+    //   from: 'q3visualdesigns@gmail.com', // Sender email address
+    //   to: newUser.email, // Recipient email address
+    //   subject: 'Verify Your Email Address',
+    //   html: "<h1>whats up playa</h1>",
+    // });
 
     // Respond with success message including token
     res.json({ success: true, message: 'User registered successfully', user: newUser, token:token });
