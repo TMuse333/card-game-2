@@ -5,14 +5,22 @@ import dotenv from 'dotenv'
 
 dotenv.config()
 
-const password = process.env.GMAIL_PASSWORD
+
 
 const transporter = nodemailer.createTransport({
   service: 'Gmail', // Use your email service provider
   auth: {
     user: 'q3visualdesigns@gmail.com', // Your email address
-    pass: password, // Your email password or application-specific password
+    pass: process.env.GMAIL_PASSWORD, // Your email password or application-specific password
   },
 });
+
+transporter.verify((error, success) => {
+    if (error) {
+      console.error('Error verifying transporter:', error);
+    } else {
+      console.log('Transporter is ready to send emails');
+    }
+  });
 
 export default transporter;
