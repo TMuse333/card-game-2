@@ -7,8 +7,7 @@ import User from './models/user.model.js';
 import dotenv from 'dotenv';
 import authenticateToken from './middleware/authenticateToken.js';
 import cors from 'cors'
-import fs from 'fs/promises';
-import ejs from 'ejs';
+import { getVerificationEmailHtml } from './verificationEmail.js';
 import transporter from './emailsender.js';
 
 const router = express.Router();
@@ -42,8 +41,8 @@ router.post('/userData/register', async (req, res) => {
 
     // Prepare verification email
     const verificationLink = `https://quantum-card-game-bd4eaa931b03.herokuapp.com/verify/${token}`; // Replace with your actual verification link
-    const template = await fs.readFile('./server/verificationEmail.html', 'utf-8');
-    const html = ejs.render(template, { username: newUser.username, verificationLink });
+
+    const html = getVerificationEmailHtml(newUser.username, verificationLink);
 
     // Send verification email
    const mail = await transporter.sendMail({
