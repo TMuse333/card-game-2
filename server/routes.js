@@ -35,12 +35,14 @@ router.post('/userData/register', async (req, res) => {
     const newUser = new User({ username, email, password });
     await newUser.save();
 
+    //server/verificationEmail.html
+
     // Generate JWT token for verification link
     const token = jwt.sign({ id: newUser._id, username: newUser.username }, JWT_SECRET, { expiresIn: '1h' });
 
     // Prepare verification email
     const verificationLink = `https://quantum-card-game-bd4eaa931b03.herokuapp.com/verify/${token}`; // Replace with your actual verification link
-    const template = await fs.readFile('./verificationEmail.html', 'utf-8');
+    const template = await fs.readFile('./server/verificationEmail.html', 'utf-8');
     const html = ejs.render(template, { username: newUser.username, verificationLink });
 
     // Send verification email
