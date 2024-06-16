@@ -10,6 +10,8 @@ const LoginBox = () => {
   const [isRegisterMode, setIsRegisterMode] = useState(true);
   const { setUserLoginClicked, userLoggedIn, setUserLoggedIn, setUsername, username } = useGameContext();
   const [errorMessage, setErrorMessage] = useState('');
+  const [emailVerified, setEmailVerified] = useState(false);
+
 
   useEffect(() => {
     console.log('the user name', username);
