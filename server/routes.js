@@ -7,6 +7,9 @@ import User from './models/user.model.js';
 import dotenv from 'dotenv';
 import authenticateToken from './middleware/authenticateToken.js';
 import cors from 'cors'
+import fs from 'fs/promises';
+import ejs from 'ejs';
+import transporter from './emailsender.js';
 
 const router = express.Router();
 
@@ -22,21 +25,38 @@ router.post('/userData/register', async (req, res) => {
   const { username, email, password } = req.body;
 
   try {
+    // Check if username or email already exists
     const existingUser = await User.findOne({ $or: [{ username }, { email }] });
     if (existingUser) {
       return res.status(400).json({ success: false, message: 'Username or email already exists' });
     }
 
+    // Create new user
     const newUser = new User({ username, email, password });
     await newUser.save();
 
+    // Generate JWT token for verification link
     const token = jwt.sign({ id: newUser._id, username: newUser.username }, JWT_SECRET, { expiresIn: '1h' });
 
-    res.json({ success: true, message: 'User registered successfully', user: newUser, token:token });
+    // Prepare verification email
+    const verificationLink = `http://localhost:9000/verify/${token}`; // Replace with your actual verification link
+    const template = await fs.readFile('./verificationEmail.html', 'utf-8');
+    const html = ejs.render(template, { username: newUser.username, verificationLink });
+
+    // Send verification email
+    await transporter.sendMail({
+      from: 'q3visualdesigns@gmail.com', // Sender email address
+      to: newUser.email, // Recipient email address
+      subject: 'Verify Your Email Address',
+      html: html,
+    });
+
+    // Respond with success message including token
+    res.json({ success: true, message: 'User registered successfully. Verification email sent.' });
   } catch (error) {
+    console.error('Error registering user:', error);
     res.status(500).json({ success: false, error: error.message });
   }
-
 });
 
 router.get('/userData/protectedRoute', authenticateToken, (req, res) => {

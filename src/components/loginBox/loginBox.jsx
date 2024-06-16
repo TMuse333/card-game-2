@@ -9,6 +9,7 @@ const LoginBox = () => {
   const [submitClicked, setSubmitClicked] = useState(false);
   const [isRegisterMode, setIsRegisterMode] = useState(true);
   const { setUserLoginClicked, userLoggedIn, setUserLoggedIn, setUsername, username } = useGameContext();
+  const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
     console.log('the user name', username);
@@ -17,8 +18,6 @@ const LoginBox = () => {
   const handleLoginExit = () => {
     setUserLoginClicked(false);
   };
-
-  //https://quantum-card-game-bd4eaa931b03.herokuapp.com
 
   useEffect(() => {
     if (submitClicked && username && password) {
@@ -35,27 +34,28 @@ const LoginBox = () => {
         ? 'https://quantum-card-game-bd4eaa931b03.herokuapp.com/userData/register'
         : 'https://quantum-card-game-bd4eaa931b03.herokuapp.com/userData/login';
 
-        axios.post(url, userData)
+      axios.post(url, userData)
         .then(response => {
-         
           localStorage.setItem('token', JSON.stringify({
             username: username,
             token: response.data.token
           }));
           setUserLoggedIn(true);
-     
           setEmail('');
           setPassword('');
+          setErrorMessage('');
           console.log('Login successful:', response.data);
         })
         .catch(error => {
           console.error('Login failed:', error);
-          // Handle specific errors here
           if (error.response) {
+            setErrorMessage(error.response.data.message);
             console.log('Server responded with:', error.response.data);
           } else if (error.request) {
+            setErrorMessage('No response received from server.');
             console.log('No response received:', error.request);
           } else {
+            setErrorMessage('Error setting up request.');
             console.log('Error setting up request:', error.message);
           }
         })
@@ -63,21 +63,26 @@ const LoginBox = () => {
           setSubmitClicked(false);
         });
     }
-  }, [submitClicked, username, password, isRegisterMode]); // Dependencies array to watch for changes
+  }, [submitClicked, username, password, isRegisterMode]);
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
     setSubmitClicked(true);
   };
-  
 
   const toggleMode = () => {
     setIsRegisterMode((prevMode) => !prevMode);
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    setUserLoggedIn(false);
+    setUsername('');
+  };
+
   return (
     <div className='login-box'>
-      <h2>{isRegisterMode && !userLoggedIn ? 'Register' : userLoggedIn ? `Salutations, ${username}` : 'Login'}</h2>
+      <h2>{errorMessage ? errorMessage : isRegisterMode && !userLoggedIn ? 'Register' : userLoggedIn ? `Salutations, ${username}` : 'Login'}</h2>
       <p onClick={handleLoginExit} className='exit-button'>X</p>
       {!userLoggedIn ? (
         <>
@@ -110,6 +115,8 @@ const LoginBox = () => {
             <button type="submit">{isRegisterMode ? 'Register' : 'Login'}</button>
           </form>
 
+         
+
           <p onClick={toggleMode} className="toggle-mode-link">
             {isRegisterMode ? 'Already have an account? Login here.' : 'Don\'t have an account? Register here.'}
           </p>
@@ -117,7 +124,7 @@ const LoginBox = () => {
       ) : (
         <>
           <p>You are logged in, you can close this tab now.</p>
-          <button>Switch account</button>
+          <button onClick={handleLogout}>Log out</button>
         </>
       )}
     </div>

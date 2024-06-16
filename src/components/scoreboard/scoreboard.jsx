@@ -8,7 +8,8 @@ import axios from "axios";
 
 const Scoreboard = ({style}) => {
 
-const {totalScore,cardsMatch,points,setTotalScore,gameStarted,gameCompleted,username} = useGameContext()
+const {totalScore,cardsMatch,points,setTotalScore,gameStarted,gameCompleted,username,
+userLoggedIn,playWithoutScore} = useGameContext()
 const [correctAnswer, setCorrectAnswer] = useState(0)
 const [incorrectAnswer, setIncorrectAnswer] = useState(0)
 
@@ -16,7 +17,7 @@ const [incorrectAnswer, setIncorrectAnswer] = useState(0)
 
 
 useEffect(() => {
-  if (gameCompleted && playWithoutScore === false) {
+  if (gameCompleted && playWithoutScore === false && userLoggedIn) {
     // Retrieve the token from localStorage
     const token = localStorage.getItem('token');
 

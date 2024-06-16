@@ -1,32 +1,18 @@
+// emailService.mjs
+
 import nodemailer from 'nodemailer';
 import dotenv from 'dotenv'
 
+dotenv.config()
 
-const sendEmail = async (to, subject, htmlContent) => {
 const password = process.env.GMAIL_PASSWORD
 
-  try {
-    let transporter = nodemailer.createTransport({
-      service: 'gmail',
-      auth: {
-        user: 'q3visualdesigns@gmail.com', // Your Gmail address
-        pass: password, // Your Gmail password or App password
-      },
-    });
+const transporter = nodemailer.createTransport({
+  service: 'Gmail', // Use your email service provider
+  auth: {
+    user: 'your_email@gmail.com', // Your email address
+    pass: password, // Your email password or application-specific password
+  },
+});
 
-    let info = await transporter.sendMail({
-      from: 'q3visualdesigns@gmail.com',
-      to: to,
-      subject: subject,
-      html: htmlContent,
-    });
-
-    console.log('Email sent: %s', info.messageId);
-    return true;
-  } catch (error) {
-    console.error('Error sending email:', error);
-    return false;
-  }
-};
-
-export { sendEmail };
+export default transporter;

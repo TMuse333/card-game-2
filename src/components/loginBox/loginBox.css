@@ -12,7 +12,9 @@
     top:25%;
     left:50%;
     transform: translateX(-50%);
-    background-color: white;
+    background: linear-gradient(to bottom, #46144d, #8d008d);
+
+color:white;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -49,20 +51,33 @@
   
   .login-box button {
     padding: 10px;
-    background-color: #007bff;
+    background-color: #3e0059;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    transition: all 0.3s ease-in;
   }
   
   .login-box button:hover {
-    background-color: #0056b3;
+    background-color: #ffffff;
+    transition: all 0.3s ease-in;
+    color:purple;
   }
   
   .login-box p {
     margin-top: 15px;
     text-align: center;
     
+  }
+
+  .toggle-mode-link{
+    transition: all 0.3s ease-in;
+  }
+
+  .toggle-mode-link:hover{
+    
+    transform: scale(1.1);
+    transition: all 0.3s ease-in;
   }
   
