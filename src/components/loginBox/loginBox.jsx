@@ -12,6 +12,7 @@ const LoginBox = () => {
   const [errorMessage, setErrorMessage] = useState('');
   const [emailVerified, setEmailVerified] = useState(false);
   const [tokenFromURL, setTokenFromURL] = useState('');
+  const [emailSent, setEmailSent] = useState(false)
 
   useEffect(() => {
     const verifyEmail = async (token) => {
@@ -19,7 +20,8 @@ const LoginBox = () => {
         const response = await axios.get(`https://quantum-card-game-bd4eaa931b03.herokuapp.com/verify/${token}`);
         if (response.data.success) {
           setEmailVerified(true);
-          setUserLoggedIn(true); // Update email verification state
+          setUserLoggedIn(true);
+          setEmailSent(false) // Update email verification state
           console.log('Email verified successfully');
         } else {
           console.log('Email verification failed');
@@ -65,7 +67,9 @@ const LoginBox = () => {
             username: username,
             token: response.data.token
           }));
-         
+          if(isRegisterMode){
+            setEmailSent(true)
+          }
           setEmail('');
           setPassword('');
           setErrorMessage('');
@@ -109,7 +113,7 @@ const LoginBox = () => {
     <div className='login-box'>
       <h2>{errorMessage ? errorMessage : isRegisterMode && !userLoggedIn ? 'Register' : userLoggedIn ? `Salutations, ${username}` : 'Login'}</h2>
       <p onClick={handleLoginExit} className='exit-button'>X</p>
-      {!userLoggedIn ? (
+      {!userLoggedIn && !emailSent ? (
         <>
           <form onSubmit={handleFormSubmit}>
             <input
@@ -145,8 +149,11 @@ const LoginBox = () => {
           </p>
         </>
       ) :
-        !emailVerified ? (
+        !emailVerified && emailSent && isRegisterMode ? (
+            <>
           <h2>Check your email for verification</h2>
+          <p>Then return to this page a refresh to start playing!</p>
+          </>
         ) : (
           <>
             <p>You are logged in, you can close this tab now.</p>
