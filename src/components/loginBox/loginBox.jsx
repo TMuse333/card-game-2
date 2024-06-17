@@ -11,7 +11,18 @@ const LoginBox = () => {
   const { setUserLoginClicked, userLoggedIn, setUserLoggedIn, setUsername, username } = useGameContext();
   const [errorMessage, setErrorMessage] = useState('');
   const [emailVerified, setEmailVerified] = useState(false);
+  const [tokenFromURL, setTokenFromURL] = useState('');
 
+  useEffect(() => {
+    // Check if there is a token in the URL parameters
+    const urlParams = new URLSearchParams(window.location.search);
+    const token = urlParams.get('token');
+
+    if (token) {
+      setTokenFromURL(token); // Store token from URL in state
+      verifyEmail(token); // Call verifyEmail with the token
+    }
+  }, []); // Empty dependency array ensures this runs once on mount
 
   useEffect(() => {
     console.log('the user name', username);
@@ -117,18 +128,19 @@ const LoginBox = () => {
             <button type="submit">{isRegisterMode ? 'Register' : 'Login'}</button>
           </form>
 
-         
-
           <p onClick={toggleMode} className="toggle-mode-link">
             {isRegisterMode ? 'Already have an account? Login here.' : 'Don\'t have an account? Register here.'}
           </p>
         </>
-      ) : (
-        <>
-          <p>You are logged in, you can close this tab now.</p>
-          <button onClick={handleLogout}>Log out</button>
-        </>
-      )}
+      ) :
+        !emailVerified ? (
+          <h2>Check your email for verification</h2>
+        ) : (
+          <>
+            <p>You are logged in, you can close this tab now.</p>
+            <button onClick={handleLogout}>Log out</button>
+          </>
+        )}
     </div>
   );
 };
