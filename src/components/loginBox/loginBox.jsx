@@ -14,19 +14,31 @@ const LoginBox = () => {
   const [tokenFromURL, setTokenFromURL] = useState('');
 
   useEffect(() => {
+    const verifyEmail = async (token) => {
+      try {
+        const response = await axios.get(`https://quantum-card-game-bd4eaa931b03.herokuapp.com/verify/${token}`);
+        if (response.data.success) {
+          setEmailVerified(true);
+          setUserLoggedIn(true); // Update email verification state
+          console.log('Email verified successfully');
+        } else {
+          console.log('Email verification failed');
+        }
+      } catch (error) {
+        console.error('Error verifying email:', error);
+      }
+    };
+
     // Check if there is a token in the URL parameters
     const urlParams = new URLSearchParams(window.location.search);
     const token = urlParams.get('token');
 
     if (token) {
-      setTokenFromURL(token); // Store token from URL in state
       verifyEmail(token); // Call verifyEmail with the token
     }
-  }, []); // Empty dependency array ensures this runs once on mount
+  }, []);// Empty dependency array ensures this runs once on mount
 
-  useEffect(() => {
-    console.log('the user name', username);
-  }, [username]);
+  
 
   const handleLoginExit = () => {
     setUserLoginClicked(false);
@@ -53,7 +65,7 @@ const LoginBox = () => {
             username: username,
             token: response.data.token
           }));
-          setUserLoggedIn(true);
+         
           setEmail('');
           setPassword('');
           setErrorMessage('');
